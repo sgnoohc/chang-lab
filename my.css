@@ -1,0 +1,66 @@
+#wpadminbar {
+  display: none !important;
+	visibility: hidden !important;
+}
+
+* {
+	background: #ffffff;
+}
+
+#post-2 > div > div {
+	margin: 0;
+	justify-content: flex-start;
+	align-items: flex-start;
+	display: flex;
+	padding: 0;
+}
+
+#page > div {
+	background: #ffffff;
+}
+
+#post-2 > div > div > header > h2 {
+  display: none;
+	color: #000000;
+}
+
+#post-2 > div {
+	display: ;
+	color: #000000;
+}
+
+#colophon > div > div {
+	display: none;
+}
+
+#post-2 > div > div > div > h2 {
+	color: #000000;
+}
+
+#post-2 > div > div > div > h3 {
+	color: #000000;
+}
+
+
+
+.site-branding {
+	display: none;
+}
+
+.site-content-contain {
+	display: block;
+}
+
+.panel-content {
+	display: block;
+}
+
+.entry-title {
+	display: block;
+}
+
+.entry-content {
+	display: block;
+}
+
+
