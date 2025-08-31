@@ -1958,31 +1958,34 @@ startTimer();
   </footer>
 
   <script>
-    // Mobile menu toggle
-    document.getElementById('menuBtn').addEventListener('click',()=>{
-      const m=document.getElementById('mobileMenu');
-      m.classList.toggle('hidden');
-    });
-    // Current year
-    document.getElementById('year').textContent=new Date().getFullYear();
+      // Mobile menu toggle
+      document.getElementById('menuBtn').addEventListener('click',()=>{
+          const m=document.getElementById('mobileMenu');
+          m.classList.toggle('hidden');
+      });
+      // Current year
+      document.getElementById('year').textContent=new Date().getFullYear();
   </script>
+
 <script>
-  // Scroll-spy highlight for top nav
+  // --- ScrollSpy: highlight nav item for section nearest the viewport center ---
   document.addEventListener('DOMContentLoaded', () => {
     const links = Array.from(document.querySelectorAll('nav .topnav-link[href^="#"]'));
-    const map = new Map(); // id -> link
-    links.forEach(a => {
-      const id = a.getAttribute('href').slice(1);
-      if (id) map.set(id, a);
-    });
+    const idToLink = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
 
-    // Sections to observe (only those that actually exist)
+    // Only spy on sections that actually have nav links
     const sections = Array.from(document.querySelectorAll('section[id]'))
-      .filter(sec => map.has(sec.id));
+      .filter(sec => idToLink.has(sec.id));
 
-    // Apply highlight style
+    // Optional: if you have a fixed header, account for its height here (px)
+    const HEADER_OFFSET = 0; // e.g. 72 for a 72px fixed header
+
+    // Where is our "focus line"? 0.5 = exact middle of viewport
+    const FOCUS_LINE = 0.5;
+
+    // Highlight styles
     function setActive(id) {
-      map.forEach((link, key) => {
+      idToLink.forEach((link, key) => {
         const active = key === id;
         link.classList.toggle('bg-[var(--brand)]/10', active);
         link.classList.toggle('text-[var(--brand)]', active);
@@ -1993,32 +1996,46 @@ startTimer();
       });
     }
 
-    // Observer: a section becomes "active" when ~40% visible
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) setActive(entry.target.id);
+    // Compute which section's midpoint is closest to the focus line
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const vh = window.innerHeight;
+        const focusY = HEADER_OFFSET + vh * FOCUS_LINE;
+        let bestId = null;
+        let bestDist = Infinity;
+
+        for (const sec of sections) {
+          const r = sec.getBoundingClientRect();
+          const mid = r.top + r.height / 2;      // section midpoint (in viewport coords)
+          const dist = Math.abs(mid - focusY);   // distance to our focus line
+          // Only consider sections that have some presence on screen
+          const visible = r.bottom > 0 && r.top < vh;
+          if (visible && dist < bestDist) {
+            bestDist = dist;
+            bestId = sec.id;
+          }
+        }
+        if (bestId) setActive(bestId);
+        ticking = false;
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -10% 0px' // activate a bit before it leaves
-    });
-
-    sections.forEach(sec => io.observe(sec));
-
-    // Also set on load if coming with a hash
-    if (location.hash && map.has(location.hash.slice(1))) {
-      setActive(location.hash.slice(1));
     }
 
-    // Optional: update highlight immediately on nav click
-    links.forEach(a => {
-      a.addEventListener('click', () => {
-        const id = a.getAttribute('href').slice(1);
-        if (id) setActive(id);
-      });
-    });
+    // Init + listeners
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll(); // run once on load
+
+    // Optional: immediate highlight on nav click
+    links.forEach(a => a.addEventListener('click', () => {
+      const id = a.getAttribute('href').slice(1);
+      if (id) setActive(id);
+    }));
   });
 </script>
+
 
 </body>
 </html>
