@@ -77,6 +77,33 @@
     }
 }
 </style>
+
+<style>
+  /* Soft fade at bottom of collapsed text on small screens */
+  #research details .fade-pointer {
+    background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+    display: none;
+  }
+  /* Only show the fade when the details are closed AND on small screens */
+  @media (max-width: 767.98px) {
+    #research details:not([open]) .fade-pointer { display: block; }
+  }
+</style>
+
+<script>
+    // Collapsible behavior for research cards on small screens
+    document.querySelectorAll(".research-card .toggle-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const card = btn.closest(".research-card");
+            const extra = card.querySelector(".card-extra");
+            const isHidden = extra.classList.toggle("hidden");
+            btn.setAttribute("aria-expanded", String(!isHidden));
+            btn.textContent = isHidden ? "Read more ↓" : "Show less ↑";
+        });
+    });
+</script>
+
+
 </head>
 
 <body class="text-slate-800">
@@ -334,11 +361,24 @@ startTimer();
           <div id="research-container" 
                class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto scroll-smooth no-scrollbar">
 
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
+                  <!-- Title (always visible) -->
                   <h3 class="font-semibold">Higgs + Two Vector Boson Production via VBS</h3>
+                  <!-- Primary image (visible on all sizes) -->
                   <img class="mt-4 rounded-xl"
                        src="vbsvvh.png"
                        alt="Example Feynman diagrams for VVHH coupling in VBS"/>
+                  <!-- Checkbox control (screen-reader only on mobile) -->
+                  <input id="vbs-toggle" type="checkbox" class="peer sr-only md:hidden" />
+
+                  <!-- Label acts as the button on mobile -->
+                  <label for="vbs-toggle" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden cursor-pointer">
+                      <span class="peer-checked:hidden">Read more ↓</span>
+                      <span class="hidden peer-checked:inline">Show less ↑</span>
+                  </label>
+
+                  <!-- Collapsible content: hidden on small, shown on md+ -->
+                  <div class="hidden peer-checked:block md:block">
                   <p class="mt-2 text-sm text-slate-600">
                   The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) remain among the least constrained in the Higgs sector.
                   This CMS study presents the first direct search for production of a Higgs boson in association with two vector bosons via vector boson scattering (VBS), using 138 fb⁻¹ of 13 TeV data.
@@ -353,14 +393,26 @@ startTimer();
                                                                                                                                                  class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
                       View the CMS preliminary result →
                   </a>
+                  </div>
               </article>
 
 
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Measurement of WWZ and ZH Production</h3>
                   <img class="mt-4 rounded-xl"
                        src="wwzeventdisplay.png"
                        alt="WWZ event display"/>
+
+                  <!-- Checkbox control (screen-reader only on mobile) -->
+                  <input id="vbs-toggle" type="checkbox" class="peer sr-only md:hidden" />
+
+                  <!-- Label acts as the button on mobile -->
+                  <label for="vbs-toggle" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden cursor-pointer">
+                      <span class="peer-checked:hidden">Read more ↓</span>
+                      <span class="hidden peer-checked:inline">Show less ↑</span>
+                  </label>
+
+                  <div class="card-extra hidden md:block">
                   <p class="mt-2 text-sm text-slate-600">
                   We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
                   and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
@@ -391,14 +443,24 @@ startTimer();
                                                               class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
                       Read the publication →
                   </a>
+                  </div>
+                  <!-- Toggle button: only appears on small screens -->
+                  <button
+                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
+                      type="button"
+                      aria-expanded="false"
+                      >
+                      Read more ↓
+                  </button>
 
               </article>
 
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">WH Production via Vector Boson Scattering</h3>
                   <!-- <img class="mt-4 rounded-xl" -->
                   <!--      src="vbswhfeyn.jpg" -->
                   <!--      alt="Example Feynman diagrams for VVHH coupling in VBS"/> -->
+                  <div class="card-extra hidden md:block">
                   <p class="mt-2 text-sm text-slate-600">
                   <!-- Most Higgs measurements to date have been sensitive only to the <em>magnitude</em> of the Higgs boson’s couplings, -->
                   <!-- leaving the relative <em>sign</em> between the HWW and HZZ interactions undetermined. -->
@@ -415,15 +477,25 @@ startTimer();
                                                                                            class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
                       Read the publication →
                   </a>
+                  </div>
+                  <!-- Toggle button: only appears on small screens -->
+                  <button
+                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
+                      type="button"
+                      aria-expanded="false"
+                      >
+                      Read more ↓
+                  </button>
               </article>
 
 
 
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">First Observation of Three Massive Gauge Boson Production Process</h3>
                   <img class="mt-4 rounded-xl"
                        src="WWZ4l.png"
                        alt="CMS triboson event display"/>
+                  <div class="card-extra hidden md:block">
                   <p class="mt-2 text-sm text-slate-600">
                   The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an
                   extremely rare phenomenon predicted by the Standard Model of particle physics.
@@ -443,10 +515,20 @@ startTimer();
                                                                                            class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
                       Read the publication →
                   </a>
+                  </div>
+                  <!-- Toggle button: only appears on small screens -->
+                  <button
+                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
+                      type="button"
+                      aria-expanded="false"
+                      >
+                      Read more ↓
+                  </button>
               </article>
 
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Line Segment Tracking (LST)</h3>
+                  <div class="card-extra hidden md:block">
                   <p class="mt-2 text-sm text-slate-600">
                   The High-Luminosity LHC will deliver an unprecedented volume of collision data, demanding new
                   approaches to <em>charged-particle tracking</em>. The Line Segment Tracking algorithm is a
@@ -463,9 +545,18 @@ startTimer();
                                                                                             class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
                       Read the publication →
                   </a>
+                  </div>
+                  <!-- Toggle button: only appears on small screens -->
+                  <button
+                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
+                      type="button"
+                      aria-expanded="false"
+                      >
+                      Read more ↓
+                  </button>
               </article>
 
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Search for Three W Gauge Boson Production Process</h3>
                   <!-- <p class="mt-2 text-sm text-slate-600"> -->
                   <!-- The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an -->
@@ -479,6 +570,7 @@ startTimer();
                   <!-- and offer sensitivity to <span class="font-semibold">subtle effects of new physics</span> -->
                   <!-- at higher energy scales. -->
                   <!-- </p> -->
+                  <div class="card-extra hidden md:block">
                   <p class="mt-2 text-sm text-slate-600">
                   The production of three W bosons (WWW) is one of the rarest processes predicted by the Standard Model, 
                   providing a sensitive window into the structure of <em>quartic electroweak gauge couplings</em> 
@@ -495,11 +587,21 @@ startTimer();
                                                                                             class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
                       Read the publication →
                   </a>
+                  </div>
+                  <!-- Toggle button: only appears on small screens -->
+                  <button
+                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
+                      type="button"
+                      aria-expanded="false"
+                      >
+                      Read more ↓
+                  </button>
               </article>
 
 
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Higgs Boson Physics in the WW Decay Channel</h3>
+                  <div class="card-extra hidden md:block">
                   <p class="mt-2 text-sm text-slate-600">
                   The Higgs boson, discovered in 2012, plays a central role in explaining how fundamental particles acquire mass. 
                   One of the most important ways to study its properties is through its decay into a pair of W bosons 
@@ -523,6 +625,15 @@ startTimer();
                                                                                             class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
                       Read the publication →
                   </a>
+                  </div>
+                  <!-- Toggle button: only appears on small screens -->
+                  <button
+                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
+                      type="button"
+                      aria-expanded="false"
+                      >
+                      Read more ↓
+                  </button>
               </article>
 
 
@@ -548,6 +659,25 @@ startTimer();
           });
       })();
   </script>
+
+<script>
+  (function () {
+    let t;
+    function syncResearchCards() {
+      const openOnWide = window.innerWidth >= 768; // sm→md breakpoint
+      document.querySelectorAll('#research details.research-autoopen').forEach(d => {
+        if (openOnWide) d.setAttribute('open', '');
+        else d.removeAttribute('open');
+      });
+    }
+    window.addEventListener('load', syncResearchCards);
+    window.addEventListener('resize', () => {
+      clearTimeout(t);
+      t = setTimeout(syncResearchCards, 150);
+    });
+  })();
+</script>
+
 
   <style>
 /* Hide scrollbar but keep scroll functionality */
@@ -850,15 +980,15 @@ startTimer();
   <!--     </div> -->
   <!-- </section> -->
 
-  <script>
-      const container = document.getElementById('news-container');
-      document.getElementById('news-prev').addEventListener('click', () => {
-          container.scrollBy({ left: -350, behavior: 'smooth' });
-      });
-      document.getElementById('news-next').addEventListener('click', () => {
-          container.scrollBy({ left: 350, behavior: 'smooth' });
-      });
-  </script>
+  <!-- <script> -->
+  <!--     const container = document.getElementById('news-container'); -->
+  <!--     document.getElementById('news-prev').addEventListener('click', () => { -->
+  <!--         container.scrollBy({ left: -350, behavior: 'smooth' }); -->
+  <!--     }); -->
+  <!--     document.getElementById('news-next').addEventListener('click', () => { -->
+  <!--         container.scrollBy({ left: 350, behavior: 'smooth' }); -->
+  <!--     }); -->
+  <!-- </script> -->
 
   <style>
 /* Hide scrollbar but keep scroll functionality */
