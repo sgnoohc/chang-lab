@@ -89,6 +89,7 @@
               <span>Chang Lab</span>
           </a>
         <nav class="hidden md:flex items-center gap-8 text-[15px]">
+          <a class="nav-link" href="#top">Home</a>
           <a class="nav-link" href="#about">About</a>
           <a class="nav-link" href="#research">Research</a>
           <a class="nav-link" href="#media">Media</a>
@@ -104,6 +105,7 @@
     <!-- mobile -->
     <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
       <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 grid grid-cols-2 gap-2">
+        <a class="py-2" href="#top">Home</a>
         <a class="py-2" href="#about">About</a>
         <a class="py-2" href="#research">Research</a>
         <a class="py-2" href="#media">Media</a>
@@ -136,12 +138,138 @@
         <div class="lg:col-span-5">
           <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/40">
             <!-- <img src="EventDisplay5lepLabel.png" alt="WZZ event display" class="w-full h-[320px] object-cover"/> -->
-            <img src="https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg" alt="The CMS detector at the CERN Large Hadron Collider" class="w-full h-[380px] object-cover" />
+            <!-- <img src="https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg" alt="The CMS detector at the CERN Large Hadron Collider" class="w-full h-[380px] object-cover" /> -->
+            <!-- RIGHT SIDE: Hero carousel -->
+            <div id="hero-carousel" class="relative w-full max-w-2xl rounded-3xl overflow-hidden shadow-xl">
+                <!-- Slide surface keeps layout stable -->
+                <div id="heroSlides" class="relative aspect-[4/3] bg-slate-200"></div>
+
+                <!-- <!-1- Prev / Next -1-> -->
+                <!-- <button id="heroPrev" -->
+                <!--         class="group absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 hover:bg-white p-2 shadow ring-1 ring-slate-300"> -->
+                <!--     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-active:-translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.78 15.22a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 010-1.06l4.5-4.5a.75.75 0 111.06 1.06L8.56 10l4.22 4.22a.75.75 0 010 1.06z" clip-rule="evenodd"/></svg> -->
+                <!--     <span class="sr-only">Previous</span> -->
+                <!-- </button> -->
+                <!-- <button id="heroNext" -->
+                <!--         class="group absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 hover:bg-white p-2 shadow ring-1 ring-slate-300"> -->
+                <!--     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-active:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.22 4.78a.75.75 0 011.06 0l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06L11.44 10 7.22 5.78a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg> -->
+                <!--     <span class="sr-only">Next</span> -->
+                <!-- </button> -->
+                <!-- Prev -->
+                <button id="heroPrev"
+                        class="group absolute left-2 top-1/2 -translate-y-1/2 p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                         class="h-6 w-6 text-white/50 group-hover:text-white transition-colors" 
+                         viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.78 15.22a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 010-1.06l4.5-4.5a.75.75 0 111.06 1.06L8.56 10l4.22 4.22a.75.75 0 010 1.06z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </button>
+
+                <!-- Next -->
+                <button id="heroNext"
+                        class="group absolute right-2 top-1/2 -translate-y-1/2 p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                         class="h-6 w-6 text-white/50 group-hover:text-white transition-colors" 
+                         viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.22 4.78a.75.75 0 011.06 0l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06L11.44 10 7.22 5.78a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </button>
+
+
+                <!-- Dots -->
+                <div id="heroDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+      // 1) Add your images here
+      const heroImages = [
+          "https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg",
+          "https://cms.cern/sites/default/files/2022-06/detector_stripe01-min_0_0.jpeg",
+          "https://cms.cern/sites/default/files/field/image/CMS_photo_3_courtesy_of_CERN.jpg",
+          "https://home.cern/sites/default/files/2018-06/cms-tracker_1431469_1.jpg",
+          "https://cds.cern.ch/images/CERN-CO-1008289-04/file?size=large",
+          "https://cms.cern/sites/default/files/inline-images/HLT-2.png",
+          "https://cds.cern.ch/images/CERN-HI-0610046-01/file?size=large",
+          "https://home.cern/sites/default/files/2018-06/computer_centre_image_resized_for_web.jpg",
+          "https://cds.cern.ch/images/CERN-PHOTO-202108-102-11/file?size=large",
+          "https://cds.cern.ch/images/CERN-PHOTO-202108-102-1/file?size=large",
+          "https://cds.cern.ch/images/CERN-PHOTO-201901-009-1/file?size=large",
+      ];
+
+// 2) Elements
+const surface = document.getElementById("heroSlides");
+const prevBtn = document.getElementById("heroPrev");
+const nextBtn = document.getElementById("heroNext");
+const dotsWrap = document.getElementById("heroDots");
+const carousel = document.getElementById("hero-carousel");
+
+// 3) Shuffle and start at a random slide
+const shuffled = [...heroImages].sort(() => Math.random() - 0.5);
+let current = Math.floor(Math.random() * shuffled.length);
+let slides = [];
+let dots = [];
+
+// 4) Build slides & dots
+shuffled.forEach((src, i) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Hero image " + (i + 1);
+    img.className = "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 opacity-0";
+    img.decoding = "async";
+    img.loading = i === current ? "eager" : "lazy";
+    surface.appendChild(img);
+    slides.push(img);
+
+    const dot = document.createElement("button");
+    dot.className = "h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white ring-1 ring-white/50";
+    dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+    dot.addEventListener("click", () => goTo(i, true));
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+});
+
+function render() {
+    slides.forEach((el, i) => {
+        el.style.opacity = i === current ? "1" : "0";
+    });
+    dots.forEach((d, i) => {
+        d.className = "h-2.5 w-2.5 rounded-full ring-1 ring-white/50 " +
+            (i === current ? "bg-white" : "bg-white/50 hover:bg-white");
+    });
+}
+
+function next(auto=false){ current = (current + 1) % slides.length; render(); if(!auto) resetTimer(); }
+function prev(){ current = (current - 1 + slides.length) % slides.length; render(); resetTimer(); }
+function goTo(i, manual=false){ current = i; render(); if(manual) resetTimer(); }
+
+// 5) Controls
+nextBtn.addEventListener("click", () => next());
+prevBtn.addEventListener("click", () => prev());
+
+// 6) Auto-advance (pause on hover/focus)
+let timer = null;
+function startTimer(){ timer = setInterval(() => next(true), 5000); }
+function stopTimer(){ clearInterval(timer); timer = null; }
+function resetTimer(){ stopTimer(); startTimer(); }
+
+carousel.addEventListener("mouseenter", stopTimer);
+carousel.addEventListener("mouseleave", startTimer);
+carousel.addEventListener("focusin", stopTimer);
+carousel.addEventListener("focusout", startTimer);
+
+// 7) Init
+render();
+startTimer();
+  </script>
+
 
   <!-- About -->
   <section id="about" class="py-16">
@@ -750,44 +878,97 @@
   <!--     </div> -->
   <!-- </section> -->
 
-  <!-- Public Talks -->
-  <section id="presentations" class="py-16 bg-slate-50">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 class="text-2xl font-bold">Public Talks</h2>
-          <ol class="mt-6 space-y-4 list-disc list-inside text-slate-700">
-              <li>
-                  <span class="font-medium">Public Seminar:</span> 
-                  "New Frontiers of Electroweak Physics at the LHC" — 
-                  <em>Mid-Florida QuarkNet Day 2024</em>.
-                  <!-- <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -->
-              </li>
-              <li>
-                  <span class="font-medium">Public Seminar:</span> 
-                  "An Invitation to Imagine Something from Nothing" — 
-                  <em>Galesville Astrophysical Society 2024</em>.
-                  <!-- <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -->
-              </li>
-              <li>
-                  <span class="font-medium">Public Seminar:</span> 
-                  "An Invitation to Imagine Something from Nothing" — 
-                  <em>Aspen Center of Physics 2024</em>.
-                  <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a>
-              </li>
-              <!-- <li> -->
-              <!--     <span class="font-medium">Seminar:</span> --> 
-              <!--     "Line Segment Tracking: GPU-accelerated track reconstruction for HL-LHC" — --> 
-              <!--     <em>Fermilab LPC Seminar, 2024</em>. -->
-              <!--     <a href="#" class="text-[var(--brand)] text-sm font-medium ml-2">Recording →</a> -->
-              <!-- </li> -->
-              <!-- <li> -->
-              <!--     <span class="font-medium">Conference contribution:</span> --> 
-              <!--     "Observation of triboson production at the LHC" — --> 
-              <!--     <em>ICHEP 2022</em>. -->
-              <!--     <a href="#" class="text-[var(--brand)] text-sm font-medium ml-2">Proceedings →</a> -->
-              <!-- </li> -->
-          </ol>
-      </div>
-  </section>
+  <!-- <!-1- Public Talks -1-> -->
+  <!-- <section id="presentations" class="py-16 bg-slate-50"> -->
+  <!--     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> -->
+  <!--         <h2 class="text-2xl font-bold">Public Talks</h2> -->
+  <!--         <ol class="mt-6 space-y-4 list-disc list-inside text-slate-700"> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "New Frontiers of Electroweak Physics at the LHC" — --> 
+  <!--                 <em>Mid-Florida QuarkNet Day 2024</em>. -->
+  <!--                 <!-1- <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -1-> -->
+  <!--             </li> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "An Invitation to Imagine Something from Nothing" — --> 
+  <!--                 <em>Galesville Astrophysical Society 2024</em>. -->
+  <!--                 <!-1- <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -1-> -->
+  <!--             </li> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "An Invitation to Imagine Something from Nothing" — --> 
+  <!--                 <em>Aspen Center of Physics 2024</em>. -->
+  <!--                 <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -->
+  <!--             </li> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "Then and now: Developments in the large Hadron Collider" — --> 
+  <!--                 <em>Particle Fever</em> Science on Screen, Enzian Theater, Maitland FL. -->
+  <!--             </li> -->
+  <!--             <!-1- <li> -1-> -->
+  <!--             <!-1-     <span class="font-medium">Seminar:</span> -1-> --> 
+  <!--             <!-1-     "Line Segment Tracking: GPU-accelerated track reconstruction for HL-LHC" — -1-> --> 
+  <!--             <!-1-     <em>Fermilab LPC Seminar, 2024</em>. -1-> -->
+  <!--             <!-1-     <a href="#" class="text-[var(--brand)] text-sm font-medium ml-2">Recording →</a> -1-> -->
+  <!--             <!-1- </li> -1-> -->
+  <!--             <!-1- <li> -1-> -->
+  <!--             <!-1-     <span class="font-medium">Conference contribution:</span> -1-> --> 
+  <!--             <!-1-     "Observation of triboson production at the LHC" — -1-> --> 
+  <!--             <!-1-     <em>ICHEP 2022</em>. -1-> -->
+  <!--             <!-1-     <a href="#" class="text-[var(--brand)] text-sm font-medium ml-2">Proceedings →</a> -1-> -->
+  <!--             <!-1- </li> -1-> -->
+  <!--         </ol> -->
+  <!--     </div> -->
+  <!-- </section> -->
+
+<!-- Public Talks -->
+<section id="presentations" class="py-16 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold">Public Talks</h2>
+
+    <!-- Featured talks with images -->
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <!-- Talk 1 -->
+      <article class="card rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+        <img src="aspenimage.png" alt="Talk image" class="h-48 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold text-lg">An Invitation to Imagine Something from Nothing</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            <em>Aspen Center of Physics 2024</em>
+          </p>
+          <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="mt-3 inline-block text-[var(--brand)] text-sm font-medium">YouTube →</a>
+        </div>
+      </article>
+
+      <!-- Talk 2 -->
+      <article class="card rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+        <img src="enzian.png" alt="Talk image" class="h-48 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold text-lg">Then and Now: Developments in the Large Hadron Collider</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            <em>Particle Fever — Science on Screen, Enzian Theater, Maitland FL</em>
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Remaining talks in list -->
+    <ol class="mt-10 space-y-4 list-disc list-inside text-slate-700">
+      <li>
+        <span class="font-medium">Public Seminar:</span>
+        "New Frontiers of Electroweak Physics at the LHC" — 
+        <em>Mid-Florida QuarkNet Day 2024</em>.
+      </li>
+      <li>
+        <span class="font-medium">Public Seminar:</span>
+        "An Invitation to Imagine Something from Nothing" — 
+        <em>Galesville Astrophysical Society 2024</em>.
+      </li>
+    </ol>
+  </div>
+</section>
+
 
 <!-- Presentations -->
 <section id="talks" class="py-16 bg-slate-50">
