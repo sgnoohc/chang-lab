@@ -90,18 +90,18 @@
   }
 </style>
 
-<script>
-    // Collapsible behavior for research cards on small screens
-    document.querySelectorAll(".research-card .toggle-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-            const card = btn.closest(".research-card");
-            const extra = card.querySelector(".card-extra");
-            const isHidden = extra.classList.toggle("hidden");
-            btn.setAttribute("aria-expanded", String(!isHidden));
-            btn.textContent = isHidden ? "Read more ↓" : "Show less ↑";
-        });
-    });
-</script>
+<!-- <script> -->
+<!--     // Collapsible behavior for research cards on small screens -->
+<!--     document.querySelectorAll(".research-card .toggle-btn").forEach((btn) => { -->
+<!--         btn.addEventListener("click", () => { -->
+<!--             const card = btn.closest(".research-card"); -->
+<!--             const extra = card.querySelector(".card-extra"); -->
+<!--             const isHidden = extra.classList.toggle("hidden"); -->
+<!--             btn.setAttribute("aria-expanded", String(!isHidden)); -->
+<!--             btn.textContent = isHidden ? "Read more ↓" : "Show less ↑"; -->
+<!--         }); -->
+<!--     }); -->
+<!-- </script> -->
 
 
 </head>
@@ -361,142 +361,518 @@ startTimer();
           <div id="research-container" 
                class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto scroll-smooth no-scrollbar">
 
-              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
-                  <!-- Title (always visible) -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <h3 class="font-semibold">Higgs + Two Vector Boson Production via VBS</h3> -->
+
+              <!--     <img class="mt-4 rounded-xl" src="vbsvvh.png" alt="Example Feynman diagrams for VVHH coupling in VBS" /> -->
+
+              <!--     <!-1- Collapsible section controlled by peer -1-> -->
+              <!--     <div class="mt-3 md:hidden"> -->
+              <!--         <!-1- invisible checkbox peer -1-> -->
+              <!--         <input type="checkbox" class="peer hidden" /> -->
+
+              <!--         <!-1- label toggles only its sibling input -1-> -->
+              <!--         <label class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+
+              <!--         <!-1- content shown when peer is checked -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             <!-1- The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ)… -1-> -->
+              <!--             The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) remain among the least constrained in the Higgs sector. -->
+              <!--             This CMS study presents the first direct search for production of a Higgs boson in association with two vector bosons via vector boson scattering (VBS), using 138 fb⁻¹ of 13 TeV data. -->
+              <!--             It sets the most stringent limits yet on the VVHH (κ₂V) coupling relative to the SM and independently constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a significant advance in our ability to probe Higgs self-interactions at the LHC. -->
+              <!--             </p> -->
+              <!--             <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html" -->
+              <!--                target="_blank" rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 View the CMS preliminary result → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+
+              <!--     <!-1- On md+ always visible -1-> -->
+              <!--     <div class="hidden md:block mt-3"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--         The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) remain among the least constrained in the Higgs sector. -->
+              <!--         This CMS study presents the first direct search for production of a Higgs boson in association with two vector bosons via vector boson scattering (VBS), using 138 fb⁻¹ of 13 TeV data. -->
+              <!--         It sets the most stringent limits yet on the VVHH (κ₂V) coupling relative to the SM and independently constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a significant advance in our ability to probe Higgs self-interactions at the LHC. -->
+              <!--         </p> -->
+              <!--         <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html" -->
+              <!--            target="_blank" rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             View the CMS preliminary result → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+
+              <!-- <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <!-1- Title (always visible) -1-> -->
+              <!--     <h3 class="font-semibold">Higgs + Two Vector Boson Production via VBS</h3> -->
+              <!--     <!-1- Primary image (visible on all sizes) -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="vbsvvh.png" -->
+              <!--          alt="Example Feynman diagrams for VVHH coupling in VBS"/> -->
+              <!--     <!-1- Checkbox control (screen-reader only on mobile) -1-> -->
+              <!--     <input id="vbs-toggle" type="checkbox" class="peer sr-only md:hidden" /> -->
+
+              <!--     <!-1- Label acts as the button on mobile -1-> -->
+              <!--     <label for="vbs-toggle" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden cursor-pointer"> -->
+              <!--         <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--         <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--     </label> -->
+
+              <!--     <!-1- Collapsible content: hidden on small, shown on md+ -1-> -->
+              <!--     <div class="hidden peer-checked:block md:block"> -->
+              <!--     <p class="mt-2 text-sm text-slate-600"> -->
+              <!--     The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) remain among the least constrained in the Higgs sector. -->
+              <!--     This CMS study presents the first direct search for production of a Higgs boson in association with two vector bosons via vector boson scattering (VBS), using 138 fb⁻¹ of 13 TeV data. -->
+              <!--     It sets the most stringent limits yet on the VVHH (κ₂V) coupling relative to the SM and independently constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a significant advance in our ability to probe Higgs self-interactions at the LHC. -->
+              <!--     <!-1- The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) remain among the least constrained in the Higgs sector. This CMS study presents the first direct search for a Higgs boson produced with two vector bosons via vector boson scattering (VBS), using 138 fb⁻¹ of 13 TeV data. It sets the most stringent limits yet on the VVHH (κ₂V) coupling and independently constrains the HHWW (κ₂W) and HHZZ (κ₂Z) interactions—marking a major advance in probing Higgs self-interactions at the LHC. -1-> -->
+              <!--     <!-1- The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) are among the least explored in the Higgs sector. The first direct search for Higgs production with two vector bosons via scattering, using 138 fb⁻¹ of 13 TeV data was done. It sets the tightest limits yet on VVHH (κ₂V) and independently probes HHWW (κ₂W) and HHZZ (κ₂Z)—a breakthrough step toward mapping Higgs self-interactions at the LHC. -1-> -->
+              <!--     </p> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="wwhhzzhh.png" -->
+              <!--          alt="WWHH vs. ZZHH coupling constraint"/> -->
+              <!--     <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html" target="_blank" rel="noopener" -->
+              <!--                                                                                                                                    class="mt-4 inline-block text-[var(--brand)] text-sm font-medium"> -->
+              <!--         View the CMS preliminary result → -->
+              <!--     </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+
+
+              <!-- <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <h3 class="font-semibold">Measurement of WWZ and ZH Production</h3> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="wwzeventdisplay.png" -->
+              <!--          alt="WWZ event display"/> -->
+
+              <!--     <!-1- Checkbox control (screen-reader only on mobile) -1-> -->
+              <!--     <input id="vbs-toggle" type="checkbox" class="peer sr-only md:hidden" /> -->
+
+              <!--     <!-1- Label acts as the button on mobile -1-> -->
+              <!--     <label for="vbs-toggle" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden cursor-pointer"> -->
+              <!--         <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--         <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--     </label> -->
+
+              <!--     <!-1- Collapsible content: hidden on small, shown on md+ -1-> -->
+              <!--     <div class="card-extra hidden md:block"> -->
+              <!--     <p class="mt-2 text-sm text-slate-600"> -->
+              <!--     We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ -->
+              <!--     and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the -->
+              <!--     <span class="font-semibold">most precise determination</span> of the WWZ cross section to date -->
+              <!--     and provided the <em>first evidence for triboson production at 13.6 TeV</em>. -->
+              <!--     These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s -->
+              <!--     self-consistency and probing the dynamics of <em>multi-boson interactions</em>, -->
+              <!--     which are uniquely sensitive to subtle effects from new physics at higher scales. -->
+              <!--     </p> -->
+              <!--     <!-1- <p class="mt-2 text-sm text-slate-600"> -1-> -->
+              <!--     <!-1- The first simultaneous measurement of nonresonant <em>WWZ</em> and <em>ZH (H→WW)</em> production -1-> -->
+              <!--     <!-1- at √s = 13 and 13.6 TeV represents a major step forward in the study of electroweak interactions -1-> -->
+              <!--     <!-1- at the LHC. These multi-boson final states probe the intricate <em>self-interactions of gauge bosons</em>, -1-> -->
+              <!--     <!-1- providing direct sensitivity to the structure of the Standard Model’s electroweak sector and the -1-> -->
+              <!--     <!-1- couplings of the Higgs boson. The study achieved the most precise determination of the WWZ cross -1-> -->
+              <!--     <!-1- section to date, and delivered the first evidence for triboson production at 13.6 TeV, extending -1-> -->
+              <!--     <!-1- our experimental reach into a new energy regime. Beyond their intrinsic importance as rare -1-> -->
+              <!--     <!-1- Standard Model processes, these measurements serve as a foundation for future precision tests -1-> -->
+              <!--     <!-1- and offer a unique window into potential deviations that could signal <em>new physics at higher -1-> -->
+              <!--     <!-1-     energy scales</em>. The results demonstrate how carefully designed analyses of rare signatures -1-> -->
+              <!--     <!-1- can sharpen our understanding of the Higgs mechanism, the nature of electroweak symmetry breaking, -1-> -->
+              <!--     <!-1- and the limits of the Standard Model itself. -1-> -->
+              <!--     <!-1- </p> -1-> -->
+              <!--     <!-1- <img class="mt-4 rounded-xl" -1-> -->
+              <!--     <!-1-      src="WWZPlot.png" -1-> -->
+              <!--     <!-1-      alt="WWZ Yield Plot"/> -1-> -->
+              <!--     <a href="https://doi.org/10.1103/6z3d-zjw4" target="_blank" -->
+              <!--                                                 class="mt-4 inline-block text-[var(--brand)] text-sm font-medium"> -->
+              <!--         Read the publication → -->
+              <!--     </a> -->
+              <!--     </div> -->
+              <!--     <!-1- <!-2- Toggle button: only appears on small screens -2-> -1-> -->
+              <!--     <!-1- <button -1-> -->
+              <!--     <!-1-     class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden" -1-> -->
+              <!--     <!-1-     type="button" -1-> -->
+              <!--     <!-1-     aria-expanded="false" -1-> -->
+              <!--     <!-1-     > -1-> -->
+              <!--     <!-1-     Read more ↓ -1-> -->
+              <!--     <!-1- </button> -1-> -->
+
+              <!-- </article> -->
+
+              <!-- <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <h3 class="font-semibold">WH Production via Vector Boson Scattering</h3> -->
+              <!--     <!-1- <img class="mt-4 rounded-xl" -1-> -->
+              <!--     <!-1-      src="vbswhfeyn.jpg" -1-> -->
+              <!--     <!-1-      alt="Example Feynman diagrams for VVHH coupling in VBS"/> -1-> -->
+              <!--     <div class="card-extra hidden md:block"> -->
+              <!--     <p class="mt-2 text-sm text-slate-600"> -->
+              <!--     <!-1- Most Higgs measurements to date have been sensitive only to the <em>magnitude</em> of the Higgs boson’s couplings, -1-> -->
+              <!--     <!-1- leaving the relative <em>sign</em> between the HWW and HZZ interactions undetermined. -1-> -->
+              <!--     <!-1- Vector boson scattering processes, however, are uniquely sensitive to this relative sign through interference effects. -1-> -->
+              <!--     <!-1- In this study, CMS measured W H production via VBS at √s = 13 TeV, providing the first direct probe of this coupling structure. -1-> -->
+              <!--     <!-1- The analysis delivered the most stringent constraints to date, excluding at >5σ the “opposite-sign” scenario and thereby -1-> -->
+              <!--     <!-1- confirming the Standard Model’s predicted alignment of Higgs–gauge boson couplings. -1-> -->
+              <!--     Most Higgs measurements have probed only the magnitude of couplings, leaving the relative sign between HWW and HZZ undetermined. Vector boson scattering is uniquely sensitive to this sign through interference. Using √s = 13 TeV data, CMS measured WH production via VBS, providing the first direct probe. The analysis set the most stringent constraints yet, excluding the “opposite-sign” case at >5σ and confirming the Standard Model alignment of Higgs–gauge boson couplings. -->
+              <!--     </p> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="vbswh.jpg" -->
+              <!--          alt="Feynman diagrams for WH via VBS" /> -->
+              <!--     <a href="https://doi.org/10.1016/j.physletb.2024.139202" target="_blank" rel="noopener" -->
+              <!--                                                                              class="mt-4 inline-block text-[var(--brand)] text-sm font-medium"> -->
+              <!--         Read the publication → -->
+              <!--     </a> -->
+              <!--     </div> -->
+              <!--     <!-1- Toggle button: only appears on small screens -1-> -->
+              <!--     <button -->
+              <!--         class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden" -->
+              <!--         type="button" -->
+              <!--         aria-expanded="false" -->
+              <!--         > -->
+              <!--         Read more ↓ -->
+              <!--     </button> -->
+              <!-- </article> -->
+
+
+
+              <!-- <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <h3 class="font-semibold">First Observation of Three Massive Gauge Boson Production Process</h3> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="WWZ4l.png" -->
+              <!--          alt="CMS triboson event display"/> -->
+              <!--     <div class="card-extra hidden md:block"> -->
+              <!--     <p class="mt-2 text-sm text-slate-600"> -->
+              <!--     The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an -->
+              <!--     extremely rare phenomenon predicted by the Standard Model of particle physics. -->
+              <!--     Observing such events provides a direct window into the <span class="font-semibold">self-interactions -->
+              <!--         of the electroweak force</span>, one of the least tested aspects of the theory. -->
+              <!--     The first observation of VVV production, including <em>evidence for WWW</em> and -->
+              <!--     <em>evidence for WWZ</em>, marks a significant milestone: it confirms a key prediction -->
+              <!--     of the Standard Model and opens a new triboson physics program at the LHC. -->
+              <!--     These measurements will enable increasingly precise studies of multi-boson dynamics -->
+              <!--     and offer sensitivity to <span class="font-semibold">subtle effects of new physics</span> -->
+              <!--     at higher energy scales. -->
+              <!--     </p> -->
+              <!--     <!-1- <img class="mt-4 rounded-xl" -1-> -->
+              <!--     <!-1-      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -1-> -->
+              <!--     <!-1-      alt="CMS triboson yield"/> -1-> -->
+              <!--     <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.125.151802" target="_blank" rel="noopener" -->
+              <!--                                                                              class="mt-4 inline-block text-[var(--brand)] text-sm font-medium"> -->
+              <!--         Read the publication → -->
+              <!--     </a> -->
+              <!--     </div> -->
+              <!--     <!-1- Toggle button: only appears on small screens -1-> -->
+              <!--     <button -->
+              <!--         class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden" -->
+              <!--         type="button" -->
+              <!--         aria-expanded="false" -->
+              <!--         > -->
+              <!--         Read more ↓ -->
+              <!--     </button> -->
+              <!-- </article> -->
+
+              <!-- <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <h3 class="font-semibold">Line Segment Tracking (LST)</h3> -->
+              <!--     <div class="card-extra hidden md:block"> -->
+              <!--     <p class="mt-2 text-sm text-slate-600"> -->
+              <!--     The High-Luminosity LHC will deliver an unprecedented volume of collision data, demanding new -->
+              <!--     approaches to <em>charged-particle tracking</em>. The Line Segment Tracking algorithm is a -->
+              <!--     highly parallelizable method designed to run efficiently on modern architectures such as GPUs. -->
+              <!--     By reconstructing tracks from short, local segments, LST dramatically reduces combinatorial -->
+              <!--     complexity, enabling <span class="font-semibold">fast and scalable track finding</span> in -->
+              <!--     high-pileup environments. This development is central to ensuring that the full discovery -->
+              <!--     potential of the HL-LHC can be realized. -->
+              <!--     </p> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="LST2.png" -->
+              <!--          alt="LST"/> -->
+              <!--     <a href="https://doi.org/10.1088/1742-6596/2375/1/012005" target="_blank" rel="noopener" -->
+              <!--                                                                               class="mt-4 inline-block text-[var(--brand)] text-sm font-medium"> -->
+              <!--         Read the publication → -->
+              <!--     </a> -->
+              <!--     </div> -->
+              <!--     <!-1- Toggle button: only appears on small screens -1-> -->
+              <!--     <button -->
+              <!--         class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden" -->
+              <!--         type="button" -->
+              <!--         aria-expanded="false" -->
+              <!--         > -->
+              <!--         Read more ↓ -->
+              <!--     </button> -->
+              <!-- </article> -->
+
+              <!-- <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <h3 class="font-semibold">Search for Three W Gauge Boson Production Process</h3> -->
+              <!--     <div class="card-extra hidden md:block"> -->
+              <!--     <p class="mt-2 text-sm text-slate-600"> -->
+              <!--     The production of three W bosons (WWW) is one of the rarest processes predicted by the Standard Model, --> 
+              <!--     providing a sensitive window into the structure of <em>quartic electroweak gauge couplings</em> --> 
+              <!--     and the dynamics of multi-boson interactions. Studying this channel tests the self-interactions --> 
+              <!--     of the weak force in extreme conditions and offers a pathway to uncover deviations that could signal --> 
+              <!--     new physics. In addition to probing the Standard Model, the analysis also set the first experimental --> 
+              <!--     limits on <em>photophobic axion-like particle models</em>, expanding the search for new phenomena --> 
+              <!--     beyond the electroweak sector. -->
+              <!--     </p> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="axion.png" -->
+              <!--          alt="axion limit plot"/> -->
+              <!--     <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.100.012004" target="_blank" rel="noopener" -->
+              <!--                                                                               class="mt-4 inline-block text-[var(--brand)] text-sm font-medium"> -->
+              <!--         Read the publication → -->
+              <!--     </a> -->
+              <!--     </div> -->
+              <!--     <!-1- Toggle button: only appears on small screens -1-> -->
+              <!--     <button -->
+              <!--         class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden" -->
+              <!--         type="button" -->
+              <!--         aria-expanded="false" -->
+              <!--         > -->
+              <!--         Read more ↓ -->
+              <!--     </button> -->
+              <!-- </article> -->
+
+              <!-- <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6"> -->
+              <!--     <h3 class="font-semibold">Higgs Boson Physics in the WW Decay Channel</h3> -->
+              <!--     <div class="card-extra hidden md:block"> -->
+              <!--     <p class="mt-2 text-sm text-slate-600"> -->
+              <!--     The Higgs boson, discovered in 2012, plays a central role in explaining how fundamental particles acquire mass. --> 
+              <!--     One of the most important ways to study its properties is through its decay into a pair of W bosons --> 
+              <!--     (<em>H → WW*</em>). Observations in this channel provided some of the earliest and most precise tests of --> 
+              <!--     the Higgs mechanism, including the <span class="font-semibold">first evidence for vector boson fusion production</span> --> 
+              <!--     of the Higgs boson. These measurements placed strong constraints on the Higgs boson’s --> 
+              <!--     <em>Yukawa coupling strength</em>, sharpening our understanding of its interaction with other particles. --> 
+              <!--     In addition, searches for an <span class="font-semibold">extended Higgs sector</span> through the WW decay mode --> 
+              <!--     explored possible links between the Higgs boson and <em>dark matter</em>, highlighting its potential as a --> 
+              <!--     tool to probe new physics. -->
+              <!--     </p> -->
+              <!--     <img class="mt-4 rounded-xl" --> 
+              <!--          src="vbfhww.png" --> 
+              <!--          alt="ATLAS H→WW event display"/> -->
+              <!--     <!-1- <div class="mt-4 space-y-1 text-sm"> -1-> -->
+              <!--     <!-1-     <a href="https://cerncourier.com/a/atlas-observes-and-measures-h-ww/" target="_blank" class="text-[var(--brand)] font-medium block">CERN Courier coverage →</a> -1-> -->
+              <!--     <!-1-     <a href="https://atlas.cern/updates/briefing/new-atlas-precision-measurements-higgs-boson-observation-ww-decay" target="_blank" class="text-[var(--brand)] font-medium block">ATLAS Physics Briefing →</a> -1-> -->
+              <!--     <!-1-     <a href="https://physics.illinois.edu/news/article/1741" target="_blank" class="text-[var(--brand)] font-medium block">UIUC Department News →</a> -1-> -->
+              <!--     <!-1- </div> -1-> -->
+              <!--     <a href="https://doi.org/10.1103/PhysRevD.92.012006" target="_blank" rel="noopener" -->
+              <!--                                                                               class="mt-4 inline-block text-[var(--brand)] text-sm font-medium"> -->
+              <!--         Read the publication → -->
+              <!--     </a> -->
+              <!--     </div> -->
+              <!--     <!-1- Toggle button: only appears on small screens -1-> -->
+              <!--     <button -->
+              <!--         class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden" -->
+              <!--         type="button" -->
+              <!--         aria-expanded="false" -->
+              <!--         > -->
+              <!--         Read more ↓ -->
+              <!--     </button> -->
+              <!-- </article> -->
+
+
+
+              <!-- Research 1 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Higgs + Two Vector Boson Production via VBS</h3>
-                  <!-- Primary image (visible on all sizes) -->
+                  <!-- Mobile-primary image (always visible) -->
                   <img class="mt-4 rounded-xl"
                        src="vbsvvh.png"
-                       alt="Example Feynman diagrams for VVHH coupling in VBS"/>
-                  <!-- Checkbox control (screen-reader only on mobile) -->
-                  <input id="vbs-toggle" type="checkbox" class="peer sr-only md:hidden" />
-
-                  <!-- Label acts as the button on mobile -->
-                  <label for="vbs-toggle" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden cursor-pointer">
-                      <span class="peer-checked:hidden">Read more ↓</span>
-                      <span class="hidden peer-checked:inline">Show less ↑</span>
-                  </label>
-
-                  <!-- Collapsible content: hidden on small, shown on md+ -->
-                  <div class="hidden peer-checked:block md:block">
-                  <p class="mt-2 text-sm text-slate-600">
-                  The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) remain among the least constrained in the Higgs sector.
-                  This CMS study presents the first direct search for production of a Higgs boson in association with two vector bosons via vector boson scattering (VBS), using 138 fb⁻¹ of 13 TeV data.
-                  It sets the most stringent limits yet on the VVHH (κ₂V) coupling relative to the SM and independently constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a significant advance in our ability to probe Higgs self-interactions at the LHC.
-                  <!-- The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) remain among the least constrained in the Higgs sector. This CMS study presents the first direct search for a Higgs boson produced with two vector bosons via vector boson scattering (VBS), using 138 fb⁻¹ of 13 TeV data. It sets the most stringent limits yet on the VVHH (κ₂V) coupling and independently constrains the HHWW (κ₂W) and HHZZ (κ₂Z) interactions—marking a major advance in probing Higgs self-interactions at the LHC. -->
-                  <!-- The quartic couplings between two Higgs bosons and vector bosons (HHWW and HHZZ) are among the least explored in the Higgs sector. The first direct search for Higgs production with two vector bosons via scattering, using 138 fb⁻¹ of 13 TeV data was done. It sets the tightest limits yet on VVHH (κ₂V) and independently probes HHWW (κ₂W) and HHZZ (κ₂Z)—a breakthrough step toward mapping Higgs self-interactions at the LHC. -->
-                  </p>
-                  <!-- <img class="mt-4 rounded-xl" -->
-                  <!--      src="wwhhzzhh.png" -->
-                  <!--      alt="WWHH vs. ZZHH coupling constraint"/> -->
-                  <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html" target="_blank" rel="noopener"
-                                                                                                                                                 class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
-                      View the CMS preliminary result →
-                  </a>
+                       alt="Example Feynman diagrams for VVHH coupling in VBS" />
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden">
+                      <input id="research-toggle-1" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-1"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="text-sm text-slate-600">
+                          The quartic couplings between two Higgs bosons and vector
+                          bosons (HHWW and HHZZ) remain among the least constrained in
+                          the Higgs sector.  This CMS study presents the first direct
+                          search for production of a Higgs boson in association with
+                          two vector bosons via vector boson scattering (VBS), using
+                          138 fb⁻¹ of 13 TeV data.  It sets the most stringent limits
+                          yet on the VVHH (κ₂V) coupling relative to the SM and independently
+                          constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a
+                          significant advance in our ability to probe Higgs self-interactions at
+                          the LHC.
+                          </p>
+                          <img class="mt-4 rounded-xl"
+                               src="wwhhzzhh.png"
+                               alt="WWHH vs. ZZHH coupling constraint"/>
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="text-sm text-slate-600">
+                      The quartic couplings between two Higgs bosons and vector
+                      bosons (HHWW and HHZZ) remain among the least constrained in
+                      the Higgs sector.  This CMS study presents the first direct
+                      search for production of a Higgs boson in association with
+                      two vector bosons via vector boson scattering (VBS), using
+                      138 fb⁻¹ of 13 TeV data.  It sets the most stringent limits
+                      yet on the VVHH (κ₂V) coupling relative to the SM and independently
+                      constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a
+                      significant advance in our ability to probe Higgs self-interactions at
+                      the LHC.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="wwhhzzhh.png"
+                           alt="WWHH vs. ZZHH coupling constraint"/>
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
                   </div>
               </article>
 
-
-              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
+              <!-- Research 2 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Measurement of WWZ and ZH Production</h3>
+                  <!-- Mobile-primary image (always visible) -->
                   <img class="mt-4 rounded-xl"
                        src="wwzeventdisplay.png"
                        alt="WWZ event display"/>
-
-                  <!-- Checkbox control (screen-reader only on mobile) -->
-                  <input id="vbs-toggle" type="checkbox" class="peer sr-only md:hidden" />
-
-                  <!-- Label acts as the button on mobile -->
-                  <label for="vbs-toggle" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden cursor-pointer">
-                      <span class="peer-checked:hidden">Read more ↓</span>
-                      <span class="hidden peer-checked:inline">Show less ↑</span>
-                  </label>
-
-                  <div class="card-extra hidden md:block">
-                  <p class="mt-2 text-sm text-slate-600">
-                  We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
-                  and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
-                  <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
-                  and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
-                  These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
-                  self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
-                  which are uniquely sensitive to subtle effects from new physics at higher scales.
-                  </p>
-                  <!-- <p class="mt-2 text-sm text-slate-600"> -->
-                  <!-- The first simultaneous measurement of nonresonant <em>WWZ</em> and <em>ZH (H→WW)</em> production -->
-                  <!-- at √s = 13 and 13.6 TeV represents a major step forward in the study of electroweak interactions -->
-                  <!-- at the LHC. These multi-boson final states probe the intricate <em>self-interactions of gauge bosons</em>, -->
-                  <!-- providing direct sensitivity to the structure of the Standard Model’s electroweak sector and the -->
-                  <!-- couplings of the Higgs boson. The study achieved the most precise determination of the WWZ cross -->
-                  <!-- section to date, and delivered the first evidence for triboson production at 13.6 TeV, extending -->
-                  <!-- our experimental reach into a new energy regime. Beyond their intrinsic importance as rare -->
-                  <!-- Standard Model processes, these measurements serve as a foundation for future precision tests -->
-                  <!-- and offer a unique window into potential deviations that could signal <em>new physics at higher -->
-                  <!--     energy scales</em>. The results demonstrate how carefully designed analyses of rare signatures -->
-                  <!-- can sharpen our understanding of the Higgs mechanism, the nature of electroweak symmetry breaking, -->
-                  <!-- and the limits of the Standard Model itself. -->
-                  <!-- </p> -->
-                  <!-- <img class="mt-4 rounded-xl" -->
-                  <!--      src="WWZPlot.png" -->
-                  <!--      alt="WWZ Yield Plot"/> -->
-                  <a href="https://doi.org/10.1103/6z3d-zjw4" target="_blank"
-                                                              class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
-                      Read the publication →
-                  </a>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden">
+                      <input id="research-toggle-2" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-2"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                          We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                          and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                          <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                          and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                          These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                          self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                          which are uniquely sensitive to subtle effects from new physics at higher scales.
+                          </p>
+                          <img class="mt-4 rounded-xl"
+                               src="WWZPlot.png"
+                               alt="WWZ Yield Plot"/>
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
                   </div>
-                  <!-- Toggle button: only appears on small screens -->
-                  <button
-                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
-                      type="button"
-                      aria-expanded="false"
-                      >
-                      Read more ↓
-                  </button>
-
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                      We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                      and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                      <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                      and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                      These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                      self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                      which are uniquely sensitive to subtle effects from new physics at higher scales.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="WWZPlot.png"
+                           alt="WWZ Yield Plot"/>
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
+                  </div>
               </article>
 
-              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
+              <!-- Research 3 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">WH Production via Vector Boson Scattering</h3>
-                  <!-- <img class="mt-4 rounded-xl" -->
-                  <!--      src="vbswhfeyn.jpg" -->
-                  <!--      alt="Example Feynman diagrams for VVHH coupling in VBS"/> -->
-                  <div class="card-extra hidden md:block">
-                  <p class="mt-2 text-sm text-slate-600">
-                  <!-- Most Higgs measurements to date have been sensitive only to the <em>magnitude</em> of the Higgs boson’s couplings, -->
-                  <!-- leaving the relative <em>sign</em> between the HWW and HZZ interactions undetermined. -->
-                  <!-- Vector boson scattering processes, however, are uniquely sensitive to this relative sign through interference effects. -->
-                  <!-- In this study, CMS measured W H production via VBS at √s = 13 TeV, providing the first direct probe of this coupling structure. -->
-                  <!-- The analysis delivered the most stringent constraints to date, excluding at >5σ the “opposite-sign” scenario and thereby -->
-                  <!-- confirming the Standard Model’s predicted alignment of Higgs–gauge boson couplings. -->
-                  Most Higgs measurements have probed only the magnitude of couplings, leaving the relative sign between HWW and HZZ undetermined. Vector boson scattering is uniquely sensitive to this sign through interference. Using √s = 13 TeV data, CMS measured WH production via VBS, providing the first direct probe. The analysis set the most stringent constraints yet, excluding the “opposite-sign” case at >5σ and confirming the Standard Model alignment of Higgs–gauge boson couplings.
-                  </p>
+                  <!-- Mobile-primary image (always visible) -->
                   <img class="mt-4 rounded-xl"
                        src="vbswh.jpg"
+                       width="80%" height="80%"
+                       align="middle"
                        alt="Feynman diagrams for WH via VBS" />
-                  <a href="https://doi.org/10.1016/j.physletb.2024.139202" target="_blank" rel="noopener"
-                                                                                           class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
-                      Read the publication →
-                  </a>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden">
+                      <input id="research-toggle-3" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-3"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                          We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                          and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                          <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                          and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                          These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                          self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                          which are uniquely sensitive to subtle effects from new physics at higher scales.
+                          </p>
+                          <img class="mt-4 rounded-xl"
+                               src="vbswhfeyn.jpg"
+                               alt="Example Feynman diagrams for VVHH coupling in VBS"/>
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
                   </div>
-                  <!-- Toggle button: only appears on small screens -->
-                  <button
-                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
-                      type="button"
-                      aria-expanded="false"
-                      >
-                      Read more ↓
-                  </button>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                      We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                      and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                      <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                      and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                      These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                      self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                      which are uniquely sensitive to subtle effects from new physics at higher scales.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="vbswhfeyn.jpg"
+                           alt="Example Feynman diagrams for VVHH coupling in VBS"/>
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
+                  </div>
               </article>
 
-
-
-              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
+              <!-- Research 4 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">First Observation of Three Massive Gauge Boson Production Process</h3>
+                  <!-- Mobile-primary image (always visible) -->
                   <img class="mt-4 rounded-xl"
                        src="WWZ4l.png"
                        alt="CMS triboson event display"/>
-                  <div class="card-extra hidden md:block">
-                  <p class="mt-2 text-sm text-slate-600">
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden">
+                      <input id="research-toggle-4" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-4"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
                   The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an
                   extremely rare phenomenon predicted by the Standard Model of particle physics.
                   Observing such events provides a direct window into the <span class="font-semibold">self-interactions
@@ -507,29 +883,60 @@ startTimer();
                   These measurements will enable increasingly precise studies of multi-boson dynamics
                   and offer sensitivity to <span class="font-semibold">subtle effects of new physics</span>
                   at higher energy scales.
-                  </p>
-                  <!-- <img class="mt-4 rounded-xl" -->
-                  <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
-                  <!--      alt="CMS triboson yield"/> -->
-                  <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.125.151802" target="_blank" rel="noopener"
-                                                                                           class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
-                      Read the publication →
-                  </a>
+                          </p>
+                      <img class="mt-4 rounded-xl"
+                           src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png"
+                           alt="CMS triboson yield"/>
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
                   </div>
-                  <!-- Toggle button: only appears on small screens -->
-                  <button
-                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
-                      type="button"
-                      aria-expanded="false"
-                      >
-                      Read more ↓
-                  </button>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an
+                  extremely rare phenomenon predicted by the Standard Model of particle physics.
+                  Observing such events provides a direct window into the <span class="font-semibold">self-interactions
+                      of the electroweak force</span>, one of the least tested aspects of the theory.
+                  The first observation of VVV production, including <em>evidence for WWW</em> and
+                  <em>evidence for WWZ</em>, marks a significant milestone: it confirms a key prediction
+                  of the Standard Model and opens a new triboson physics program at the LHC.
+                  These measurements will enable increasingly precise studies of multi-boson dynamics
+                  and offer sensitivity to <span class="font-semibold">subtle effects of new physics</span>
+                  at higher energy scales.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png"
+                           alt="CMS triboson yield"/>
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
+                  </div>
               </article>
 
-              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
+              <!-- Research 5 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Line Segment Tracking (LST)</h3>
-                  <div class="card-extra hidden md:block">
-                  <p class="mt-2 text-sm text-slate-600">
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="LST2.png"
+                       alt="LST"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden">
+                      <input id="research-toggle-5" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-5"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
                   The High-Luminosity LHC will deliver an unprecedented volume of collision data, demanding new
                   approaches to <em>charged-particle tracking</em>. The Line Segment Tracking algorithm is a
                   highly parallelizable method designed to run efficiently on modern architectures such as GPUs.
@@ -537,41 +944,57 @@ startTimer();
                   complexity, enabling <span class="font-semibold">fast and scalable track finding</span> in
                   high-pileup environments. This development is central to ensuring that the full discovery
                   potential of the HL-LHC can be realized.
-                  </p>
-                  <img class="mt-4 rounded-xl"
-                       src="LST2.png"
-                       alt="LST"/>
-                  <a href="https://doi.org/10.1088/1742-6596/2375/1/012005" target="_blank" rel="noopener"
-                                                                                            class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
-                      Read the publication →
-                  </a>
+                          </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
                   </div>
-                  <!-- Toggle button: only appears on small screens -->
-                  <button
-                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
-                      type="button"
-                      aria-expanded="false"
-                      >
-                      Read more ↓
-                  </button>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The High-Luminosity LHC will deliver an unprecedented volume of collision data, demanding new
+                  approaches to <em>charged-particle tracking</em>. The Line Segment Tracking algorithm is a
+                  highly parallelizable method designed to run efficiently on modern architectures such as GPUs.
+                  By reconstructing tracks from short, local segments, LST dramatically reduces combinatorial
+                  complexity, enabling <span class="font-semibold">fast and scalable track finding</span> in
+                  high-pileup environments. This development is central to ensuring that the full discovery
+                  potential of the HL-LHC can be realized.
+                      </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
+                  </div>
               </article>
 
-              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
-                  <h3 class="font-semibold">Search for Three W Gauge Boson Production Process</h3>
-                  <!-- <p class="mt-2 text-sm text-slate-600"> -->
-                  <!-- The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an -->
-                  <!-- extremely rare phenomenon predicted by the Standard Model of particle physics. -->
-                  <!-- Observing such events provides a direct window into the <span class="font-semibold">self-interactions -->
-                  <!--     of the electroweak force</span>, one of the least tested aspects of the theory. -->
-                  <!-- The first observation of VVV production, including <em>evidence for WWW</em> and -->
-                  <!-- <em>evidence for WWZ</em>, marks a significant milestone: it confirms a key prediction -->
-                  <!-- of the Standard Model and opens a new triboson physics program at the LHC. -->
-                  <!-- These measurements will enable increasingly precise studies of multi-boson dynamics -->
-                  <!-- and offer sensitivity to <span class="font-semibold">subtle effects of new physics</span> -->
-                  <!-- at higher energy scales. -->
-                  <!-- </p> -->
-                  <div class="card-extra hidden md:block">
-                  <p class="mt-2 text-sm text-slate-600">
+              <!-- Research 6 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">Line Segment Tracking (LST)</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="axion.png"
+                       alt="axion limit plot"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden">
+                      <input id="research-toggle-6" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-6"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
                   The production of three W bosons (WWW) is one of the rarest processes predicted by the Standard Model, 
                   providing a sensitive window into the structure of <em>quartic electroweak gauge couplings</em> 
                   and the dynamics of multi-boson interactions. Studying this channel tests the self-interactions 
@@ -579,30 +1002,57 @@ startTimer();
                   new physics. In addition to probing the Standard Model, the analysis also set the first experimental 
                   limits on <em>photophobic axion-like particle models</em>, expanding the search for new phenomena 
                   beyond the electroweak sector.
-                  </p>
-                  <img class="mt-4 rounded-xl"
-                       src="axion.png"
-                       alt="axion limit plot"/>
-                  <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.100.012004" target="_blank" rel="noopener"
-                                                                                            class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
-                      Read the publication →
-                  </a>
+                          </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
                   </div>
-                  <!-- Toggle button: only appears on small screens -->
-                  <button
-                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
-                      type="button"
-                      aria-expanded="false"
-                      >
-                      Read more ↓
-                  </button>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The production of three W bosons (WWW) is one of the rarest processes predicted by the Standard Model, 
+                  providing a sensitive window into the structure of <em>quartic electroweak gauge couplings</em> 
+                  and the dynamics of multi-boson interactions. Studying this channel tests the self-interactions 
+                  of the weak force in extreme conditions and offers a pathway to uncover deviations that could signal 
+                  new physics. In addition to probing the Standard Model, the analysis also set the first experimental 
+                  limits on <em>photophobic axion-like particle models</em>, expanding the search for new phenomena 
+                  beyond the electroweak sector.
+                      </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
+                  </div>
               </article>
 
-
-              <article class="research-card card rounded-2xl border border-slate-200 bg-white p-6">
+              <!-- Research 7 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
                   <h3 class="font-semibold">Higgs Boson Physics in the WW Decay Channel</h3>
-                  <div class="card-extra hidden md:block">
-                  <p class="mt-2 text-sm text-slate-600">
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl" 
+                       src="vbfhww.png" 
+                       alt="ATLAS H→WW event display"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden">
+                      <input id="research-toggle-6" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-6"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
                   The Higgs boson, discovered in 2012, plays a central role in explaining how fundamental particles acquire mass. 
                   One of the most important ways to study its properties is through its decay into a pair of W bosons 
                   (<em>H → WW*</em>). Observations in this channel provided some of the earliest and most precise tests of 
@@ -612,31 +1062,40 @@ startTimer();
                   In addition, searches for an <span class="font-semibold">extended Higgs sector</span> through the WW decay mode 
                   explored possible links between the Higgs boson and <em>dark matter</em>, highlighting its potential as a 
                   tool to probe new physics.
-                  </p>
-                  <img class="mt-4 rounded-xl" 
-                       src="vbfhww.png" 
-                       alt="ATLAS H→WW event display"/>
-                  <!-- <div class="mt-4 space-y-1 text-sm"> -->
-                  <!--     <a href="https://cerncourier.com/a/atlas-observes-and-measures-h-ww/" target="_blank" class="text-[var(--brand)] font-medium block">CERN Courier coverage →</a> -->
-                  <!--     <a href="https://atlas.cern/updates/briefing/new-atlas-precision-measurements-higgs-boson-observation-ww-decay" target="_blank" class="text-[var(--brand)] font-medium block">ATLAS Physics Briefing →</a> -->
-                  <!--     <a href="https://physics.illinois.edu/news/article/1741" target="_blank" class="text-[var(--brand)] font-medium block">UIUC Department News →</a> -->
-                  <!-- </div> -->
-                  <a href="https://doi.org/10.1103/PhysRevD.92.012006" target="_blank" rel="noopener"
-                                                                                            class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
-                      Read the publication →
-                  </a>
+                          </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
                   </div>
-                  <!-- Toggle button: only appears on small screens -->
-                  <button
-                      class="toggle-btn mt-3 inline-flex items-center gap-1 text-sm font-medium text-blue-600 md:hidden"
-                      type="button"
-                      aria-expanded="false"
-                      >
-                      Read more ↓
-                  </button>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The Higgs boson, discovered in 2012, plays a central role in explaining how fundamental particles acquire mass. 
+                  One of the most important ways to study its properties is through its decay into a pair of W bosons 
+                  (<em>H → WW*</em>). Observations in this channel provided some of the earliest and most precise tests of 
+                  the Higgs mechanism, including the <span class="font-semibold">first evidence for vector boson fusion production</span> 
+                  of the Higgs boson. These measurements placed strong constraints on the Higgs boson’s 
+                  <em>Yukawa coupling strength</em>, sharpening our understanding of its interaction with other particles. 
+                  In addition, searches for an <span class="font-semibold">extended Higgs sector</span> through the WW decay mode 
+                  explored possible links between the Higgs boson and <em>dark matter</em>, highlighting its potential as a 
+                  tool to probe new physics.
+                      </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
+                  </div>
               </article>
-
-
 
               <!-- Add more cards here -->
           </div>
