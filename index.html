@@ -58,6 +58,25 @@
       transform: rotate(90deg);
     }
   </style>
+<style>
+/* Mobile-friendly stack for talk rows */
+@media (max-width: 639px) {
+    .talk-row { display: block; }
+    .talk-row > div {
+        display: flex;
+        justify-content: space-between;
+        gap: .75rem;
+        padding: .125rem 0;
+        border-bottom: 1px dashed rgba(100,116,139,.25);
+    }
+    .talk-row > div:last-child { border-bottom: 0; }
+    .talk-row > div::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #64748b; /* slate-500 */
+    }
+}
+</style>
 </head>
 
 <body class="text-slate-800">
@@ -769,327 +788,687 @@
         </span>
       </div>
 
-      <!-- GGI -->
+      <!-- Measurement of WWZ & ZH -->
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">
           Measurement of WWZ and ZH production cross sections at √s = 13 and 13.6 TeV
         </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2025</div><div>Conference</div><div>Invited Parallel</div><div>KSEA US-Korea Conference</div><div>Atlanta, GA</div><div></div></div>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Invited Parallel</div>
+            <div data-label="Institution">KSEA US-Korea Conference</div>
+            <div data-label="City/State">Atlanta, GA</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- GGI -->
+      <!-- Extreme Computing -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Extreme Computing
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2025</div><div>Conference</div><div>Invited Plenary</div><div>Physics At The Highest Energies With Colliders (Galileo Galilei Institute)</div><div>Florence, Italy</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Extreme Computing</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Invited Plenary</div>
+            <div data-label="Institution">Physics At The Highest Energies With Colliders (Galileo Galilei Institute)</div>
+            <div data-label="City/State">Florence, Italy</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- Pheno -->
+      <!-- Pheno 2025 -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Recent LHC Results
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2025</div><div>Conference</div><div>Invited Plenary</div><div>Pheno 2025</div><div>Pittsburgh, PA</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Recent LHC Results</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Invited Plenary</div>
+            <div data-label="Institution">Pheno 2025</div>
+            <div data-label="City/State">Pittsburgh, PA</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- LHCP -->
+      <!-- LHCP 2025 -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Computing R&D: How we get to our targets
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2025</div><div>Conference</div><div>Invited</div><div>LHCP 2025</div><div>Taipei, Taiwan</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Computing R&amp;D: How we get to our targets</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">LHCP 2025</div>
+            <div data-label="City/State">Taipei, Taiwan</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- UF Mid tenure -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Forging New Paths to Unveil the Electroweak Sector
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2025</div><div>Colloquium</div><div></div><div>Univ. of Florida</div><div>Gainesville, FL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Forging New Paths to Unveil the Electroweak Sector</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2025</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Invited"></div>
+            <div data-label="Institution">Univ. of Florida</div>
+            <div data-label="City/State">Gainesville, FL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-
-      <!-- KSEA SERC -->
+      <!-- KSEA SERC (Mar 2025) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Enhancing Particle Physics Discovery Through Computational Innovation
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2025</div><div>Conference</div><div>Parallel</div><div>KSEA Southeastern Regional Conference</div><div>Orlando, FL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Enhancing Particle Physics Discovery Through Computational Innovation</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">KSEA Southeastern Regional Conference</div>
+            <div data-label="City/State">Orlando, FL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- Muon Collider  -->
+      <!-- Muon Collider (Aug 2025) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Muon Collider the Dream Machine
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2025</div><div>Conference</div><div>Parallel</div><div>KSEA US-Korea Conference</div><div>San Francisco, CA</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Muon Collider the Dream Machine</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">KSEA US-Korea Conference</div>
+            <div data-label="City/State">San Francisco, CA</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- PURSUE  -->
+      <!-- PURSUE (USCMS) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Higgs Physics: What is in the vacuum?
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jun 2025</div><div>Seminar</div><div>Invited</div><div>PURSUE (USCMS) Program</div><div>Fermilab (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2024</div><div>Seminar</div><div>Invited</div><div>PURSUE (USCMS) Program</div><div>Fermilab (Virtual)</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Higgs Physics: What is in the vacuum?</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jun 2025</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">PURSUE (USCMS) Program</div>
+            <div data-label="City/State">Fermilab (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2024</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">PURSUE (USCMS) Program</div>
+            <div data-label="City/State">Fermilab (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- Delhi -->
+      <!-- Delhi (HSF-India) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          GPU Programming
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2024</div><div>Lecture</div><div>Invited</div><div>HSF-India HEP Software Workshop</div><div>Delhi, India</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">GPU Programming</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2024</div>
+            <div data-label="Type">Lecture</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">HSF-India HEP Software Workshop</div>
+            <div data-label="City/State">Delhi, India</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- KSEA SERC -->
+      <!-- KSEA SERC (Mar 2024) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          AI for Particle Tracking
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2024</div><div>Conference</div><div>Parallel</div><div>KSEA Southeastern Regional Conference</div><div>Gainesville, FL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">AI for Particle Tracking</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2024</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">KSEA Southeastern Regional Conference</div>
+            <div data-label="City/State">Gainesville, FL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- Aspen -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          LHC Future Opportunities
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2024</div><div>Conference</div><div>Invited Plenary</div><div>The Future of High Energy Physics: A New Generation, A New Vision Aspen Winter Conference</div><div>Aspen, CO</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">LHC Future Opportunities</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2024</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Invited Plenary</div>
+            <div data-label="Institution">The Future of High Energy Physics: A New Generation, A New Vision Aspen Winter Conference</div>
+            <div data-label="City/State">Aspen, CO</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- Computing in High Energy & Nuclear Physics -->
+      <!-- CHEP -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Line Segment Tracking at CMS
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2023</div><div>Conference</div><div>Parallel</div><div>Computing in High Energy & Nuclear Physics (CHEP)</div><div>Norfolk, VA</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Line Segment Tracking at CMS</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2023</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">Computing in High Energy &amp; Nuclear Physics (CHEP)</div>
+            <div data-label="City/State">Norfolk, VA</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- Conference on the Intersections of Particle and Nuclear Physics -->
+      <!-- CIPANP (Sep 2022) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Recent CMS results on Standard Model Physics
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2022</div><div>Conference</div><div>Parallel</div><div>Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div><div>Lake Buena Vista, FL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Recent CMS results on Standard Model Physics</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2022</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div>
+            <div data-label="City/State">Lake Buena Vista, FL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- Conference on the Intersections of Particle and Nuclear Physics -->
+      <!-- CIPANP (Aug 2022) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Recent CMS results on Higgs physics
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2022</div><div>Conference</div><div>Parallel</div><div>Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div><div>Lake Buena Vista, FL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Recent CMS results on Higgs physics</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2022</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div>
+            <div data-label="City/State">Lake Buena Vista, FL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- New frontiers of electroweak physics at the LHC -->
+      <!-- New frontiers of electroweak physics at the LHC (multi) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          New frontiers of electroweak physics at the LHC
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Nov 2023</div><div>Conference</div><div>Invited</div><div>Southeastern Section of American Physical Society (SESAPS)</div><div>Richmond, KY</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2023</div><div>Seminar</div><div>Invited</div><div>PKU / SJTU Collider Physics Forum</div><div>Virtual</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2022</div><div>Seminar</div><div>Invited</div><div>Univ. of Tennessee, Knoxville HEP Seminar</div><div>Knoxville, TN</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2022</div><div>Colloquium</div><div>Invited</div><div>Korea Advanced Institute of Science & Technology</div><div>Daejeon, Korea</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2022</div><div>Seminar</div><div>Invited</div><div>Association of Korean Physicists in America-Korean Physical Society Joint Symposium</div><div>Virtual</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2022</div><div>Colloquium</div><div>Invited</div><div>Univ. of Alabama</div><div>Tuscaloosa, AL</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2022</div><div>Colloquium</div><div>Invited</div><div>Univ. of Notre Dame</div><div>Notre Dame, IN</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2022</div><div>Colloquium</div><div>Invited</div><div>Univ. of Florida</div><div>Gainesville, FL</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2022</div><div>Seminar</div><div>Invited</div><div>Univ. of Notre Dame HEP Seminar</div><div>Notre Dame, IN</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">New frontiers of electroweak physics at the LHC</summary>
+        <div class="mt-3 ml-4 text-sm">
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Nov 2023</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Southeastern Section of American Physical Society (SESAPS)</div>
+            <div data-label="City/State">Richmond, KY</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2023</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">PKU / SJTU Collider Physics Forum</div>
+            <div data-label="City/State">Virtual</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Tennessee, Knoxville HEP Seminar</div>
+            <div data-label="City/State">Knoxville, TN</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Korea Advanced Institute of Science &amp; Technology</div>
+            <div data-label="City/State">Daejeon, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Association of Korean Physicists in America–Korean Physical Society Joint Symposium</div>
+            <div data-label="City/State">Virtual</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Alabama</div>
+            <div data-label="City/State">Tuscaloosa, AL</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Notre Dame</div>
+            <div data-label="City/State">Notre Dame, IN</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Florida</div>
+            <div data-label="City/State">Gainesville, FL</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Notre Dame HEP Seminar</div>
+            <div data-label="City/State">Notre Dame, IN</div>
+            <div data-label="Link"></div>
+          </div>
+
         </div>
       </details>
 
-      <!-- Observation of production of three massive gauge boson -->
+      <!-- Observation of production of three massive gauge boson (multi) -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Observation of production of three massive gauge boson
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <!-- grid: Date | Type | Invited | Institution | City/State | Link -->
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2022</div><div>Seminar</div><div>Invited</div><div>Univ. of Florida HEP Seminar</div><div>Gainesville, FL (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2021</div><div>Seminar</div><div>Invited</div><div>Univ. of Illinois HEP Seminar</div><div>Urbana, IL (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Dec 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Pittsburgh HEP Seminar</div><div>Pittsburgh, PA (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Oct 2020</div><div>Seminar</div><div>Invited</div><div>UCSB HEP Seminar</div><div>Santa Barbara, CA (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Oct 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Michigan HEP Seminar</div><div>Ann Arbor, MI (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Pennsylvania HEP Seminar</div><div>Philadelphia, PA (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Maryland HEP Seminar</div><div>College Park, MD (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>KSU/KU/UNL Joint HEP Seminar</div><div>Kansas / Nebraska (Virtual)</div><div><a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>Fermilab Wine & Cheese Seminar</div><div>Batavia, IL (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Seminar</div><div>Invited</div><div>Korea Institute for Advanced Study HEP Seminar</div><div>Seoul, Korea</div><div><a href="https://www.youtube.com/watch?v=UYbUNBO4t7I" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Seoul HEP Seminar</div><div>Seoul, Korea</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Seminar</div><div>Invited</div><div>Seoul National University HEP Seminar</div><div>Seoul, Korea</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Symposium</div><div>Invited</div><div>Workshop on New Windows to Explore the Universe</div><div>Danyang, Korea</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2020</div><div>Seminar</div><div>Invited</div><div>Hanyang University HEP Seminar</div><div>Seoul, Korea</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2020</div><div>Seminar</div><div>Invited</div><div>Yonsei University HEP Seminar</div><div>Seoul, Korea</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2020</div><div>Seminar</div><div>Invited</div><div>Korea University HEP Seminar</div><div>Seoul, Korea</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jun 2020</div><div>Seminar</div><div>Invited</div><div>Rice University HEP Seminar</div><div>Houston, TX (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jun 2020</div><div>Seminar</div><div>Invited</div><div>Harvard/MIT LPPC Seminar</div><div>Boston, MA (Virtual)</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2020</div><div>Seminar</div><div>Invited</div><div>UC San Diego HEP Seminar</div><div>San Diego, CA (Virtual)</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Observation of production of three massive gauge boson</summary>
+        <div class="mt-3 ml-4 text-sm">
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Florida HEP Seminar</div>
+            <div data-label="City/State">Gainesville, FL (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2021</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Illinois HEP Seminar</div>
+            <div data-label="City/State">Urbana, IL (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Dec 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Pittsburgh HEP Seminar</div>
+            <div data-label="City/State">Pittsburgh, PA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Oct 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">UCSB HEP Seminar</div>
+            <div data-label="City/State">Santa Barbara, CA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Oct 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Michigan HEP Seminar</div>
+            <div data-label="City/State">Ann Arbor, MI (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Pennsylvania HEP Seminar</div>
+            <div data-label="City/State">Philadelphia, PA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Maryland HEP Seminar</div>
+            <div data-label="City/State">College Park, MD (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">KSU/KU/UNL Joint HEP Seminar</div>
+            <div data-label="City/State">Kansas / Nebraska (Virtual)</div>
+            <div data-label="Link"><a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] underline">YouTube</a></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Fermilab Wine &amp; Cheese Seminar</div>
+            <div data-label="City/State">Batavia, IL (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Korea Institute for Advanced Study HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"><a href="https://www.youtube.com/watch?v=UYbUNBO4t7I" class="text-[var(--brand)] underline">YouTube</a></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Seoul HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Seoul National University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2020</div>
+            <div data-label="Type">Symposium</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Workshop on New Windows to Explore the Universe</div>
+            <div data-label="City/State">Danyang, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Hanyang University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Yonsei University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Korea University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jun 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Rice University HEP Seminar</div>
+            <div data-label="City/State">Houston, TX (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jun 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Harvard/MIT LPPC Seminar</div>
+            <div data-label="City/State">Boston, MA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">UC San Diego HEP Seminar</div>
+            <div data-label="City/State">San Diego, CA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
         </div>
       </details>
 
       <!-- Multiboson physics at CMS -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Multiboson physics at CMS
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2021</div><div>Symposium</div><div>Invited</div><div>Korean Physical Society Spring Meeting — Pioneer Symposium</div><div>Virtual</div><div></div></div>
-        </div>
-      </details>
-
-      <!-- Search for heavy triboson production in leptonic final states (ICHEP2020) -->
-      <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Search for heavy triboson production in leptonic final states
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
-            <div>Jul 2020</div><div>Conference</div><div>Parallel</div><div>ICHEP 2020</div><div>Prague (Virtual)</div>
-            <div><a href="https://youtu.be/nOF4IBNO-Tk?t=1543" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div>
+        <summary class="cursor-pointer font-semibold">Multiboson physics at CMS</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2021</div>
+            <div data-label="Type">Symposium</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Korean Physical Society Spring Meeting — Pioneer Symposium</div>
+            <div data-label="City/State">Virtual</div>
+            <div data-label="Link"></div>
           </div>
         </div>
       </details>
 
-      <!-- Parallelizable Track Pattern Recognition in HL-LHC -->
+      <!-- ICHEP2020 -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Parallelizable Track Pattern Recognition in HL-LHC
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2020</div><div>Conference</div><div></div><div>Connecting the Dots Workshop</div><div>Princeton, NJ (Virtual)</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Search for heavy triboson production in leptonic final states</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">ICHEP 2020</div>
+            <div data-label="City/State">Prague (Virtual)</div>
+            <div data-label="Link"><a href="https://youtu.be/nOF4IBNO-Tk?t=1543" class="text-[var(--brand)] underline">YouTube</a></div>
+          </div>
         </div>
       </details>
 
-      <!-- <!-1- Recent results on multiboson measurements at CMS -1-> -->
-      <!-- <details open class="border border-slate-200 rounded-xl p-4"> -->
-      <!--   <summary class="cursor-pointer font-semibold"> -->
-      <!--     Recent results on multiboson measurements at CMS -->
-      <!--   </summary> -->
-      <!--   <div class="mt-3 ml-4 space-y-1 text-sm"> -->
-      <!--     <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2020</div><div>Conference</div><div></div><div>Rencontres de Moriond — Electroweak 2020</div><div>La Thuile, Italy (Canceled)</div><div></div></div> -->
-      <!--   </div> -->
-      <!-- </details> -->
+      <!-- Connecting the Dots -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Parallelizable Track Pattern Recognition in HL-LHC</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2020</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited"></div>
+            <div data-label="Institution">Connecting the Dots Workshop</div>
+            <div data-label="City/State">Princeton, NJ (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
 
       <!-- Measurements of triple gauge boson production in ATLAS and CMS -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Measurements of triple gauge boson production in ATLAS and CMS
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2019</div><div>Workshop</div><div>Invited</div><div>Physics Workshop at the LPC: Multibosons at the Energy Frontier</div><div>Batavia, IL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Measurements of triple gauge boson production in ATLAS and CMS</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2019</div>
+            <div data-label="Type">Workshop</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Physics Workshop at the LPC: Multibosons at the Energy Frontier</div>
+            <div data-label="City/State">Batavia, IL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- Rare EW multiboson at LHC -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Rare EW multiboson at LHC
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2019</div><div>Conference</div><div>Plenary</div><div>LHCP 2019</div><div>Puebla, Mexico</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Rare EW multiboson at LHC</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2019</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Plenary</div>
+            <div data-label="Institution">LHCP 2019</div>
+            <div data-label="City/State">Puebla, Mexico</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- Electroweak physics with multibosons at CMS -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Electroweak physics with multibosons at CMS
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2019</div><div>Conference</div><div>Parallel</div><div>Pheno 2019</div><div>Pittsburgh, PA</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Electroweak physics with multibosons at CMS</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2019</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Parallel</div>
+            <div data-label="Institution">Pheno 2019</div>
+            <div data-label="City/State">Pittsburgh, PA</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- Search for the SM production of WWW events -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Search for the SM production of WWW events
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2019</div><div>Seminar</div><div>Invited</div><div>LHC Physics Center Physics Forum</div><div>Batavia, IL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Search for the SM production of WWW events</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2019</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">LHC Physics Center Physics Forum</div>
+            <div data-label="City/State">Batavia, IL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- Searches for new physics in the Higgs sector -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Searches for new physics in the Higgs sector
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2016</div><div>Seminar</div><div>Invited</div><div>Univ. of Pennsylvania (HEP)</div><div>Philadelphia, PA</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Searches for new physics in the Higgs sector</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2016</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Pennsylvania (HEP)</div>
+            <div data-label="City/State">Philadelphia, PA</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- First evidence for vector-boson fusion H→WW -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          First evidence for vector-boson fusion H→WW
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Feb 2016</div><div>Seminar</div><div>Invited</div><div>Univ. of Cincinnati HEP Seminar</div><div>Cincinnati, OH</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2015</div><div>Seminar</div><div>Invited</div><div>Univ. of Pittsburgh HEP Seminar</div><div>Pittsburgh, PA</div><div></div></div>
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2015</div><div>Conference</div><div></div><div>APS April Meeting</div><div>Baltimore, MD</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">First evidence for vector-boson fusion H→WW</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Feb 2016</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Cincinnati HEP Seminar</div>
+            <div data-label="City/State">Cincinnati, OH</div>
+            <div data-label="Link"></div>
+          </div>
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2015</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Univ. of Pittsburgh HEP Seminar</div>
+            <div data-label="City/State">Pittsburgh, PA</div>
+            <div data-label="Link"></div>
+          </div>
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2015</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited"></div>
+            <div data-label="Institution">APS April Meeting</div>
+            <div data-label="City/State">Baltimore, MD</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
-      <!-- Advanced Analysis Technique: Squeezing out information -->
+      <!-- Advanced Analysis Technique -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Advanced Analysis Technique: Squeezing out information
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Nov 2015</div><div>Workshop</div><div>Invited</div><div>Chicagoland Pheno–ATLAS Workshop</div><div>Chicago, IL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Advanced Analysis Technique: Squeezing out information</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Nov 2015</div>
+            <div data-label="Type">Workshop</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">Chicagoland Pheno–ATLAS Workshop</div>
+            <div data-label="City/State">Chicago, IL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- ATLAS VBF Trigger Overview -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          ATLAS VBF Trigger Overview
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2015</div><div>Workshop</div><div>Invited</div><div>3rd Chicagoland ATLAS–Pheno Meeting</div><div>Chicago, IL</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">ATLAS VBF Trigger Overview</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2015</div>
+            <div data-label="Type">Workshop</div>
+            <div data-label="Invited">Invited</div>
+            <div data-label="Institution">3rd Chicagoland ATLAS–Pheno Meeting</div>
+            <div data-label="City/State">Chicago, IL</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
       <!-- Higgs Properties -->
       <details open class="border border-slate-200 rounded-xl p-4">
-        <summary class="cursor-pointer font-semibold">
-          Higgs Properties
-        </summary>
-        <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2014</div><div>Conference</div><div>Plenary</div><div>Physics in Collisions 2014</div><div>Bloomington, IN</div><div></div></div>
+        <summary class="cursor-pointer font-semibold">Higgs Properties</summary>
+        <div class="mt-3 ml-4 text-sm">
+          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2014</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Invited">Plenary</div>
+            <div data-label="Institution">Physics in Collisions 2014</div>
+            <div data-label="City/State">Bloomington, IN</div>
+            <div data-label="Link"></div>
+          </div>
         </div>
       </details>
 
@@ -1100,15 +1479,370 @@
 <!-- Collapse/Expand script -->
 <script>
   const toggleLink = document.getElementById("toggleAll");
-  const allDetails = document.querySelectorAll("#presentations details");
+  const allDetails = document.querySelectorAll("#talks details");
   let expanded = true; // start open
-
   toggleLink?.addEventListener("click", () => {
     expanded = !expanded;
     allDetails.forEach(d => expanded ? d.setAttribute("open", "") : d.removeAttribute("open"));
     toggleLink.textContent = expanded ? "Collapse All" : "Expand All";
   });
 </script>
+
+
+<!-- <!-1- Presentations -1-> -->
+<!-- <section id="talks" class="py-16 bg-slate-50"> -->
+<!--   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> -->
+<!--     <h2 class="text-2xl font-bold">Seminar / Colloquium / Conference Talks</h2> -->
+
+<!--     <div class="mt-6 space-y-4 text-slate-700"> -->
+
+<!--       <!-1- Toggle text -1-> -->
+<!--       <div class="flex justify-end mb-4"> -->
+<!--         <span id="toggleAll" class="cursor-pointer text-[var(--brand)] text-sm font-medium"> -->
+<!--           Collapse All -->
+<!--         </span> -->
+<!--       </div> -->
+
+<!--       <!-1- GGI -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Measurement of WWZ and ZH production cross sections at √s = 13 and 13.6 TeV -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2025</div><div>Conference</div><div>Invited Parallel</div><div>KSEA US-Korea Conference</div><div>Atlanta, GA</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- GGI -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Extreme Computing -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2025</div><div>Conference</div><div>Invited Plenary</div><div>Physics At The Highest Energies With Colliders (Galileo Galilei Institute)</div><div>Florence, Italy</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Pheno -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Recent LHC Results -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2025</div><div>Conference</div><div>Invited Plenary</div><div>Pheno 2025</div><div>Pittsburgh, PA</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- LHCP -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Computing R&D: How we get to our targets -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2025</div><div>Conference</div><div>Invited</div><div>LHCP 2025</div><div>Taipei, Taiwan</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- UF Mid tenure -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Forging New Paths to Unveil the Electroweak Sector -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2025</div><div>Colloquium</div><div></div><div>Univ. of Florida</div><div>Gainesville, FL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+
+<!--       <!-1- KSEA SERC -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Enhancing Particle Physics Discovery Through Computational Innovation -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2025</div><div>Conference</div><div>Parallel</div><div>KSEA Southeastern Regional Conference</div><div>Orlando, FL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Muon Collider  -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Muon Collider the Dream Machine -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2025</div><div>Conference</div><div>Parallel</div><div>KSEA US-Korea Conference</div><div>San Francisco, CA</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- PURSUE  -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Higgs Physics: What is in the vacuum? -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jun 2025</div><div>Seminar</div><div>Invited</div><div>PURSUE (USCMS) Program</div><div>Fermilab (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2024</div><div>Seminar</div><div>Invited</div><div>PURSUE (USCMS) Program</div><div>Fermilab (Virtual)</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Delhi -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           GPU Programming -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2024</div><div>Lecture</div><div>Invited</div><div>HSF-India HEP Software Workshop</div><div>Delhi, India</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- KSEA SERC -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           AI for Particle Tracking -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2024</div><div>Conference</div><div>Parallel</div><div>KSEA Southeastern Regional Conference</div><div>Gainesville, FL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Aspen -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           LHC Future Opportunities -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2024</div><div>Conference</div><div>Invited Plenary</div><div>The Future of High Energy Physics: A New Generation, A New Vision Aspen Winter Conference</div><div>Aspen, CO</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Computing in High Energy & Nuclear Physics -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Line Segment Tracking at CMS -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2023</div><div>Conference</div><div>Parallel</div><div>Computing in High Energy & Nuclear Physics (CHEP)</div><div>Norfolk, VA</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Conference on the Intersections of Particle and Nuclear Physics -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Recent CMS results on Standard Model Physics -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2022</div><div>Conference</div><div>Parallel</div><div>Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div><div>Lake Buena Vista, FL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Conference on the Intersections of Particle and Nuclear Physics -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Recent CMS results on Higgs physics -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2022</div><div>Conference</div><div>Parallel</div><div>Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div><div>Lake Buena Vista, FL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- New frontiers of electroweak physics at the LHC -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           New frontiers of electroweak physics at the LHC -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Nov 2023</div><div>Conference</div><div>Invited</div><div>Southeastern Section of American Physical Society (SESAPS)</div><div>Richmond, KY</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2023</div><div>Seminar</div><div>Invited</div><div>PKU / SJTU Collider Physics Forum</div><div>Virtual</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2022</div><div>Seminar</div><div>Invited</div><div>Univ. of Tennessee, Knoxville HEP Seminar</div><div>Knoxville, TN</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2022</div><div>Colloquium</div><div>Invited</div><div>Korea Advanced Institute of Science & Technology</div><div>Daejeon, Korea</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2022</div><div>Seminar</div><div>Invited</div><div>Association of Korean Physicists in America-Korean Physical Society Joint Symposium</div><div>Virtual</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2022</div><div>Colloquium</div><div>Invited</div><div>Univ. of Alabama</div><div>Tuscaloosa, AL</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2022</div><div>Colloquium</div><div>Invited</div><div>Univ. of Notre Dame</div><div>Notre Dame, IN</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2022</div><div>Colloquium</div><div>Invited</div><div>Univ. of Florida</div><div>Gainesville, FL</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2022</div><div>Seminar</div><div>Invited</div><div>Univ. of Notre Dame HEP Seminar</div><div>Notre Dame, IN</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Observation of production of three massive gauge boson -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Observation of production of three massive gauge boson -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <!-1- grid: Date | Type | Invited | Institution | City/State | Link -1-> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2022</div><div>Seminar</div><div>Invited</div><div>Univ. of Florida HEP Seminar</div><div>Gainesville, FL (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2021</div><div>Seminar</div><div>Invited</div><div>Univ. of Illinois HEP Seminar</div><div>Urbana, IL (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Dec 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Pittsburgh HEP Seminar</div><div>Pittsburgh, PA (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Oct 2020</div><div>Seminar</div><div>Invited</div><div>UCSB HEP Seminar</div><div>Santa Barbara, CA (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Oct 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Michigan HEP Seminar</div><div>Ann Arbor, MI (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Pennsylvania HEP Seminar</div><div>Philadelphia, PA (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Maryland HEP Seminar</div><div>College Park, MD (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>KSU/KU/UNL Joint HEP Seminar</div><div>Kansas / Nebraska (Virtual)</div><div><a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2020</div><div>Seminar</div><div>Invited</div><div>Fermilab Wine & Cheese Seminar</div><div>Batavia, IL (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Seminar</div><div>Invited</div><div>Korea Institute for Advanced Study HEP Seminar</div><div>Seoul, Korea</div><div><a href="https://www.youtube.com/watch?v=UYbUNBO4t7I" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Seminar</div><div>Invited</div><div>Univ. of Seoul HEP Seminar</div><div>Seoul, Korea</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Seminar</div><div>Invited</div><div>Seoul National University HEP Seminar</div><div>Seoul, Korea</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Aug 2020</div><div>Symposium</div><div>Invited</div><div>Workshop on New Windows to Explore the Universe</div><div>Danyang, Korea</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2020</div><div>Seminar</div><div>Invited</div><div>Hanyang University HEP Seminar</div><div>Seoul, Korea</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2020</div><div>Seminar</div><div>Invited</div><div>Yonsei University HEP Seminar</div><div>Seoul, Korea</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2020</div><div>Seminar</div><div>Invited</div><div>Korea University HEP Seminar</div><div>Seoul, Korea</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jun 2020</div><div>Seminar</div><div>Invited</div><div>Rice University HEP Seminar</div><div>Houston, TX (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jun 2020</div><div>Seminar</div><div>Invited</div><div>Harvard/MIT LPPC Seminar</div><div>Boston, MA (Virtual)</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2020</div><div>Seminar</div><div>Invited</div><div>UC San Diego HEP Seminar</div><div>San Diego, CA (Virtual)</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Multiboson physics at CMS -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Multiboson physics at CMS -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2021</div><div>Symposium</div><div>Invited</div><div>Korean Physical Society Spring Meeting — Pioneer Symposium</div><div>Virtual</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Search for heavy triboson production in leptonic final states (ICHEP2020) -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Search for heavy triboson production in leptonic final states -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"> -->
+<!--             <div>Jul 2020</div><div>Conference</div><div>Parallel</div><div>ICHEP 2020</div><div>Prague (Virtual)</div> -->
+<!--             <div><a href="https://youtu.be/nOF4IBNO-Tk?t=1543" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Parallelizable Track Pattern Recognition in HL-LHC -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Parallelizable Track Pattern Recognition in HL-LHC -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2020</div><div>Conference</div><div></div><div>Connecting the Dots Workshop</div><div>Princeton, NJ (Virtual)</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- <!-2- Recent results on multiboson measurements at CMS -2-> -1-> -->
+<!--       <!-1- <details open class="border border-slate-200 rounded-xl p-4"> -1-> -->
+<!--       <!-1-   <summary class="cursor-pointer font-semibold"> -1-> -->
+<!--       <!-1-     Recent results on multiboson measurements at CMS -1-> -->
+<!--       <!-1-   </summary> -1-> -->
+<!--       <!-1-   <div class="mt-3 ml-4 space-y-1 text-sm"> -1-> -->
+<!--       <!-1-     <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2020</div><div>Conference</div><div></div><div>Rencontres de Moriond — Electroweak 2020</div><div>La Thuile, Italy (Canceled)</div><div></div></div> -1-> -->
+<!--       <!-1-   </div> -1-> -->
+<!--       <!-1- </details> -1-> -->
+
+<!--       <!-1- Measurements of triple gauge boson production in ATLAS and CMS -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Measurements of triple gauge boson production in ATLAS and CMS -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jul 2019</div><div>Workshop</div><div>Invited</div><div>Physics Workshop at the LPC: Multibosons at the Energy Frontier</div><div>Batavia, IL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Rare EW multiboson at LHC -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Rare EW multiboson at LHC -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2019</div><div>Conference</div><div>Plenary</div><div>LHCP 2019</div><div>Puebla, Mexico</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Electroweak physics with multibosons at CMS -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Electroweak physics with multibosons at CMS -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>May 2019</div><div>Conference</div><div>Parallel</div><div>Pheno 2019</div><div>Pittsburgh, PA</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Search for the SM production of WWW events -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Search for the SM production of WWW events -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2019</div><div>Seminar</div><div>Invited</div><div>LHC Physics Center Physics Forum</div><div>Batavia, IL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Searches for new physics in the Higgs sector -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Searches for new physics in the Higgs sector -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Mar 2016</div><div>Seminar</div><div>Invited</div><div>Univ. of Pennsylvania (HEP)</div><div>Philadelphia, PA</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- First evidence for vector-boson fusion H→WW -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           First evidence for vector-boson fusion H→WW -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Feb 2016</div><div>Seminar</div><div>Invited</div><div>Univ. of Cincinnati HEP Seminar</div><div>Cincinnati, OH</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2015</div><div>Seminar</div><div>Invited</div><div>Univ. of Pittsburgh HEP Seminar</div><div>Pittsburgh, PA</div><div></div></div> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Apr 2015</div><div>Conference</div><div></div><div>APS April Meeting</div><div>Baltimore, MD</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Advanced Analysis Technique: Squeezing out information -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Advanced Analysis Technique: Squeezing out information -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Nov 2015</div><div>Workshop</div><div>Invited</div><div>Chicagoland Pheno–ATLAS Workshop</div><div>Chicago, IL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- ATLAS VBF Trigger Overview -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           ATLAS VBF Trigger Overview -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Jan 2015</div><div>Workshop</div><div>Invited</div><div>3rd Chicagoland ATLAS–Pheno Meeting</div><div>Chicago, IL</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--       <!-1- Higgs Properties -1-> -->
+<!--       <details open class="border border-slate-200 rounded-xl p-4"> -->
+<!--         <summary class="cursor-pointer font-semibold"> -->
+<!--           Higgs Properties -->
+<!--         </summary> -->
+<!--         <div class="mt-3 ml-4 space-y-1 text-sm"> -->
+<!--           <div class="grid grid-cols-[6rem_7rem_7rem_minmax(28rem,1fr)_1.4fr_1fr] gap-4"><div>Sep 2014</div><div>Conference</div><div>Plenary</div><div>Physics in Collisions 2014</div><div>Bloomington, IN</div><div></div></div> -->
+<!--         </div> -->
+<!--       </details> -->
+
+<!--     </div> -->
+<!--   </div> -->
+<!-- </section> -->
+
+<!-- <!-1- Collapse/Expand script -1-> -->
+<!-- <script> -->
+<!--   const toggleLink = document.getElementById("toggleAll"); -->
+<!--   const allDetails = document.querySelectorAll("#presentations details"); -->
+<!--   let expanded = true; // start open -->
+
+<!--   toggleLink?.addEventListener("click", () => { -->
+<!--     expanded = !expanded; -->
+<!--     allDetails.forEach(d => expanded ? d.setAttribute("open", "") : d.removeAttribute("open")); -->
+<!--     toggleLink.textContent = expanded ? "Collapse All" : "Expand All"; -->
+<!--   }); -->
+<!-- </script> -->
 
 
 
@@ -1340,7 +2074,7 @@
           <p class="mt-1">Address: New Physics Building 2035, Department of Physics, University of Florida, Gainesville, FL 32603</p>
           <!-- <p class="mt-1">Twitter/X · Bluesky · GitHub · Google Scholar</p> -->
           <div class="mt-6">
-            <a href="#about" class="inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-4 py-2 text-sm font-semibold text-white shadow">Back to top</a>
+            <a href="#top" class="inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-4 py-2 text-sm font-semibold text-white shadow">Back to top</a>
           </div>
         </div>
         <div class="lg:col-span-6">
