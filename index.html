@@ -88,16 +88,26 @@
               <img src="Logo4.001.png" alt="Lab logo" class="h-10 w-10 rounded-full object-cover" />
               <span>Chang Lab</span>
           </a>
-        <nav class="hidden md:flex items-center gap-8 text-[15px]">
-          <a class="nav-link" href="#top">Home</a>
-          <a class="nav-link" href="#about">About</a>
-          <a class="nav-link" href="#research">Research</a>
-          <a class="nav-link" href="#media">Media</a>
-          <a class="nav-link" href="#people">People</a>
-          <a class="nav-link" href="#presentations">Talks</a>
-          <a class="nav-link" href="#publications">Publications</a>
-          <a class="nav-link" href="#teaching">Teaching</a>
-          <a class="nav-link" href="#contact">Contact</a>
+        <!-- <nav class="hidden md:flex items-center gap-8 text-[15px]"> -->
+        <!--   <a class="nav-link" href="#top">Home</a> -->
+        <!--   <a class="nav-link" href="#about">About</a> -->
+        <!--   <a class="nav-link" href="#research">Research</a> -->
+        <!--   <a class="nav-link" href="#media">Media</a> -->
+        <!--   <a class="nav-link" href="#people">People</a> -->
+        <!--   <a class="nav-link" href="#presentations">Talks</a> -->
+        <!--   <a class="nav-link" href="#publications">Publications</a> -->
+        <!--   <a class="nav-link" href="#teaching">Teaching</a> -->
+        <!--   <a class="nav-link" href="#contact">Contact</a> -->
+        <!-- </nav> -->
+        <nav class="hidden md:flex items-center gap-2">
+            <a href="#about"         class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">About</a>
+            <a href="#research"      class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Research</a>
+            <a href="#media"         class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Media</a>
+            <a href="#people"        class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">People</a>
+            <a href="#presentations" class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Talks</a>
+            <a href="#publications"  class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Publications</a>
+            <a href="#teaching"      class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Teaching</a>
+            <a href="#contact"       class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Contact</a>
         </nav>
         <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-xl border border-slate-300 px-3 py-2 text-sm">Menu</button>
       </div>
@@ -119,7 +129,7 @@
   </header>
 
   <!-- Hero -->
-  <section id="top" class="relative pt-28">
+  <section id="top" class="scroll-mt-28 relative pt-28">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--brand)] to-white">
         <img src="https://www.usparticlephysics.org/2023-p5-report/assets/images/hero-full.jpg" alt="P5 background" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-blue-900/60"></div> <!-- blue shade overlay -->
@@ -272,7 +282,7 @@ startTimer();
 
 
   <!-- About -->
-  <section id="about" class="py-16">
+  <section id="about" class="scroll-mt-28 py-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="grid lg:grid-cols-12 gap-10 items-start">
 
@@ -308,7 +318,7 @@ startTimer();
   </section>
 
   <!-- Research (3-column carousel) -->
-  <section id="research" class="py-16 bg-slate-50">
+  <section id="research" class="scroll-mt-28 py-16 bg-slate-50">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between mb-4">
               <h2 class="text-2xl font-bold">Research</h2>
@@ -543,7 +553,7 @@ startTimer();
   </style>
 
   <!-- In the Media -->
-  <section id="media" class="py-16 bg-slate-50">
+  <section id="media" class="scroll-mt-28 py-16 bg-slate-50">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between mb-4">
               <h2 class="text-2xl font-bold">In the Media</h2>
@@ -667,7 +677,7 @@ startTimer();
 
 
   <!-- People -->
-  <section id="people" class="py-16">
+  <section id="people" class="scroll-mt-28 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold">People</h2>
       <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -764,7 +774,7 @@ startTimer();
   </section>
 
   <!-- Alumni -->
-  <section id="alumni" class="py-12">
+  <section id="alumni" class="scroll-mt-28 py-12">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 class="text-2xl font-bold">Alumni</h2>
           <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-1 gap-y-3 gap-x-8 text-slate-700">
@@ -923,7 +933,7 @@ startTimer();
   <!-- </section> -->
 
 <!-- Public Talks -->
-<section id="presentations" class="py-16 bg-slate-50">
+<section id="presentations" class="scroll-mt-28 py-16 bg-slate-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <h2 class="text-2xl font-bold">Public Talks</h2>
 
@@ -971,7 +981,7 @@ startTimer();
 
 
 <!-- Presentations -->
-<section id="talks" class="py-16 bg-slate-50">
+<section id="talks" class="scroll-mt-28 py-16 bg-slate-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <h2 class="text-2xl font-bold">Seminar / Colloquium / Conference Talks</h2>
 
@@ -1684,6 +1694,21 @@ startTimer();
   });
 </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Check if screen width is small (e.g. <768px = Tailwind "md")
+            if (window.innerWidth < 768) {
+                document.querySelectorAll("#talks details[open]").forEach(d => {
+                    d.removeAttribute("open");
+                });
+
+                // Also flip the toggle text
+                const toggleLink = document.getElementById("toggleAll");
+                if (toggleLink) toggleLink.textContent = "Expand All";
+            }
+        });
+    </script>
+
 
 <!-- <!-1- Presentations -1-> -->
 <!-- <section id="talks" class="py-16 bg-slate-50"> -->
@@ -2045,7 +2070,7 @@ startTimer();
 
 
   <!-- Publications -->
-  <section id="publications" class="py-16">
+  <section id="publications" class="scroll-mt-28 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex items-end justify-between">
         <h2 class="text-2xl font-bold">Selected Publications</h2>
@@ -2196,7 +2221,7 @@ startTimer();
   <!-- </section> -->
 
   <!-- Teaching -->
-  <section id="teaching" class="py-16 bg-slate-50">
+  <section id="teaching" class="scroll-mt-28 py-16 bg-slate-50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold">Teaching</h2>
       <div class="mt-6 grid md:grid-cols-4 gap-6">
@@ -2261,7 +2286,7 @@ startTimer();
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-16">
+  <section id="contact" class="scroll-mt-28 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-10">
         <div class="lg:col-span-6">
@@ -2315,6 +2340,60 @@ startTimer();
     // Current year
     document.getElementById('year').textContent=new Date().getFullYear();
   </script>
+<script>
+  // Scroll-spy highlight for top nav
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = Array.from(document.querySelectorAll('nav .topnav-link[href^="#"]'));
+    const map = new Map(); // id -> link
+    links.forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      if (id) map.set(id, a);
+    });
+
+    // Sections to observe (only those that actually exist)
+    const sections = Array.from(document.querySelectorAll('section[id]'))
+      .filter(sec => map.has(sec.id));
+
+    // Apply highlight style
+    function setActive(id) {
+      map.forEach((link, key) => {
+        const active = key === id;
+        link.classList.toggle('bg-[var(--brand)]/10', active);
+        link.classList.toggle('text-[var(--brand)]', active);
+        link.classList.toggle('underline', active);
+        link.classList.toggle('underline-offset-8', active);
+        link.classList.toggle('decoration-[var(--accent)]', active);
+        link.setAttribute('aria-current', active ? 'page' : 'false');
+      });
+    }
+
+    // Observer: a section becomes "active" when ~40% visible
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, {
+      threshold: 0.4,
+      rootMargin: '0px 0px -10% 0px' // activate a bit before it leaves
+    });
+
+    sections.forEach(sec => io.observe(sec));
+
+    // Also set on load if coming with a hash
+    if (location.hash && map.has(location.hash.slice(1))) {
+      setActive(location.hash.slice(1));
+    }
+
+    // Optional: update highlight immediately on nav click
+    links.forEach(a => {
+      a.addEventListener('click', () => {
+        const id = a.getAttribute('href').slice(1);
+        if (id) setActive(id);
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
 
