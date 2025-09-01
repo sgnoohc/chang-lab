@@ -60,7 +60,7 @@
   </style>
 <style>
 /* Mobile-friendly stack for talk rows */
-@media (max-width: 639px) {
+@media (max-width: 1024px) {
     .talk-row { display: block; }
     .talk-row > div {
         display: flex;
@@ -358,58 +358,255 @@ startTimer();
               </div>
           </div>
 
-          <div id="research-container" 
-               class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto scroll-smooth no-scrollbar">
+          <div id="research-container" class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto  scroll-smooth no-scrollbar w-full max-w-full [contain:inline-size]">
 
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
 
-              <!-- Research 8 -->
-              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
-                  <h3 class="font-semibold">Muon Collider Studies</h3>
-                  <!-- Always-visible primary image -->
-                  <img class="mt-4 rounded-xl"
-                       src="muoncollider.png"
-                       alt="Concept illustration of a muon collider" />
-                  <div class="mt-3 md:hidden">
-                      <input id="research-toggle-8" type="checkbox" class="peer sr-only" />
-                      <label for="research-toggle-8"
-                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
-                          <span class="peer-checked:hidden">Read more ↓</span>
-                          <span class="hidden peer-checked:inline">Show less ↑</span>
-                      </label>
-                      <!-- Collapsible content on mobile -->
-                      <div class="hidden peer-checked:block mt-2">
-                          <p class="text-sm text-slate-600">
-                          Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures
-                          and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics
-                          potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena.
-                          </p>
-                          <img class="mt-4 rounded-xl"
-                               src="science.png"
-                               alt="Dream Machine"/>
-                          <a href="#media"
-                             rel="noopener"
-                                             class="mt-3 inline-block text-blue-600 hover:underline">
-                              Learn more about the Muon Collider →
-                          </a>
-                      </div>
-                  </div>
-                  <!-- DESKTOP/TABLET: always-visible content -->
-                  <div class="hidden md:block mt-3">
-                      <p class="text-sm text-slate-600">
-                          Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures
-                          and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics
-                          potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena.
-                      </p>
-                      <img class="mt-4 rounded-xl"
-                           src="science.png"
-                           alt="Dream Machine"/>
-                      <a href="#media"
-                         rel="noopener"
-                                         class="mt-3 inline-block text-blue-600 hover:underline">
-                          Learn more about the Muon Collider →
-                      </a>
-                  </div>
-              </article>
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
 
 
 
@@ -421,7 +618,7 @@ startTimer();
                        src="vbsvvh.png"
                        alt="Example Feynman diagrams for VVHH coupling in VBS" />
                   <!-- MOBILE: toggle control (unique id per card) -->
-                  <div class="mt-3 md:hidden">
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
                       <input id="research-toggle-1" type="checkbox" class="peer sr-only" />
                       <label for="research-toggle-1"
                              class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
@@ -485,7 +682,7 @@ startTimer();
                        src="wwzeventdisplay.png"
                        alt="WWZ event display"/>
                   <!-- MOBILE: toggle control (unique id per card) -->
-                  <div class="mt-3 md:hidden">
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
                       <input id="research-toggle-2" type="checkbox" class="peer sr-only" />
                       <label for="research-toggle-2"
                              class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
@@ -543,7 +740,7 @@ startTimer();
                        align="middle"
                        alt="Feynman diagrams for WH via VBS" />
                   <!-- MOBILE: toggle control (unique id per card) -->
-                  <div class="mt-3 md:hidden">
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
                       <input id="research-toggle-3" type="checkbox" class="peer sr-only" />
                       <label for="research-toggle-3"
                              class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
@@ -599,7 +796,7 @@ startTimer();
                        src="WWZ4l.png"
                        alt="CMS triboson event display"/>
                   <!-- MOBILE: toggle control (unique id per card) -->
-                  <div class="mt-3 md:hidden">
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
                       <input id="research-toggle-4" type="checkbox" class="peer sr-only" />
                       <label for="research-toggle-4"
                              class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
@@ -661,7 +858,7 @@ startTimer();
                        src="LST2.png"
                        alt="LST"/>
                   <!-- MOBILE: toggle control (unique id per card) -->
-                  <div class="mt-3 md:hidden">
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
                       <input id="research-toggle-5" type="checkbox" class="peer sr-only" />
                       <label for="research-toggle-5"
                              class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
@@ -717,7 +914,7 @@ startTimer();
                        src="axion.png"
                        alt="axion limit plot"/>
                   <!-- MOBILE: toggle control (unique id per card) -->
-                  <div class="mt-3 md:hidden">
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
                       <input id="research-toggle-6" type="checkbox" class="peer sr-only" />
                       <label for="research-toggle-6"
                              class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
@@ -773,7 +970,7 @@ startTimer();
                        src="vbfhww.png" 
                        alt="ATLAS H→WW event display"/>
                   <!-- MOBILE: toggle control (unique id per card) -->
-                  <div class="mt-3 md:hidden">
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
                       <input id="research-toggle-7" type="checkbox" class="peer sr-only" />
                       <label for="research-toggle-7"
                              class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
@@ -848,7 +1045,7 @@ startTimer();
   (function () {
     let t;
     function syncResearchCards() {
-      const openOnWide = window.innerWidth >= 768; // sm→md breakpoint
+      const openOnWide = window.innerWidth >= 1024; // sm→md breakpoint
       document.querySelectorAll('#research details.research-autoopen').forEach(d => {
         if (openOnWide) d.setAttribute('open', '');
         else d.removeAttribute('open');
@@ -1248,7 +1445,7 @@ startTimer();
     <h2 class="text-2xl font-bold">Public Talks</h2>
 
     <!-- Featured talks with images -->
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
+    <div class="mt-6 grid lg:grid-cols-2 gap-6">
       <!-- Talk 1 -->
       <article class="card rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
         <img src="aspenimage.png" alt="Talk image" class="h-48 w-full object-cover">
@@ -1296,7 +1493,7 @@ startTimer();
   </div>
 
 <!-- Presentations -->
-<!-- <section id="talks" class="scroll-mt-28 py-16 bg-slate-50"> -->
+<section id="talks" class="scroll-mt-28 py-16 bg-slate-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-1">
     <h2 class="text-2xl font-bold">Seminar / Colloquium / Conference Talks</h2>
 
@@ -1315,7 +1512,7 @@ startTimer();
           Measurement of WWZ and ZH production cross sections at √s = 13 and 13.6 TeV
         </summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Aug 2025</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Invited Parallel</div>
@@ -1330,7 +1527,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Extreme Computing</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jul 2025</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Invited Plenary</div>
@@ -1345,7 +1542,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Recent LHC Results</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2025</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Invited Plenary</div>
@@ -1360,7 +1557,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Computing R&amp;D: How we get to our targets</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2025</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Invited</div>
@@ -1375,7 +1572,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Forging New Paths to Unveil the Electroweak Sector</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2025</div>
             <div data-label="Type">Colloquium</div>
             <div data-label="Session"></div>
@@ -1390,7 +1587,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Enhancing Particle Physics Discovery Through Computational Innovation</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2025</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1405,7 +1602,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Muon Collider the Dream Machine</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Aug 2025</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1420,7 +1617,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Higgs Physics: What is in the vacuum?</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jun 2025</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1428,7 +1625,7 @@ startTimer();
             <div data-label="City/State">Fermilab (Virtual)</div>
             <div data-label="Link"></div>
           </div>
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jul 2024</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1443,7 +1640,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">GPU Programming</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2024</div>
             <div data-label="Type">Lecture</div>
             <div data-label="Session">Invited</div>
@@ -1458,7 +1655,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">AI for Particle Tracking</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2024</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1473,7 +1670,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">LHC Future Opportunities</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2024</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Invited Plenary</div>
@@ -1488,7 +1685,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Line Segment Tracking at CMS</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2023</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1503,7 +1700,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Recent CMS results on Standard Model Physics</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Sep 2022</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1518,7 +1715,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Recent CMS results on Higgs physics</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Aug 2022</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1534,7 +1731,7 @@ startTimer();
         <summary class="cursor-pointer font-semibold">New frontiers of electroweak physics at the LHC</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Nov 2023</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Invited</div>
@@ -1543,7 +1740,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2023</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1552,7 +1749,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Sep 2022</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1561,7 +1758,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2022</div>
             <div data-label="Type">Colloquium</div>
             <div data-label="Session">Invited</div>
@@ -1570,7 +1767,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2022</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1579,7 +1776,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2022</div>
             <div data-label="Type">Colloquium</div>
             <div data-label="Session">Invited</div>
@@ -1588,7 +1785,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2022</div>
             <div data-label="Type">Colloquium</div>
             <div data-label="Session">Invited</div>
@@ -1597,7 +1794,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jan 2022</div>
             <div data-label="Type">Colloquium</div>
             <div data-label="Session">Invited</div>
@@ -1606,7 +1803,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jan 2022</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1623,7 +1820,7 @@ startTimer();
         <summary class="cursor-pointer font-semibold">Observation of production of three massive gauge boson</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jan 2022</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1632,7 +1829,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2021</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1641,7 +1838,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Dec 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1650,7 +1847,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Oct 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1659,7 +1856,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Oct 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1668,7 +1865,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Sep 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1677,7 +1874,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Sep 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1686,7 +1883,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Sep 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1695,7 +1892,7 @@ startTimer();
             <div data-label="Link"><a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Sep 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1704,7 +1901,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Aug 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1713,7 +1910,7 @@ startTimer();
             <div data-label="Link"><a href="https://www.youtube.com/watch?v=UYbUNBO4t7I" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Aug 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1722,7 +1919,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Aug 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1731,7 +1928,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Aug 2020</div>
             <div data-label="Type">Symposium</div>
             <div data-label="Session">Invited</div>
@@ -1740,7 +1937,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jul 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1749,7 +1946,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jul 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1758,7 +1955,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jul 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1767,7 +1964,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jun 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1776,7 +1973,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jun 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1785,7 +1982,7 @@ startTimer();
             <div data-label="Link"></div>
           </div>
 
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2020</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1801,7 +1998,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Multiboson physics at CMS</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Apr 2021</div>
             <div data-label="Type">Symposium</div>
             <div data-label="Session">Invited</div>
@@ -1816,7 +2013,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Search for heavy triboson production in leptonic final states</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jul 2020</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1831,7 +2028,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Parallelizable Track Pattern Recognition in HL-LHC</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Apr 2020</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session"></div>
@@ -1846,7 +2043,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Measurements of triple gauge boson production in ATLAS and CMS</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jul 2019</div>
             <div data-label="Type">Workshop</div>
             <div data-label="Session">Invited</div>
@@ -1861,7 +2058,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Rare EW multiboson at LHC</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2019</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Plenary</div>
@@ -1876,7 +2073,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Electroweak physics with multibosons at CMS</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">May 2019</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Parallel</div>
@@ -1891,7 +2088,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Search for the SM production of WWW events</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jan 2019</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1906,7 +2103,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Searches for new physics in the Higgs sector</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Mar 2016</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1921,7 +2118,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">First evidence for vector-boson fusion H→WW</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Feb 2016</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1929,7 +2126,7 @@ startTimer();
             <div data-label="City/State">Cincinnati, OH</div>
             <div data-label="Link"></div>
           </div>
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Apr 2015</div>
             <div data-label="Type">Seminar</div>
             <div data-label="Session">Invited</div>
@@ -1937,7 +2134,7 @@ startTimer();
             <div data-label="City/State">Pittsburgh, PA</div>
             <div data-label="Link"></div>
           </div>
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Apr 2015</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session"></div>
@@ -1952,7 +2149,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Advanced Analysis Technique: Squeezing out information</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Nov 2015</div>
             <div data-label="Type">Workshop</div>
             <div data-label="Session">Invited</div>
@@ -1967,7 +2164,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">ATLAS VBF Trigger Overview</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Jan 2015</div>
             <div data-label="Type">Workshop</div>
             <div data-label="Session">Invited</div>
@@ -1982,7 +2179,7 @@ startTimer();
       <details open class="border border-slate-200 rounded-xl p-4">
         <summary class="cursor-pointer font-semibold">Higgs Properties</summary>
         <div class="mt-3 ml-4 space-y-1 text-sm">
-          <div class="talk-row grid sm:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
             <div data-label="Date">Sep 2014</div>
             <div data-label="Type">Conference</div>
             <div data-label="Session">Plenary</div>
@@ -2011,8 +2208,8 @@ startTimer();
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Check if screen width is small (e.g. <768px = Tailwind "md")
-            if (window.innerWidth < 768) {
+            // Check if screen width is small (e.g. <1024 = Tailwind "md")
+            if (window.innerWidth < 1024) {
                 document.querySelectorAll("#presentations details[open]").forEach(d => {
                     d.removeAttribute("open");
                 });
