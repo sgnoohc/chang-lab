@@ -1,0 +1,2747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chang Lab — University of Florida</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="description" content="Our lab explores the frontiers of particle physics and advanced computing. We focus on uncovering subtle imprints of new physics by studying rare processes in the top quark, Higgs, and electroweak sectors at the CERN Large Hadron Collider. By combining experimental analyses with theoretical insight, we test the Standard Model at high precision and search for deviations that could point toward Beyond the Standard Model (BSM) phenomena.  In parallel, we develop next-generation computational tools for the high-energy physics community, from GPU-accelerated algorithms to scalable software frameworks that enable fast and efficient data analysis. Our group is committed to making powerful computational resources accessible, allowing researchers to focus on physics discovery rather than performance tuning.  The lab is a collaborative environment where students, postdocs, and faculty work side by side, bridging theory, experiment, and computation. We emphasize mentorship, innovation, and teamwork, empowering members to take leadership in both scientific research and technical development." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --brand:#0b5fff;/* primary */
+      --brand-dark:#0a3fb5;/* darker */
+      --accent:#00b3a4;/* accent */
+    }
+    html{ scroll-behavior:smooth; }
+    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+    /* Simple sticky, blurred header */
+    .glass{ backdrop-filter:saturate(180%) blur(10px); background: rgba(255,255,255,0.8); }
+    /* Publication list bullets */
+    .pubs li{ padding-left: .5rem; }
+    /* Smooth underline nav */
+    .nav-link{ position:relative; }
+    .nav-link:after{ content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; transform:scaleX(0); transform-origin:left; background:var(--brand); transition:transform .25s ease; }
+    .nav-link:hover:after{ transform:scaleX(1); }
+    /* Simple card hover */
+    .card{ transition:transform .2s ease, box-shadow .2s ease; }
+    .card:hover{ transform:translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+  </style>
+  <style>
+    /* Remove the default arrow */
+    details summary {
+      list-style: none;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Flexbox pushes text left, arrow right */
+    details summary {
+      display: flex;
+      justify-content: space-between; /* text left, arrow right */
+      align-items: center;
+      cursor: pointer;
+    }
+
+    /* Custom arrow on right */
+    details summary::after {
+      content: "▶";   /* closed arrow */
+      transition: transform 0.2s ease;
+    }
+
+    /* Rotate arrow when details is open */
+    details[open] summary::after {
+      transform: rotate(90deg);
+    }
+  </style>
+<style>
+/* Mobile-friendly stack for talk rows */
+@media (max-width: 1024px) {
+    .talk-row { display: block; }
+    .talk-row > div {
+        display: flex;
+        justify-content: space-between;
+        gap: .75rem;
+        padding: .125rem 0;
+        border-bottom: 1px dashed rgba(100,116,139,.25);
+    }
+    .talk-row > div:last-child { border-bottom: 0; }
+    .talk-row > div::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #64748b; /* slate-500 */
+    }
+}
+</style>
+
+<style>
+  /* Soft fade at bottom of collapsed text on small screens */
+  #research details .fade-pointer {
+    background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+    display: none;
+  }
+  /* Only show the fade when the details are closed AND on small screens */
+  @media (max-width: 767.98px) {
+    #research details:not([open]) .fade-pointer { display: block; }
+  }
+</style>
+
+<!-- <script> -->
+<!--     // Collapsible behavior for research cards on small screens -->
+<!--     document.querySelectorAll(".research-card .toggle-btn").forEach((btn) => { -->
+<!--         btn.addEventListener("click", () => { -->
+<!--             const card = btn.closest(".research-card"); -->
+<!--             const extra = card.querySelector(".card-extra"); -->
+<!--             const isHidden = extra.classList.toggle("hidden"); -->
+<!--             btn.setAttribute("aria-expanded", String(!isHidden)); -->
+<!--             btn.textContent = isHidden ? "Read more ↓" : "Show less ↑"; -->
+<!--         }); -->
+<!--     }); -->
+<!-- </script> -->
+<style>
+  :root{
+    --reveal-window-ms: 6000; /* time allowed between clicks */
+  }
+
+  /* Hidden button pinned to the very top center */
+  .secret-wrap{ position:fixed; inset:0 auto auto 50%; translate:-50% 0; pointer-events:none; z-index:9999; }
+  .secret-btn{
+    pointer-events:auto;
+    margin:8px auto 0; padding:10px 14px; border-radius:999px; border:1px solid #94a3b8;
+    background:#111827; color:#e5e7eb; cursor:pointer; font-weight:600;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+    opacity:0; transform: translateY(-16px); transition:opacity .25s ease, transform .25s ease;
+    visibility:hidden;
+  }
+  .secret-btn:focus-visible{ outline:2px solid #22d3ee; outline-offset:2px; }
+  .secret-btn.show{ opacity:1; visibility:visible; transform: translateY(0); }
+
+  /* Invisible hotspots (position with CSS variables below) */
+  .hotspot{
+    position:fixed; width:clamp(48px, 6vw, 72px); height:clamp(48px, 6vw, 72px);
+    left:var(--x, 8%); top:var(--y, 78%);
+    background:transparent; border:none; padding:0; cursor:pointer; z-index:9998;
+  }
+
+  /* (dev only) add `debug` class to <body> to see the hotspot boxes */
+  body.debug .hotspot{
+    outline:2px dashed rgba(34,211,238,.7); border-radius:12px; background:rgba(34,211,238,.12);
+  }
+
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+</style>
+
+
+
+
+</head>
+
+
+<body class="text-slate-800">
+
+    <!-- Hidden top button -->
+    <div class="secret-wrap" aria-hidden="true">
+        <button id="secretBtn" class="secret-btn" type="button" title="Hidden action">
+            ✨ Go to Chang Group gdoc
+        </button>
+    </div>
+
+    <!-- Two invisible hotspots: click #hot1 then #hot2 (in order) -->
+    <button id="hot1" class="hotspot" style="--x: 8%;  --y: 78%;" aria-label="decorative area">
+        <span class="sr-only">Hidden area one</span>
+    </button>
+    <button id="hot2" class="hotspot" style="--x: 88%; --y: 24%;" aria-label="decorative area">
+        <span class="sr-only">Hidden area two</span>
+    </button>
+
+
+  <!-- Header -->
+  <header class="fixed top-0 z-40 w-full glass border-b border-slate-200/70">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+          <a href="#top" class="flex items-center gap-3 font-semibold text-slate-900">
+              <img src="Logo4.001.png" alt="Lab logo" class="h-10 w-10 rounded-full object-cover" />
+              <span>Chang Lab</span>
+          </a>
+        <!-- <nav class="hidden md:flex items-center gap-8 text-[15px]"> -->
+        <!--   <a class="nav-link" href="#top">Home</a> -->
+        <!--   <a class="nav-link" href="#about">About</a> -->
+        <!--   <a class="nav-link" href="#research">Research</a> -->
+        <!--   <a class="nav-link" href="#media">Media</a> -->
+        <!--   <a class="nav-link" href="#people">People</a> -->
+        <!--   <a class="nav-link" href="#presentations">Talks</a> -->
+        <!--   <a class="nav-link" href="#publications">Publications</a> -->
+        <!--   <a class="nav-link" href="#teaching">Teaching</a> -->
+        <!--   <a class="nav-link" href="#contact">Contact</a> -->
+        <!-- </nav> -->
+        <nav class="hidden lg:flex items-center gap-2">
+            <a href="#top"           class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Home</a>
+            <a href="#about"         class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">About</a>
+            <a href="#research"      class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Research</a>
+            <a href="#media"         class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Media</a>
+            <a href="#people"        class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">People</a>
+            <a href="#presentations" class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Talks</a>
+            <a href="#publications"  class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Publications</a>
+            <a href="#teaching"      class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Teaching</a>
+            <a href="#contact"       class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Contact</a>
+        </nav>
+        <button id="menuBtn" class="lg:hidden inline-flex items-center justify-center rounded-xl border border-slate-300 px-3 py-2 text-sm">Menu</button>
+      </div>
+    </div>
+    <!-- mobile -->
+    <div id="mobileMenu" class="lg:hidden hidden border-t border-slate-200 bg-white">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 grid grid-cols-2 gap-2">
+        <a class="py-2" href="#top">Home</a>
+        <a class="py-2" href="#about">About</a>
+        <a class="py-2" href="#research">Research</a>
+        <a class="py-2" href="#media">Media</a>
+        <a class="py-2" href="#people">People</a>
+        <a class="py-2" href="#presentations">Talks</a>
+        <a class="py-2" href="#publications">Publications</a>
+        <a class="py-2" href="#teaching">Teaching</a>
+        <a class="py-2 col-span-2" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="scroll-mt-28 relative pt-28">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--brand)] to-white">
+        <img src="https://www.usparticlephysics.org/2023-p5-report/assets/images/hero-full.jpg" alt="P5 background" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-blue-900/60"></div> <!-- blue shade overlay -->
+    </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- <div class="grid lg:grid-cols-12 gap-10 items-center py-12"> -->
+      <div class="grid lg:grid-cols-12 gap-10 items-center py-12">
+        <div class="lg:col-span-7">
+          <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white drop-shadow">Chang Lab</h1>
+          <p class="mt-4 text-lg text-white/90 max-w-2xl">We investigate rare processes in the <em>electroweak</em> sectors to search for signs of <span class="font-semibold">new physics</span>, while developing <span class="font-semibold">next-generation computational tools</span> to accelerate discovery.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#research" class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-[var(--brand)] shadow">Explore Research</a>
+            <a href="#publications" class="rounded-xl border border-white/70 px-4 py-2 text-sm font-semibold text-white">See Publications</a>
+          </div>
+          <p class="mt-6 text-white/70 text-sm">Affiliation • Department of Physics • University of Florida</p>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/40">
+            <!-- <img src="EventDisplay5lepLabel.png" alt="WZZ event display" class="w-full h-[320px] object-cover"/> -->
+            <!-- <img src="https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg" alt="The CMS detector at the CERN Large Hadron Collider" class="w-full h-[380px] object-cover" /> -->
+            <!-- RIGHT SIDE: Hero carousel -->
+            <!-- <div id="hero-carousel" class="relative w-full max-w-2xl rounded-3xl overflow-hidden shadow-xl"> -->
+            <div id="hero-carousel" class="relative w-full lg:max-w-2xl rounded-3xl overflow-hidden shadow-xl">
+                <!-- Slide surface keeps layout stable -->
+                <div id="heroSlides" class="relative aspect-[4/3] bg-slate-200"></div>
+
+                <!-- <!-1- Prev / Next -1-> -->
+                <!-- <button id="heroPrev" -->
+                <!--         class="group absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 hover:bg-white p-2 shadow ring-1 ring-slate-300"> -->
+                <!--     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-active:-translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.78 15.22a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 010-1.06l4.5-4.5a.75.75 0 111.06 1.06L8.56 10l4.22 4.22a.75.75 0 010 1.06z" clip-rule="evenodd"/></svg> -->
+                <!--     <span class="sr-only">Previous</span> -->
+                <!-- </button> -->
+                <!-- <button id="heroNext" -->
+                <!--         class="group absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 hover:bg-white p-2 shadow ring-1 ring-slate-300"> -->
+                <!--     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-active:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.22 4.78a.75.75 0 011.06 0l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06L11.44 10 7.22 5.78a.75.75 0 010-1.06z" clip-rule="evenodd"/></svg> -->
+                <!--     <span class="sr-only">Next</span> -->
+                <!-- </button> -->
+                <!-- Prev -->
+                <button id="heroPrev"
+                        class="group absolute left-2 top-1/2 -translate-y-1/2 p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                         class="h-6 w-6 text-white/50 group-hover:text-white transition-colors" 
+                         viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.78 15.22a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 010-1.06l4.5-4.5a.75.75 0 111.06 1.06L8.56 10l4.22 4.22a.75.75 0 010 1.06z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </button>
+
+                <!-- Next -->
+                <button id="heroNext"
+                        class="group absolute right-2 top-1/2 -translate-y-1/2 p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                         class="h-6 w-6 text-white/50 group-hover:text-white transition-colors" 
+                         viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.22 4.78a.75.75 0 011.06 0l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06L11.44 10 7.22 5.78a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </button>
+
+
+                <!-- Dots -->
+                <div id="heroDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+      // 1) Add your images here
+      const heroImages = [
+          "https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg",
+          "https://cms.cern/sites/default/files/2022-06/detector_stripe01-min_0_0.jpeg",
+          "https://cms.cern/sites/default/files/field/image/CMS_photo_3_courtesy_of_CERN.jpg",
+          "https://cds.cern.ch/images/CERN-CO-1008289-04/file?size=medium",
+          "https://cms.cern/sites/default/files/inline-images/HLT-2.png",
+          "https://cds.cern.ch/images/CERN-HI-0610046-01/file?size=medium",
+          "https://home.cern/sites/default/files/2018-06/computer_centre_image_resized_for_web.jpg",
+          "https://cds.cern.ch/images/CERN-PHOTO-202108-102-11/file?size=medium",
+          "https://cds.cern.ch/images/CERN-PHOTO-202108-102-1/file?size=medium",
+          "https://cds.cern.ch/images/CERN-PHOTO-201901-009-1/file?size=medium",
+      ];
+          //"https://home.cern/sites/default/files/2018-06/cms-tracker_1431469_1.jpg",
+
+// 2) Elements
+const surface = document.getElementById("heroSlides");
+const prevBtn = document.getElementById("heroPrev");
+const nextBtn = document.getElementById("heroNext");
+const dotsWrap = document.getElementById("heroDots");
+const carousel = document.getElementById("hero-carousel");
+
+// 3) Shuffle and start at a random slide
+const shuffled = [...heroImages].sort(() => Math.random() - 0.5);
+let current = Math.floor(Math.random() * shuffled.length);
+let slides = [];
+let dots = [];
+
+// 4) Build slides & dots
+shuffled.forEach((src, i) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Hero image " + (i + 1);
+    img.className = "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 opacity-0";
+    img.decoding = "async";
+    img.loading = i === current ? "eager" : "lazy";
+    surface.appendChild(img);
+    slides.push(img);
+
+    const dot = document.createElement("button");
+    dot.className = "h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white ring-1 ring-white/50";
+    dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+    dot.addEventListener("click", () => goTo(i, true));
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+});
+
+function render() {
+    slides.forEach((el, i) => {
+        el.style.opacity = i === current ? "1" : "0";
+    });
+    dots.forEach((d, i) => {
+        d.className = "h-2.5 w-2.5 rounded-full ring-1 ring-white/50 " +
+            (i === current ? "bg-white" : "bg-white/50 hover:bg-white");
+    });
+}
+
+function next(auto=false){ current = (current + 1) % slides.length; render(); if(!auto) resetTimer(); }
+function prev(){ current = (current - 1 + slides.length) % slides.length; render(); resetTimer(); }
+function goTo(i, manual=false){ current = i; render(); if(manual) resetTimer(); }
+
+// 5) Controls
+nextBtn.addEventListener("click", () => next());
+prevBtn.addEventListener("click", () => prev());
+
+// 6) Auto-advance (pause on hover/focus)
+let timer = null;
+function startTimer(){ timer = setInterval(() => next(true), 5000); }
+function stopTimer(){ clearInterval(timer); timer = null; }
+function resetTimer(){ stopTimer(); startTimer(); }
+
+carousel.addEventListener("mouseenter", stopTimer);
+carousel.addEventListener("mouseleave", startTimer);
+carousel.addEventListener("focusin", stopTimer);
+carousel.addEventListener("focusout", startTimer);
+
+// 7) Init
+render();
+startTimer();
+  </script>
+
+
+  <!-- About -->
+  <section id="about" class="scroll-mt-28 py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-12 gap-10 items-start">
+
+              <!-- LEFT: Image -->
+              <div class="lg:col-span-6 order-1">
+                  <figure class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
+                      <!-- Replace the src with your preferred CMS image -->
+                      <!-- <img src="https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg" alt="The CMS detector at the CERN Large Hadron Collider" class="w-full h-[380px] object-cover" /> -->
+                      <img src="EventDisplay5lepLabel.png" alt="WZZ event display" class="w-full h-[320px] object-cover"/>
+                  </figure>
+                  <!-- Optional caption -->
+                  <!-- <figcaption class="mt-3 text-sm text-slate-500">The CMS detector at the CERN LHC.</figcaption> -->
+              </div>
+
+              <!-- RIGHT: Text -->
+              <div class="lg:col-span-6 order-2">
+                  <h2 class="text-2xl font-bold">About the Lab</h2>
+                  <p class="mt-4 leading-relaxed">
+                  Our lab explores the frontiers of particle physics and advanced computing at the CMS experiment of CERN’s
+                  <abbr title="Large Hadron Collider">LHC</abbr>. We analyze rare processes involving the W, Z, and Higgs boson, namely the
+                  <em>electroweak</em> sectors, to test the Standard Model and search for <span class="font-semibold">new physics</span>.
+                  In parallel, we develop <span class="font-semibold">GPU-accelerated</span> software and scalable workflows that make
+                  high-throughput analysis fast and accessible.
+                  </p>
+                  <p class="mt-4 leading-relaxed">
+                  We value open science, mentorship, and collaboration—students and postdocs lead projects that blend analysis,
+                  methods, and computing to push discovery forward.
+                  </p>
+              </div>
+
+          </div>
+      </div>
+  </section>
+
+  <!-- Research (3-column carousel) -->
+  <section id="research" class="scroll-mt-28 py-16 bg-slate-50">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between mb-4">
+              <h2 class="text-2xl font-bold">Research</h2>
+              <div class="space-x-2">
+                  <button id="research-prev" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">←</button>
+                  <button id="research-next" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">→</button>
+              </div>
+          </div>
+
+          <div id="research-container" class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto  scroll-smooth no-scrollbar w-full max-w-full [contain:inline-size]">
+
+              <!-- Research 8 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]">
+                  <h3 class="font-semibold">Muon Collider Studies</h3>
+                  <!-- Always-visible primary image -->
+                  <img class="mt-4 rounded-xl"
+                       src="muoncollider.png"
+                       alt="Concept illustration of a muon collider" />
+                  <!-- <div class="mt-3 md:hidden min-w-0"> -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-8" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-8"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="text-sm text-slate-600">
+                          Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures
+                          and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics
+                          potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena.
+                          </p>
+                          <img class="mt-4 rounded-xl"
+                               src="science.png"
+                               alt="Dream Machine"/>
+                          <a href="#media"
+                             rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              Learn more about the Muon Collider →
+                          </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3 min-w-0">
+                      <p class="text-sm text-slate-600">
+                          Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures
+                          and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics
+                          potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="science.png"
+                           alt="Dream Machine"/>
+                      <a href="#media"
+                         rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          Learn more about the Muon Collider →
+                      </a>
+                  </div>
+              </article>
+
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+
+              <!-- <!-1- Research 8 -1-> -->
+              <!-- <article class="card rounded-2xl border border-slate-200 bg-white p-6 min-w-0 overflow-x-clip [contain:inline-size]"> -->
+              <!--     <h3 class="font-semibold">Muon Collider Studies</h3> -->
+              <!--     <!-1- Always-visible primary image -1-> -->
+              <!--     <img class="mt-4 rounded-xl" -->
+              <!--          src="muoncollider.png" -->
+              <!--          alt="Concept illustration of a muon collider" /> -->
+              <!--     <!-1- <div class="mt-3 md:hidden min-w-0"> -1-> -->
+              <!--     <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]"> -->
+              <!--         <input id="research-toggle-8" type="checkbox" class="peer sr-only" /> -->
+              <!--         <label for="research-toggle-8" -->
+              <!--                class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"> -->
+              <!--             <span class="peer-checked:hidden">Read more ↓</span> -->
+              <!--             <span class="hidden peer-checked:inline">Show less ↑</span> -->
+              <!--         </label> -->
+              <!--         <!-1- Collapsible content on mobile -1-> -->
+              <!--         <div class="hidden peer-checked:block mt-2"> -->
+              <!--             <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--             </p> -->
+              <!--             <img class="mt-4 rounded-xl" -->
+              <!--                  src="science.png" -->
+              <!--                  alt="Dream Machine"/> -->
+              <!--             <a href="#media" -->
+              <!--                rel="noopener" -->
+              <!--                                class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--                 Learn more about the Muon Collider → -->
+              <!--             </a> -->
+              <!--         </div> -->
+              <!--     </div> -->
+              <!--     <!-1- DESKTOP/TABLET: always-visible content -1-> -->
+              <!--     <div class="hidden md:block mt-3 min-w-0"> -->
+              <!--         <p class="text-sm text-slate-600"> -->
+              <!--             Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures -->
+              <!--             and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics -->
+              <!--             potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena. -->
+              <!--         </p> -->
+              <!--         <img class="mt-4 rounded-xl" -->
+              <!--              src="science.png" -->
+              <!--              alt="Dream Machine"/> -->
+              <!--         <a href="#media" -->
+              <!--            rel="noopener" -->
+              <!--                            class="mt-3 inline-block text-blue-600 hover:underline"> -->
+              <!--             Learn more about the Muon Collider → -->
+              <!--         </a> -->
+              <!--     </div> -->
+              <!-- </article> -->
+
+
+
+              <!-- Research 1 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">Higgs + Two Vector Boson Production via VBS</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="vbsvvh.png"
+                       alt="Example Feynman diagrams for VVHH coupling in VBS" />
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-1" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-1"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="text-sm text-slate-600">
+                          The quartic couplings between two Higgs bosons and vector
+                          bosons (HHWW and HHZZ) remain among the least constrained in
+                          the Higgs sector.  This CMS study presents the first direct
+                          search for production of a Higgs boson in association with
+                          two vector bosons via vector boson scattering (VBS), using
+                          138 fb⁻¹ of 13 TeV data.  It sets the most stringent limits
+                          yet on the VVHH (κ₂V) coupling relative to the SM and independently
+                          constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a
+                          significant advance in our ability to probe Higgs self-interactions at
+                          the LHC.
+                          </p>
+                          <img class="mt-4 rounded-xl"
+                               src="wwhhzzhh.png"
+                               alt="WWHH vs. ZZHH coupling constraint"/>
+                          <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                             target="_blank" rel="noopener"
+                                             class="mt-3 inline-block text-blue-600 hover:underline">
+                              View the CMS preliminary result →
+                          </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="text-sm text-slate-600">
+                      The quartic couplings between two Higgs bosons and vector
+                      bosons (HHWW and HHZZ) remain among the least constrained in
+                      the Higgs sector.  This CMS study presents the first direct
+                      search for production of a Higgs boson in association with
+                      two vector bosons via vector boson scattering (VBS), using
+                      138 fb⁻¹ of 13 TeV data.  It sets the most stringent limits
+                      yet on the VVHH (κ₂V) coupling relative to the SM and independently
+                      constrains the HHWW (κ₂W) and HHZZ (κ₂Z) quartic couplings—marking a
+                      significant advance in our ability to probe Higgs self-interactions at
+                      the LHC.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="wwhhzzhh.png"
+                           alt="WWHH vs. ZZHH coupling constraint"/>
+                      <a href="https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/HIG-24-003/index.html"
+                         target="_blank" rel="noopener"
+                                         class="mt-3 inline-block text-blue-600 hover:underline">
+                          View the CMS preliminary result →
+                      </a>
+                  </div>
+              </article>
+
+              <!-- Research 2 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">Measurement of WWZ and ZH Production</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="wwzeventdisplay.png"
+                       alt="WWZ event display"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-2" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-2"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                          We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                          and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                          <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                          and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                          These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                          self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                          which are uniquely sensitive to subtle effects from new physics at higher scales.
+                          </p>
+                          <img class="mt-4 rounded-xl"
+                               src="WWZPlot.png"
+                               alt="WWZ Yield Plot"/>
+                          <a href="https://doi.org/10.1103/6z3d-zjw4" target="_blank"
+                                                                      class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                              Read the publication →
+                          </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                      We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                      and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                      <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                      and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                      These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                      self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                      which are uniquely sensitive to subtle effects from new physics at higher scales.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="WWZPlot.png"
+                           alt="WWZ Yield Plot"/>
+                      <a href="https://doi.org/10.1103/6z3d-zjw4" target="_blank"
+                                                                  class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                  </div>
+              </article>
+
+              <!-- Research 3 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">WH Production via Vector Boson Scattering</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="vbswh.jpg"
+                       width="80%" height="80%"
+                       align="middle"
+                       alt="Feynman diagrams for WH via VBS" />
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-3" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-3"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                          We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                          and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                          <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                          and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                          These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                          self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                          which are uniquely sensitive to subtle effects from new physics at higher scales.
+                          </p>
+                          <img class="mt-4 rounded-xl"
+                               src="vbswhfeyn.jpg"
+                               alt="Example Feynman diagrams for VVHH coupling in VBS"/>
+                          <a href="https://doi.org/10.1016/j.physletb.2024.139202" target="_blank" rel="noopener"
+                                                                                                   class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                              Read the publication →
+                          </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                      We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
+                      and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
+                      <span class="font-semibold">most precise determination</span> of the WWZ cross section to date
+                      and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
+                      These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model’s
+                      self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
+                      which are uniquely sensitive to subtle effects from new physics at higher scales.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="vbswhfeyn.jpg"
+                           alt="Example Feynman diagrams for VVHH coupling in VBS"/>
+                      <a href="https://doi.org/10.1016/j.physletb.2024.139202" target="_blank" rel="noopener"
+                                                                                               class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                  </div>
+              </article>
+
+              <!-- Research 4 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">First Observation of Three Massive Gauge Boson Production Process</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="WWZ4l.png"
+                       alt="CMS triboson event display"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-4" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-4"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                  The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an
+                  extremely rare phenomenon predicted by the Standard Model of particle physics.
+                  Observing such events provides a direct window into the <span class="font-semibold">self-interactions
+                      of the electroweak force</span>, one of the least tested aspects of the theory.
+                  The first observation of VVV production, including <em>evidence for WWW</em> and
+                  <em>evidence for WWZ</em>, marks a significant milestone: it confirms a key prediction
+                  of the Standard Model and opens a new triboson physics program at the LHC.
+                  These measurements will enable increasingly precise studies of multi-boson dynamics
+                  and offer sensitivity to <span class="font-semibold">subtle effects of new physics</span>
+                  at higher energy scales.
+                          </p>
+                      <img class="mt-4 rounded-xl"
+                           src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png"
+                           alt="CMS triboson yield"/>
+                      <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.125.151802" target="_blank" rel="noopener"
+                                                                                                                     class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an
+                  extremely rare phenomenon predicted by the Standard Model of particle physics.
+                  Observing such events provides a direct window into the <span class="font-semibold">self-interactions
+                      of the electroweak force</span>, one of the least tested aspects of the theory.
+                  The first observation of VVV production, including <em>evidence for WWW</em> and
+                  <em>evidence for WWZ</em>, marks a significant milestone: it confirms a key prediction
+                  of the Standard Model and opens a new triboson physics program at the LHC.
+                  These measurements will enable increasingly precise studies of multi-boson dynamics
+                  and offer sensitivity to <span class="font-semibold">subtle effects of new physics</span>
+                  at higher energy scales.
+                      </p>
+                      <img class="mt-4 rounded-xl"
+                           src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png"
+                           alt="CMS triboson yield"/>
+                      <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.125.151802" target="_blank" rel="noopener"
+                                                                                                                     class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                  </div>
+              </article>
+
+              <!-- Research 5 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">Line Segment Tracking (LST)</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="LST2.png"
+                       alt="LST"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-5" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-5"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                  The High-Luminosity LHC will deliver an unprecedented volume of collision data, demanding new
+                  approaches to <em>charged-particle tracking</em>. The Line Segment Tracking algorithm is a
+                  highly parallelizable method designed to run efficiently on modern architectures such as GPUs.
+                  By reconstructing tracks from short, local segments, LST dramatically reduces combinatorial
+                  complexity, enabling <span class="font-semibold">fast and scalable track finding</span> in
+                  high-pileup environments. This development is central to ensuring that the full discovery
+                  potential of the HL-LHC can be realized.
+                          </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <a href="https://doi.org/10.1088/1742-6596/2375/1/012005" target="_blank" rel="noopener"
+                                                                                                class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The High-Luminosity LHC will deliver an unprecedented volume of collision data, demanding new
+                  approaches to <em>charged-particle tracking</em>. The Line Segment Tracking algorithm is a
+                  highly parallelizable method designed to run efficiently on modern architectures such as GPUs.
+                  By reconstructing tracks from short, local segments, LST dramatically reduces combinatorial
+                  complexity, enabling <span class="font-semibold">fast and scalable track finding</span> in
+                  high-pileup environments. This development is central to ensuring that the full discovery
+                  potential of the HL-LHC can be realized.
+                      </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <a href="https://doi.org/10.1088/1742-6596/2375/1/012005" target="_blank" rel="noopener"
+                                                                                                class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                  </div>
+              </article>
+
+              <!-- Research 6 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">Search for Three W Gauge Boson Production Process</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl"
+                       src="axion.png"
+                       alt="axion limit plot"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-6" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-6"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                  The production of three W bosons (WWW) is one of the rarest processes predicted by the Standard Model, 
+                  providing a sensitive window into the structure of <em>quartic electroweak gauge couplings</em> 
+                  and the dynamics of multi-boson interactions. Studying this channel tests the self-interactions 
+                  of the weak force in extreme conditions and offers a pathway to uncover deviations that could signal 
+                  new physics. In addition to probing the Standard Model, the analysis also set the first experimental 
+                  limits on <em>photophobic axion-like particle models</em>, expanding the search for new phenomena 
+                  beyond the electroweak sector.
+                          </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.100.012004" target="_blank" rel="noopener"
+                                                                                                                  class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The production of three W bosons (WWW) is one of the rarest processes predicted by the Standard Model, 
+                  providing a sensitive window into the structure of <em>quartic electroweak gauge couplings</em> 
+                  and the dynamics of multi-boson interactions. Studying this channel tests the self-interactions 
+                  of the weak force in extreme conditions and offers a pathway to uncover deviations that could signal 
+                  new physics. In addition to probing the Standard Model, the analysis also set the first experimental 
+                  limits on <em>photophobic axion-like particle models</em>, expanding the search for new phenomena 
+                  beyond the electroweak sector.
+                      </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.100.012004" target="_blank" rel="noopener"
+                                                                                                                  class="mt-4 inline-block text-[var(--brand)] text-sm font-medium">
+                          Read the publication →
+                      </a>
+                  </div>
+              </article>
+
+              <!-- Research 7 -->
+              <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+                  <h3 class="font-semibold">Higgs Boson Physics in the WW Decay Channel</h3>
+                  <!-- Mobile-primary image (always visible) -->
+                  <img class="mt-4 rounded-xl" 
+                       src="vbfhww.png" 
+                       alt="ATLAS H→WW event display"/>
+                  <!-- MOBILE: toggle control (unique id per card) -->
+                  <div class="mt-3 md:hidden min-w-0 max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]">
+                      <input id="research-toggle-7" type="checkbox" class="peer sr-only" />
+                      <label for="research-toggle-7"
+                             class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
+                          <span class="peer-checked:hidden">Read more ↓</span>
+                          <span class="hidden peer-checked:inline">Show less ↑</span>
+                      </label>
+                      <!-- Collapsible content on mobile -->
+                      <div class="hidden peer-checked:block mt-2">
+                          <p class="mt-2 text-sm text-slate-600">
+                  The Higgs boson, discovered in 2012, plays a central role in explaining how fundamental particles acquire mass. 
+                  One of the most important ways to study its properties is through its decay into a pair of W bosons 
+                  (<em>H → WW*</em>). Observations in this channel provided some of the earliest and most precise tests of 
+                  the Higgs mechanism, including the <span class="font-semibold">first evidence for vector boson fusion production</span> 
+                  of the Higgs boson. These measurements placed strong constraints on the Higgs boson’s 
+                  <em>Yukawa coupling strength</em>, sharpening our understanding of its interaction with other particles. 
+                  In addition, searches for an <span class="font-semibold">extended Higgs sector</span> through the WW decay mode 
+                  explored possible links between the Higgs boson and <em>dark matter</em>, highlighting its potential as a 
+                  tool to probe new physics.
+                          </p>
+                      <div class="mt-4 space-y-1 text-sm">
+                          <a href="https://cerncourier.com/a/atlas-observes-and-measures-h-ww/" target="_blank" class="text-[var(--brand)] font-medium block">CERN Courier coverage →</a>
+                          <a href="https://atlas.cern/updates/briefing/new-atlas-precision-measurements-higgs-boson-observation-ww-decay" target="_blank" class="text-[var(--brand)] font-medium block">ATLAS Physics Briefing →</a>
+                      </div>
+                      </div>
+                  </div>
+                  <!-- DESKTOP/TABLET: always-visible content -->
+                  <div class="hidden md:block mt-3">
+                      <p class="mt-2 text-sm text-slate-600">
+                  The Higgs boson, discovered in 2012, plays a central role in explaining how fundamental particles acquire mass. 
+                  One of the most important ways to study its properties is through its decay into a pair of W bosons 
+                  (<em>H → WW*</em>). Observations in this channel provided some of the earliest and most precise tests of 
+                  the Higgs mechanism, including the <span class="font-semibold">first evidence for vector boson fusion production</span> 
+                  of the Higgs boson. These measurements placed strong constraints on the Higgs boson’s 
+                  <em>Yukawa coupling strength</em>, sharpening our understanding of its interaction with other particles. 
+                  In addition, searches for an <span class="font-semibold">extended Higgs sector</span> through the WW decay mode 
+                  explored possible links between the Higgs boson and <em>dark matter</em>, highlighting its potential as a 
+                  tool to probe new physics.
+                      </p>
+                      <!-- <img class="mt-4 rounded-xl" -->
+                      <!--      src="https://cms-results.web.cern.ch/cms-results/public-results/superseded/SMP-19-014/CMS-PAS-SMP-19-014_Figure_001.png" -->
+                      <!--      alt="CMS triboson yield"/> -->
+                      <div class="mt-4 space-y-1 text-sm">
+                          <a href="https://cerncourier.com/a/atlas-observes-and-measures-h-ww/" target="_blank" class="text-[var(--brand)] font-medium block">CERN Courier coverage →</a>
+                          <a href="https://atlas.cern/updates/briefing/new-atlas-precision-measurements-higgs-boson-observation-ww-decay" target="_blank" class="text-[var(--brand)] font-medium block">ATLAS Physics Briefing →</a>
+                      </div>
+                  </div>
+              </article>
+
+              <!-- Add more cards here -->
+          </div>
+      </div>
+  </section>
+
+  <script>
+      (function () {
+          const container = document.getElementById('research-container');
+          const prev = document.getElementById('research-prev');
+          const next = document.getElementById('research-next');
+
+          const CARD_STRIDE = container.clientWidth; // scroll by one full "page" (3 cols on large screens)
+
+          prev.addEventListener('click', () => {
+              container.scrollBy({ left: -CARD_STRIDE, behavior: 'smooth' });
+          });
+          next.addEventListener('click', () => {
+              container.scrollBy({ left:  CARD_STRIDE, behavior: 'smooth' });
+          });
+      })();
+  </script>
+
+<script>
+  (function () {
+    let t;
+    function syncResearchCards() {
+      const openOnWide = window.innerWidth >= 1024; // sm→md breakpoint
+      document.querySelectorAll('#research details.research-autoopen').forEach(d => {
+        if (openOnWide) d.setAttribute('open', '');
+        else d.removeAttribute('open');
+      });
+    }
+    window.addEventListener('load', syncResearchCards);
+    window.addEventListener('resize', () => {
+      clearTimeout(t);
+      t = setTimeout(syncResearchCards, 150);
+    });
+  })();
+</script>
+
+
+  <style>
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+<!-- In the Media -->
+<section id="media" class="scroll-mt-28 py-16 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Header with nav buttons -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-bold">In the Media</h2>
+      <div class="space-x-2">
+        <button id="media-prev" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">←</button>
+        <button id="media-next" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">→</button>
+      </div>
+    </div>
+
+    <!-- Carousel container -->
+    <div id="media-container"
+         class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto scroll-smooth no-scrollbar">
+      
+      <!-- Item: Muon Collider -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+        <div class="flex items-center gap-3">
+          <img src="nyt.png" alt="The New York Times logo" class="h-6 w-auto">
+          <img src="nature.png" alt="Nature logo" class="h-6 w-auto">
+          <img src="sciencemag.png" alt="Science logo" class="h-6 w-auto">
+        </div>
+        <h3 class="mt-3 font-semibold leading-snug">
+          Muon Collider in the Spotlight
+        </h3>
+        <p class="mt-2 text-sm text-slate-600">
+          Media coverage on the physics potential and challenges of building a future muon collider.
+        </p>
+        <div class="mt-4 space-y-1 text-sm">
+          <a href="https://www.nature.com/articles/d41586-024-00105-9" target="_blank" class="text-[var(--brand)] font-medium block">Nature coverage →</a>
+          <a href="https://www.nytimes.com/2023/12/07/science/particle-physics-muon-collider.html" target="_blank" class="text-[var(--brand)] font-medium block">New York Times coverage →</a>
+          <a href="https://www.science.org/content/article/muon-collider-could-revolutionize-particle-physics-if-it-can-be-built" target="_blank" class="text-[var(--brand)] font-medium block">Science Magazine coverage →</a>
+          <a href="https://www.muoncollider.us/" target="_blank" class="text-[var(--brand)] font-medium block">US Muon Collider Collaboration →</a>
+        </div>
+      </article>
+
+      <!-- Item: CMS Physics Briefing -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+        <div class="flex items-center gap-3">
+          <img src="cms.png" alt="CMS logo" class="h-6 w-auto">
+        </div>
+        <h3 class="mt-3 font-semibold leading-snug">
+          Probing interactions among trios of heavy vector bosons
+        </h3>
+        <p class="mt-2 text-sm text-slate-600">
+          CMS article on the first observation of triboson production at the LHC, probing electroweak self-interactions at unprecedented energies.
+        </p>
+        <div class="mt-4 space-y-1 text-sm">
+          <a href="https://cms.cern/news/probing-interactions-among-trios-heavy-vector-bosons-record-energy" target="_blank" class="text-[var(--brand)] font-medium block">CMS Physics Briefings →</a>
+        </div>
+      </article>
+
+      <!-- Item: Triple Threat Coverage -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+        <div class="flex items-center gap-3">
+          <img src="physorglogo.png" alt="Phys.org logo" class="h-6 w-auto">
+          <img src="apsphysicsmagazine.png" alt="APS Physics logo" class="h-6 w-auto">
+          <img src="cms.png" alt="CMS logo" class="h-6 w-auto">
+          <img src="cern.png" alt="CERN logo" class="h-6 w-auto">
+          <img src="cerncourier.png" alt="CERN Courier logo" class="h-6 w-auto">
+          <img src="symmetry.png" alt="Symmetry Magazine logo" class="h-6 w-auto">
+        </div>
+        <h3 class="mt-3 font-semibold leading-snug">
+          Triple threat: Massive gauge bosons observed at the LHC
+        </h3>
+        <p class="mt-2 text-sm text-slate-600">
+          Coverage of triboson production and what it reveals about electroweak self-interactions and rare multi-boson dynamics.
+        </p>
+        <div class="mt-4 space-y-1 text-sm">
+          <a href="https://phys.org/news/2020-12-triple-threat-massive-gauge-bosons.html" target="_blank" class="text-[var(--brand)] font-medium block">Phys.org →</a>
+          <a href="https://physics.aps.org/articles/v13/s124" target="_blank" class="text-[var(--brand)] font-medium block">APS Physics Magazine →</a>
+          <a href="https://www.symmetrymagazine.org/article/heavy-boson-triplets-test-standard-model" target="_blank" class="text-[var(--brand)] font-medium block">Symmetry Magazine →</a>
+          <a href="https://home.cern/news/news/physics/search-new-physics-through-multiboson-production" target="_blank" class="text-[var(--brand)] font-medium block">CERN Press Release →</a>
+          <a href="https://cms.cern/news/triple-treat-cms-observes-production-three-massive-vector-bosons-0" target="_blank" class="text-[var(--brand)] font-medium block">CMS Press Release →</a>
+          <a href="https://cerncourier.com/a/lhc-physics-shines-amid-covid-19-crisis/" target="_blank" class="text-[var(--brand)] font-medium block">CERN Courier →</a>
+        </div>
+      </article>
+
+      <!-- Item -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="flex items-center gap-3">
+              <img src="cern.png" alt="CERN logo" class="h-6 w-auto">
+              <img src="atlas.png" alt="ATLAS logo" class="h-6 w-auto">
+              <div class="text-xs uppercase tracking-wide text-slate-500">CERN</div>
+          </div>
+          <h3 class="mt-3 font-semibold leading-snug">
+              Higgs boson physics
+          </h3>
+          <p class="mt-2 text-sm text-slate-600">
+          These articles highlight the first clear observation of the Higgs boson decaying to two W bosons, a milestone that tests the Higgs mechanism and refines our understanding of its couplings.
+          </p>
+          <div class="mt-4 space-y-1 text-sm">
+              <a href="https://cerncourier.com/a/atlas-observes-and-measures-h-ww/" target="_blank" class="text-[var(--brand)] font-medium block">CERN Courier coverage →</a>
+              <a href="https://atlas.cern/updates/briefing/new-atlas-precision-measurements-higgs-boson-observation-ww-decay" target="_blank" class="text-[var(--brand)] font-medium block">ATLAS Physics Briefing →</a>
+              <a href="https://physics.illinois.edu/news/article/1741" target="_blank" class="text-[var(--brand)] font-medium block">UIUC Department News →</a>
+          </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Carousel buttons
+  const mediaContainer = document.getElementById('media-container');
+  document.getElementById('media-prev').addEventListener('click', () => {
+    mediaContainer.scrollBy({ left: -400, behavior: 'smooth' });
+  });
+  document.getElementById('media-next').addEventListener('click', () => {
+    mediaContainer.scrollBy({ left: 400, behavior: 'smooth' });
+  });
+</script>
+
+
+
+
+  <!-- People -->
+  <section id="people" class="scroll-mt-28 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">People</h2>
+      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Person card template -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="PC.jpeg" alt="PI portrait"/>
+          <div class="mt-4">
+            <div class="font-semibold">Prof. Philip Chang</div>
+            <div class="text-sm text-slate-600">Principal Investigator</div>
+            <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="cv.pdf">CV</a> · <a class="text-[var(--brand)]" href="https://inspirehep.net/authors/1054464">InspireHEP</a> · <a class="text-[var(--brand)]" href="mailto:p.chang@ufl.edu">Email</a></div>
+          </div>
+        </div>
+        <!-- Duplicate and customize for lab members -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="kelci.png" alt="member portrait"/>
+          <div class="mt-4">
+            <div class="font-semibold">Dr. Kelci Mohrman</div>
+            <div class="text-sm text-slate-600">Postdoc</div>
+            <!-- <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="#">Website</a> · <a class="text-[var(--brand)]" href="mailto:k.mohrman@ufl.edu">Email</a></div> -->
+          </div>
+        </div>
+        <!-- People -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="MD.jpeg" alt="member portrait"/>
+          <div class="mt-4">
+            <div class="font-semibold">Matthew Dittrich</div>
+            <div class="text-sm text-slate-600">5th Year PhD Student</div>
+            <!-- <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="#">Website</a> · <a class="text-[var(--brand)]" href="mailto:k.mohrman@ufl.edu">Email</a></div> -->
+          </div>
+        </div>
+        <!-- People -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="EZ.jpg" alt="member portrait"/>
+          <!-- <img class="w-52 h-52 object-cover rounded-full mx-auto" src="Florida_Gators_gator_logo.svg" alt="member portrait"/> -->
+          <div class="mt-4">
+            <div class="font-semibold">Eslam Zenhom</div>
+            <div class="text-sm text-slate-600">5th Year PhD Student</div>
+            <!-- <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="#">Website</a> · <a class="text-[var(--brand)]" href="mailto:k.mohrman@ufl.edu">Email</a></div> -->
+          </div>
+        </div>
+        <!-- People -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="AAU.png" alt="member portrait"/>
+          <!-- <img class="w-52 h-52 object-cover rounded-full mx-auto" src="Florida_Gators_gator_logo.svg" alt="member portrait"/> -->
+          <div class="mt-4">
+            <div class="font-semibold">Alexandra Aponte Utani</div>
+            <div class="text-sm text-slate-600">2nd Year PhD Student</div>
+            <!-- <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="#">Website</a> · <a class="text-[var(--brand)]" href="mailto:k.mohrman@ufl.edu">Email</a></div> -->
+          </div>
+        </div>
+        <!-- People -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="CB.JPG" alt="member portrait"/>
+          <!-- <img class="w-52 h-52 object-cover rounded-full mx-auto" src="Florida_Gators_gator_logo.svg" alt="member portrait"/> -->
+          <div class="mt-4">
+            <div class="font-semibold">Cedric Broussard</div>
+            <div class="text-sm text-slate-600">1st Year PhD Student</div>
+            <!-- <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="#">Website</a> · <a class="text-[var(--brand)]" href="mailto:k.mohrman@ufl.edu">Email</a></div> -->
+          </div>
+        </div>
+        <!-- People -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="HP.png" alt="member portrait"/>
+          <!-- <img class="w-52 h-52 object-cover rounded-full mx-auto" src="Florida_Gators_gator_logo.svg" alt="member portrait"/> -->
+          <div class="mt-4">
+            <div class="font-semibold">Hubert Pugzlys</div>
+            <div class="text-sm text-slate-600">BS Student</div>
+            <!-- <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="#">Website</a> · <a class="text-[var(--brand)]" href="mailto:k.mohrman@ufl.edu">Email</a></div> -->
+          </div>
+        </div>
+        <!-- People -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-5">
+          <img class="w-52 h-52 object-cover rounded-full mx-auto" src="TS.png" alt="member portrait"/>
+          <!-- <img class="w-52 h-52 object-cover rounded-full mx-auto" src="Florida_Gators_gator_logo.svg" alt="member portrait"/> -->
+          <div class="mt-4">
+            <div class="font-semibold">Trevor Sabitsch</div>
+            <div class="text-sm text-slate-600">BS Student</div>
+            <!-- <div class="mt-2 text-sm"><a class="text-[var(--brand)]" href="#">Website</a> · <a class="text-[var(--brand)]" href="mailto:k.mohrman@ufl.edu">Email</a></div> -->
+          </div>
+        </div>
+        <!-- ...add more cards as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Alumni -->
+  <section id="alumni" class="scroll-mt-28 py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 class="text-2xl font-bold">Alumni</h2>
+          <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-1 gap-y-3 gap-x-8 text-slate-700">
+              <li class="font-medium">Amilqar Karam — Univ. of Florida (2025 BS Physics) — Johns Hopkins University (Current)</li>
+              <li class="font-medium">Samuel Sebastian — Univ. of Florida</li>
+              <li class="font-medium">Joseph Mezzetti — Univ. of Florida</li>
+              <li class="font-medium">Tsion (Zion) Dessalegn — Univ. of Michigan-Flint (<a href="https://sites.google.com/upr.edu/uscms-pursue/">PURSUE Intern 2024</a>)</li>
+              <!-- Add more names as needed -->
+          </ul>
+      </div>
+  </section>
+
+  <!-- <!-1- News -1-> -->
+  <!-- <!-1- <section id="news" class="py-16 bg-slate-50"> -1-> -->
+  <!-- <section id="news" class="py-16"> -->
+  <!--     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> -->
+  <!--         <div class="flex items-center justify-between mb-4"> -->
+  <!--             <h2 class="text-2xl font-bold">News</h2> -->
+  <!--             <div class="space-x-2"> -->
+  <!--                 <button id="news-prev" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">←</button> -->
+  <!--                 <button id="news-next" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">→</button> -->
+  <!--             </div> -->
+  <!--         </div> -->
+
+  <!--         <div id="news-container" class="flex overflow-x-auto space-x-6 scroll-smooth no-scrollbar"> -->
+
+  <!--             <!-1- News card -1-> -->
+  <!--             <article class="min-w-[300px] max-w-sm flex-shrink-0 card rounded-2xl border border-slate-200 bg-white p-6"> -->
+  <!--                 <div class="text-xs uppercase tracking-wide text-slate-500">Aug 25, 2025</div> -->
+  <!--                 <h3 class="mt-1 font-semibold">WWZ and ZH cross section paper published</h3> -->
+  <!--                 <p class="mt-2 text-sm text-slate-600"> -->
+  <!--                 Our work on the simultaneous measurement of <em>WWZ</em> and <em>ZH (H→WW)</em> production -->
+  <!--                 at √s = 13 and 13.6 TeV has been published in <em>Physical Review Letters</em>. -->
+  <!--                 </p> -->
+  <!--                 <a class="mt-3 inline-block text-[var(--brand)] text-sm font-medium" -->
+  <!--                    href="https://doi.org/10.1103/6z3d-zjw4" target="_blank" rel="noopener"> -->
+  <!--                     Read the paper → -->
+  <!--                 </a> -->
+  <!--             </article> -->
+
+  <!--             <!-1- News card -1-> -->
+  <!--             <article class="min-w-[300px] max-w-sm flex-shrink-0 card rounded-2xl border border-slate-200 bg-white p-6"> -->
+  <!--                 <div class="text-xs uppercase tracking-wide text-slate-500">Aug 25, 2025</div> -->
+  <!--                 <h3 class="mt-1 font-semibold">Alexandra Aponte Utani</h3> -->
+  <!--                 <p class="mt-2 text-sm text-slate-600"> -->
+  <!--                 Our work on the simultaneous measurement of <em>WWZ</em> and <em>ZH (H→WW)</em> production -->
+  <!--                 at √s = 13 and 13.6 TeV has been published in <em>Physical Review Letters</em>. -->
+  <!--                 </p> -->
+  <!--                 <a class="mt-3 inline-block text-[var(--brand)] text-sm font-medium" -->
+  <!--                    href="https://doi.org/10.1103/6z3d-zjw4" target="_blank" rel="noopener"> -->
+  <!--                     Read the paper → -->
+  <!--                 </a> -->
+  <!--             </article> -->
+
+  <!--             <!-1- News card -1-> -->
+  <!--             <article class="min-w-[300px] max-w-sm flex-shrink-0 card rounded-2xl border border-slate-200 bg-white p-6"> -->
+  <!--                 <div class="text-xs uppercase tracking-wide text-slate-500">Jan 15, 2025</div> -->
+  <!--                 <h3 class="mt-1 font-semibold">WWZ and ZH cross section paper published</h3> -->
+  <!--                 <p class="mt-2 text-sm text-slate-600"> -->
+  <!--                 Our work on the simultaneous measurement of <em>WWZ</em> and <em>ZH (H→WW)</em> production -->
+  <!--                 at √s = 13 and 13.6 TeV has been published in <em>Physical Review Letters</em>. -->
+  <!--                 </p> -->
+  <!--                 <a class="mt-3 inline-block text-[var(--brand)] text-sm font-medium" -->
+  <!--                    href="https://doi.org/10.1103/6z3d-zjw4" target="_blank" rel="noopener"> -->
+  <!--                     Read the paper → -->
+  <!--                 </a> -->
+  <!--             </article> -->
+
+  <!--             <!-1- ... -1-> -->
+  <!--         </div> -->
+  <!--     </div> -->
+  <!-- </section> -->
+
+  <!-- <script> -->
+  <!--     const container = document.getElementById('news-container'); -->
+  <!--     document.getElementById('news-prev').addEventListener('click', () => { -->
+  <!--         container.scrollBy({ left: -350, behavior: 'smooth' }); -->
+  <!--     }); -->
+  <!--     document.getElementById('news-next').addEventListener('click', () => { -->
+  <!--         container.scrollBy({ left: 350, behavior: 'smooth' }); -->
+  <!--     }); -->
+  <!-- </script> -->
+
+  <style>
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
+
+  <!-- <!-1- Collaborators -1-> -->
+  <!-- <section id="collaborators" class="py-12 bg-slate-50"> -->
+  <!--     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> -->
+  <!--         <h2 class="text-2xl font-bold">Frequent Collaborators</h2> -->
+  <!--         <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-y-3 gap-x-8 text-slate-700"> -->
+  <!--             <li class="font-medium">Prof. Claudio Campagnari — UC Santa Barbara</li> -->
+  <!--             <li class="font-medium">Prof. Avi Yagil — UC San Diego</li> -->
+  <!--             <li class="font-medium">Prof. Frank Wuerthwein — UC San Diego</li> -->
+  <!--             <li class="font-medium">Prof. Peter Wittich — Cornell University</li> -->
+  <!--             <li class="font-medium">Matevz Tadel — UC San Diego</li> -->
+  <!--             <li class="font-medium">Slava Krutelyov — UC San Diego</li> -->
+  <!--             <li class="font-medium">Mario Masciovecchio — UC San Diego</li> -->
+  <!--             <li class="font-medium">Leonardo Giannini — UC San Diego</li> -->
+  <!--             <li class="font-medium">Manos Vourliotis — UC San Diego</li> -->
+  <!--             <li class="font-medium">Jade Chismar — UC San Diego</li> -->
+  <!--             <li class="font-medium">Gavin Niendorf — Cornell University</li> -->
+  <!--             <li class="font-medium">Prof. Tae Min Hong — University of Pittsburgh</li> -->
+  <!--             <li class="font-medium">Sergo Jindariani — Fermilab</li> -->
+  <!--             <li class="font-medium">Prof. Michael Schmitt — Northwestern</li> -->
+  <!--             <!-1- Add more names as needed -1-> -->
+  <!--         </ul> -->
+  <!--     </div> -->
+  <!-- </section> -->
+
+  <!-- <!-1- Public Talks -1-> -->
+  <!-- <section id="presentations" class="py-16 bg-slate-50"> -->
+  <!--     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> -->
+  <!--         <h2 class="text-2xl font-bold">Public Talks</h2> -->
+  <!--         <ol class="mt-6 space-y-4 list-disc list-inside text-slate-700"> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "New Frontiers of Electroweak Physics at the LHC" — --> 
+  <!--                 <em>Mid-Florida QuarkNet Day 2024</em>. -->
+  <!--                 <!-1- <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -1-> -->
+  <!--             </li> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "An Invitation to Imagine Something from Nothing" — --> 
+  <!--                 <em>Galesville Astrophysical Society 2024</em>. -->
+  <!--                 <!-1- <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -1-> -->
+  <!--             </li> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "An Invitation to Imagine Something from Nothing" — --> 
+  <!--                 <em>Aspen Center of Physics 2024</em>. -->
+  <!--                 <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a> -->
+  <!--             </li> -->
+  <!--             <li> -->
+  <!--                 <span class="font-medium">Public Seminar:</span> --> 
+  <!--                 "Then and now: Developments in the large Hadron Collider" — --> 
+  <!--                 <em>Particle Fever</em> Science on Screen, Enzian Theater, Maitland FL. -->
+  <!--             </li> -->
+  <!--             <!-1- <li> -1-> -->
+  <!--             <!-1-     <span class="font-medium">Seminar:</span> -1-> --> 
+  <!--             <!-1-     "Line Segment Tracking: GPU-accelerated track reconstruction for HL-LHC" — -1-> --> 
+  <!--             <!-1-     <em>Fermilab LPC Seminar, 2024</em>. -1-> -->
+  <!--             <!-1-     <a href="#" class="text-[var(--brand)] text-sm font-medium ml-2">Recording →</a> -1-> -->
+  <!--             <!-1- </li> -1-> -->
+  <!--             <!-1- <li> -1-> -->
+  <!--             <!-1-     <span class="font-medium">Conference contribution:</span> -1-> --> 
+  <!--             <!-1-     "Observation of triboson production at the LHC" — -1-> --> 
+  <!--             <!-1-     <em>ICHEP 2022</em>. -1-> -->
+  <!--             <!-1-     <a href="#" class="text-[var(--brand)] text-sm font-medium ml-2">Proceedings →</a> -1-> -->
+  <!--             <!-1- </li> -1-> -->
+  <!--         </ol> -->
+  <!--     </div> -->
+  <!-- </section> -->
+
+<!-- Public Talks -->
+<section id="presentations" class="scroll-mt-28 py-16 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold">Public Talks</h2>
+
+    <!-- Featured talks with images -->
+    <div class="mt-6 grid lg:grid-cols-2 gap-6">
+      <!-- Talk 1 -->
+      <article class="card rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+        <img src="aspenimage.png" alt="Talk image" class="h-48 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold text-lg">An Invitation to Imagine Something from Nothing</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            <em>Aspen Center of Physics, March 2024</em>
+          </p>
+          <a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="mt-3 inline-block text-[var(--brand)] text-sm font-medium">YouTube →</a>
+        </div>
+      </article>
+
+      <!-- Talk 2 -->
+      <article class="card rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+        <img src="enzian.png" alt="Talk image" class="h-48 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold text-lg">Then and Now: Developments in the Large Hadron Collider</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            <em>Particle Fever — Science on Screen, Dec 2022, Enzian Theater, Maitland FL</em>
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Remaining talks in list -->
+    <ol class="mt-10 space-y-4 list-disc list-inside text-slate-700">
+      <li>
+        <span class="font-medium">Public Seminar:</span>
+        "New Frontiers of Electroweak Physics at the LHC" — 
+        <em>Mid-Florida QuarkNet Day 2024</em>.
+      </li>
+      <li>
+        <span class="font-medium">Public Seminar:</span>
+        "An Invitation to Imagine Something from Nothing" — 
+        <em>Galesville Astrophysical Society 2024</em>.
+      </li>
+    </ol>
+  </div>
+<!-- </section> -->
+
+  <div class=" mb-24">
+      <p>
+
+      </p>
+  </div>
+
+<!-- Presentations -->
+<section id="talks" class="scroll-mt-28 py-16 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-1">
+    <h2 class="text-2xl font-bold">Seminar / Colloquium / Conference Talks</h2>
+
+    <div class="mt-6 space-y-4 text-slate-700">
+
+      <!-- Toggle text -->
+      <div class="flex justify-end mb-4">
+        <span id="toggleAll" class="cursor-pointer text-[var(--brand)] text-sm font-medium">
+          Collapse All
+        </span>
+      </div>
+
+      <!-- Measurement of WWZ & ZH -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">
+          Measurement of WWZ and ZH production cross sections at √s = 13 and 13.6 TeV
+        </summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Invited Parallel</div>
+            <div data-label="Event/Inst.">KSEA US-Korea Conference</div>
+            <div data-label="City/State">Atlanta, GA</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Extreme Computing -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Extreme Computing</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Invited Plenary</div>
+            <div data-label="Event/Inst.">Physics At The Highest Energies With Colliders (Galileo Galilei Institute)</div>
+            <div data-label="City/State">Florence, Italy</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Pheno 2025 -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Recent LHC Results</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Invited Plenary</div>
+            <div data-label="Event/Inst.">Pheno 2025</div>
+            <div data-label="City/State">Pittsburgh, PA</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- LHCP 2025 -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Computing R&amp;D: How we get to our targets</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">LHCP 2025</div>
+            <div data-label="City/State">Taipei, Taiwan</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- UF Mid tenure -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Forging New Paths to Unveil the Electroweak Sector</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2025</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Session"></div>
+            <div data-label="Event/Inst.">Univ. of Florida</div>
+            <div data-label="City/State">Gainesville, FL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- KSEA SERC (Mar 2025) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Enhancing Particle Physics Discovery Through Computational Innovation</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2025</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">KSEA Southeastern Regional Conference</div>
+            <div data-label="City/State">Orlando, FL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Muon Collider (Aug 2025) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Muon Collider the Dream Machine</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2024</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">KSEA US-Korea Conference</div>
+            <div data-label="City/State">San Francisco, CA</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- PURSUE (USCMS) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Higgs Physics: What is in the vacuum?</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jun 2025</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">PURSUE (USCMS) Program</div>
+            <div data-label="City/State">Fermilab (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2024</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">PURSUE (USCMS) Program</div>
+            <div data-label="City/State">Fermilab (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Delhi (HSF-India) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">GPU Programming</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2024</div>
+            <div data-label="Type">Lecture</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">HSF-India HEP Software Workshop</div>
+            <div data-label="City/State">Delhi, India</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- KSEA SERC (Mar 2024) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">AI for Particle Tracking</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2024</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">KSEA Southeastern Regional Conference</div>
+            <div data-label="City/State">Gainesville, FL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Aspen -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">LHC Future Opportunities</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2024</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Invited Plenary</div>
+            <div data-label="Event/Inst.">The Future of High Energy Physics: A New Generation, A New Vision Aspen Winter Conference</div>
+            <div data-label="City/State">Aspen, CO</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- CHEP -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Line Segment Tracking at CMS</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2023</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">Computing in High Energy &amp; Nuclear Physics (CHEP)</div>
+            <div data-label="City/State">Norfolk, VA</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- CIPANP (Sep 2022) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Recent CMS results on Standard Model Physics</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2022</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div>
+            <div data-label="City/State">Lake Buena Vista, FL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- CIPANP (Aug 2022) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Recent CMS results on Higgs physics</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2022</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">Conference on the Intersection of Particle and Nuclear Physics (CIPANP)</div>
+            <div data-label="City/State">Lake Buena Vista, FL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- New frontiers of electroweak physics at the LHC (multi) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">New frontiers of electroweak physics at the LHC</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+
+          <!-- <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4"> -->
+          <!--   <div data-label="Date">Nov 2023</div> -->
+          <!--   <div data-label="Type">Conference</div> -->
+          <!--   <div data-label="Session">Invited</div> -->
+          <!--   <div data-label="Event/Inst.">Southeastern Section of American Physical Society (SESAPS)</div> -->
+          <!--   <div data-label="City/State">Richmond, KY</div> -->
+          <!--   <div data-label="Link"></div> -->
+          <!-- </div> -->
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2023</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">PKU / SJTU Collider Physics Forum</div>
+            <div data-label="City/State">Virtual</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Tennessee, Knoxville HEP Seminar</div>
+            <div data-label="City/State">Knoxville, TN</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Korea Advanced Institute of Science &amp; Technology</div>
+            <div data-label="City/State">Daejeon, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Association of Korean Physicists in America–Korean Physical Society Joint Symposium</div>
+            <div data-label="City/State">Virtual</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Alabama</div>
+            <div data-label="City/State">Tuscaloosa, AL</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Notre Dame</div>
+            <div data-label="City/State">Notre Dame, IN</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2022</div>
+            <div data-label="Type">Colloquium</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Florida</div>
+            <div data-label="City/State">Gainesville, FL</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Notre Dame HEP Seminar</div>
+            <div data-label="City/State">Notre Dame, IN</div>
+            <div data-label="Link"></div>
+          </div>
+
+        </div>
+      </details>
+
+      <!-- Observation of production of three massive gauge boson (multi) -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Observation of production of three massive gauge boson</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2022</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Florida HEP Seminar</div>
+            <div data-label="City/State">Gainesville, FL (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2021</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Illinois HEP Seminar</div>
+            <div data-label="City/State">Urbana, IL (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Dec 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Pittsburgh HEP Seminar</div>
+            <div data-label="City/State">Pittsburgh, PA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Oct 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">UCSB HEP Seminar</div>
+            <div data-label="City/State">Santa Barbara, CA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Oct 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Michigan HEP Seminar</div>
+            <div data-label="City/State">Ann Arbor, MI (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Pennsylvania HEP Seminar</div>
+            <div data-label="City/State">Philadelphia, PA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Maryland HEP Seminar</div>
+            <div data-label="City/State">College Park, MD (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">KSU/KU/UNL Joint HEP Seminar</div>
+            <div data-label="City/State">Kansas / Nebraska (Virtual)</div>
+            <div data-label="Link"><a href="https://www.youtube.com/watch?v=WBUvlviE_oY" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Fermilab Wine &amp; Cheese Seminar</div>
+            <div data-label="City/State">Batavia, IL (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Korea Institute for Advanced Study HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"><a href="https://www.youtube.com/watch?v=UYbUNBO4t7I" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Seoul HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Aug 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Seoul National University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <!-- <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4"> -->
+          <!--   <div data-label="Date">Aug 2020</div> -->
+          <!--   <div data-label="Type">Symposium</div> -->
+          <!--   <div data-label="Session">Invited</div> -->
+          <!--   <div data-label="Event/Inst.">Workshop on New Windows to Explore the Universe</div> -->
+          <!--   <div data-label="City/State">Danyang, Korea</div> -->
+          <!--   <div data-label="Link"></div> -->
+          <!-- </div> -->
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Hanyang University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Yonsei University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Korea University HEP Seminar</div>
+            <div data-label="City/State">Seoul, Korea</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jun 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Rice University HEP Seminar</div>
+            <div data-label="City/State">Houston, TX (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jun 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Harvard/MIT LPPC Seminar</div>
+            <div data-label="City/State">Boston, MA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2020</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">UC San Diego HEP Seminar</div>
+            <div data-label="City/State">San Diego, CA (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+
+        </div>
+      </details>
+
+      <!-- Multiboson physics at CMS -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Multiboson physics at CMS</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2021</div>
+            <div data-label="Type">Symposium</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Korean Physical Society Spring Meeting — Pioneer Symposium</div>
+            <div data-label="City/State">Virtual</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- ICHEP2020 -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Search for heavy triboson production in leptonic final states</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2020</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">ICHEP 2020</div>
+            <div data-label="City/State">Prague (Virtual)</div>
+            <div data-label="Link"><a href="https://youtu.be/nOF4IBNO-Tk?t=1543" class="text-[var(--brand)] text-sm font-medium ml-2">YouTube →</a></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Connecting the Dots -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Parallelizable Track Pattern Recognition in HL-LHC</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2020</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session"></div>
+            <div data-label="Event/Inst.">Connecting the Dots Workshop</div>
+            <div data-label="City/State">Princeton, NJ (Virtual)</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Measurements of triple gauge boson production in ATLAS and CMS -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Measurements of triple gauge boson production in ATLAS and CMS</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jul 2019</div>
+            <div data-label="Type">Workshop</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Physics Workshop at the LPC: Multibosons at the Energy Frontier</div>
+            <div data-label="City/State">Batavia, IL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Rare EW multiboson at LHC -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Rare EW multiboson at LHC</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2019</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Plenary</div>
+            <div data-label="Event/Inst.">LHCP 2019</div>
+            <div data-label="City/State">Puebla, Mexico</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Electroweak physics with multibosons at CMS -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Electroweak physics with multibosons at CMS</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">May 2019</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Parallel</div>
+            <div data-label="Event/Inst.">Pheno 2019</div>
+            <div data-label="City/State">Pittsburgh, PA</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Search for the SM production of WWW events -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Search for the SM production of WWW events</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2019</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">LHC Physics Center Physics Forum</div>
+            <div data-label="City/State">Batavia, IL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Searches for new physics in the Higgs sector -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Searches for new physics in the Higgs sector</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Mar 2016</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Pennsylvania (HEP)</div>
+            <div data-label="City/State">Philadelphia, PA</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- First evidence for vector-boson fusion H→WW -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">First evidence for vector-boson fusion H→WW</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Feb 2016</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Cincinnati HEP Seminar</div>
+            <div data-label="City/State">Cincinnati, OH</div>
+            <div data-label="Link"></div>
+          </div>
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2015</div>
+            <div data-label="Type">Seminar</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">Univ. of Pittsburgh HEP Seminar</div>
+            <div data-label="City/State">Pittsburgh, PA</div>
+            <div data-label="Link"></div>
+          </div>
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Apr 2015</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session"></div>
+            <div data-label="Event/Inst.">APS April Meeting</div>
+            <div data-label="City/State">Baltimore, MD</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Advanced Analysis Technique -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Advanced Analysis Technique: Squeezing out information</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Nov 2015</div>
+            <div data-label="Type">Workshop</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">4th Chicagoland Pheno–ATLAS Workshop</div>
+            <div data-label="City/State">Chicago, IL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- ATLAS VBF Trigger Overview -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">ATLAS VBF Trigger Overview</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Jan 2015</div>
+            <div data-label="Type">Workshop</div>
+            <div data-label="Session">Invited</div>
+            <div data-label="Event/Inst.">3rd Chicagoland ATLAS–Pheno Meeting</div>
+            <div data-label="City/State">Chicago, IL</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Higgs Properties -->
+      <details open class="border border-slate-200 rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold">Higgs Properties</summary>
+        <div class="mt-3 ml-4 space-y-1 text-sm">
+          <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+            <div data-label="Date">Sep 2014</div>
+            <div data-label="Type">Conference</div>
+            <div data-label="Session">Plenary</div>
+            <div data-label="Event/Inst.">Physics in Collisions 2014</div>
+            <div data-label="City/State">Bloomington, IN</div>
+            <div data-label="Link"></div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- Collapse/Expand script -->
+<script>
+  const toggleLink = document.getElementById("toggleAll");
+  const allDetails = document.querySelectorAll("#presentations details");
+  let expanded = true; // start open
+  toggleLink?.addEventListener("click", () => {
+    expanded = !expanded;
+    allDetails.forEach(d => expanded ? d.setAttribute("open", "") : d.removeAttribute("open"));
+    toggleLink.textContent = expanded ? "Collapse All" : "Expand All";
+  });
+</script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Check if screen width is small (e.g. <1024 = Tailwind "md")
+            if (window.innerWidth < 1024) {
+                document.querySelectorAll("#presentations details[open]").forEach(d => {
+                    d.removeAttribute("open");
+                });
+
+                // Also flip the toggle text
+                const toggleLink = document.getElementById("toggleAll");
+                if (toggleLink) toggleLink.textContent = "Expand All";
+            }
+        });
+    </script>
+
+
+  <!-- Publications -->
+  <section id="publications" class="scroll-mt-28 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between">
+        <h2 class="text-2xl font-bold">Selected Publications</h2>
+        <a href="https://inspirehep.net/authors/1054464" class="text-sm font-medium text-[var(--brand)]">Full list on InspireHEP →</a>
+      </div>
+      <!-- <ol class="pubs mt-6 space-y-4 list-decimal list-inside"> -->
+      <!--   <li><span class="font-medium">Lastname, A.</span>, Lastname, B., <span class="underline decoration-[var(--accent)] underline-offset-4">Title of the paper</span>. <em>Journal</em> (Year). <a class="text-[var(--brand)]" href="#">pdf</a> • <a class="text-[var(--brand)]" href="#">code</a></li> -->
+      <!--   <li><span class="font-medium">Lastname, A.</span>, Lastname, B., Title… <em>Conference</em> (Year). <a class="text-[var(--brand)]" href="#">link</a></li> -->
+      <!--   <li>… add items …</li> -->
+      <!-- </ol> -->
+      <ol class="pubs mt-6 space-y-4 list-decimal list-inside">
+
+          <li>
+              CMS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Measurement of WWZ and ZH Production Cross Sections at √s = 13 and 13.6 TeV
+              </span>,
+              <em>Phys. Rev. Lett.</em> <strong>135</strong>, 091802 (2025).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1103/6z3d-zjw4" target="_blank" rel="noopener">doi:10.1103/6z3d-zjw4</a>
+          </li>
+
+          <li>
+              CMS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Study of WH production through vector boson scattering and extraction of the relative sign of the W and Z couplings to the Higgs boson in proton–proton collisions at √s = 13 TeV
+              </span>,
+              <em>Phys. Lett. B</em> <strong>860</strong>, 139202 (2025).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1016/j.physletb.2024.139202" target="_blank" rel="noopener">doi:10.1016/j.physletb.2024.139202</a>
+          </li>
+
+          <li>
+              CMS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Observation of the Production of Three Massive Gauge Bosons at √s = 13 TeV
+              </span>,
+              <em>Phys. Rev. Lett.</em> <strong>125</strong>, 151802 (2020).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1103/PhysRevLett.125.151802" target="_blank" rel="noopener">doi:10.1103/PhysRevLett.125.151802</a>
+          </li>
+
+          <li>
+              CMS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Search for the production of W<sup>±</sup>W<sup>±</sup>W<sup>∓</sup> events at √s = 13 TeV
+              </span>,
+              <em>Phys. Rev. D</em> <strong>100</strong>, 012004 (2019).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1103/PhysRevD.100.012004" target="_blank" rel="noopener">doi:10.1103/PhysRevD.100.012004</a>
+          </li>
+
+          <li>
+              ATLAS and CMS Collaborations,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Measurements of the Higgs boson production and decay rates and constraints on its couplings from a combined ATLAS and CMS analysis of the LHC pp collision data at √s = 7 and 8 TeV
+              </span>,
+              <em>J. High Energy Phys.</em> <strong>08</strong>, 045 (2016).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1007/JHEP08(2016)045" target="_blank" rel="noopener">doi:10.1007/JHEP08(2016)045</a>
+          </li>
+
+          <li>
+              ATLAS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Observation and measurement of Higgs boson decays to WW
+              </span>,
+              <em>Phys. Rev. D</em> <strong>92</strong>, 012006 (2015).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1103/PhysRevD.92.012006" target="_blank" rel="noopener">doi:10.1103/PhysRevD.92.012006</a>
+          </li>
+
+          <li>
+              ATLAS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Measurements of Higgs boson production and couplings in diboson final states with the ATLAS detector at the LHC
+              </span>,
+              <em>Phys. Lett. B</em> <strong>726</strong>, 88–119 (2013), erratum <em>Phys. Lett. B</em> <strong>734</strong>, 406 (2014).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1016/j.physletb.2013.08.010" target="_blank" rel="noopener">doi:10.1016/j.physletb.2013.08.010</a>, 
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1016/j.physletb.2014.05.011" target="_blank" rel="noopener">doi:10.1016/j.physletb.2014.05.011</a>
+          </li>
+
+          <li>
+              ATLAS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Observation of a new particle in the search for the Standard Model Higgs boson with the ATLAS detector at the LHC
+              </span>,
+              <em>Phys. Lett. B</em> <strong>716</strong>, 1–29 (2012).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1016/j.physletb.2012.08.020" target="_blank" rel="noopener">doi:10.1016/j.physletb.2012.08.020</a>
+          </li>
+
+          <li>
+              G. Niendorf, T. Reid, P. Wittich, P. Elmer, B. Wang <em>et al.</em>,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Line Segment Tracking in the HL-LHC
+              </span>,
+              <em>arXiv:2207.08207</em> (2022).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.48550/arXiv.2207.08207" target="_blank" rel="noopener">arXiv:2207.08207</a>
+          </li>
+
+          <li>
+              P. Chang, P. Elmer, Y. Gu, V. Krutelyov, G. Niendorf <em>et al.</em>,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Segment Linking: A Highly Parallelizable Track Reconstruction Algorithm for HL-LHC
+              </span>,
+              <em>J. Phys. Conf. Ser.</em> <strong>2375</strong>, 012005 (2022).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1088/1742-6596/2375/1/012005" target="_blank" rel="noopener">doi:10.1088/1742-6596/2375/1/012005</a>
+          </li>
+
+          <li>
+              CMS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  First observation of production of three massive gauge bosons
+              </span>,
+              <em>PoS ICHEP2020</em>, 325 (2021).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.22323/1.390.0325" target="_blank" rel="noopener">doi:10.22323/1.390.0325</a>
+          </li>
+
+          <li>
+              ATLAS and CMS Collaborations,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Studies of rare electroweak multiboson interactions at the LHC
+              </span>,
+              <em>PoS LHCP2019</em>, 107 (2019).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.22323/1.350.0107" target="_blank" rel="noopener">doi:10.22323/1.350.0107</a>
+          </li>
+
+          <li>
+              V. Cavaliere, J. Adelman, P. Albicocco, J. Alison, L.S. Ancu <em>et al.</em>,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Design of a hardware track finder (Fast Tracker) for the ATLAS trigger
+              </span>,
+              <em>JINST</em> <strong>11</strong>, C02056 (2016).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1088/1748-0221/11/02/C02056" target="_blank" rel="noopener">doi:10.1088/1748-0221/11/02/C02056</a>
+          </li>
+
+          <li>
+              G. Volpi, J. Adelman, P. Albicocco, J. Alison, L.S. Ancu <em>et al.</em>,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  The ATLAS fast tracker processor design
+              </span>,
+              <em>PoS VERTEX2015</em>, 040 (2015).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.22323/1.254.0040" target="_blank" rel="noopener">doi:10.22323/1.254.0040</a>
+          </li>
+
+          <li>
+              J. Anderson, A. Andreani, A. Andreazza, A. Annovi, M. Atkinson <em>et al.</em>,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  A fast hardware tracker for the ATLAS trigger system
+              </span>,
+              <em>Nucl. Instrum. Meth. A</em> <strong>718</strong>, 258 (2013).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1016/j.nima.2012.11.133" target="_blank" rel="noopener">doi:10.1016/j.nima.2012.11.133</a>
+          </li>
+
+          <li>
+              J. Anderson, A. Andreani, A. Andreazza, A. Annovi, M. Atkinson <em>et al.</em>,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  FTK: A Fast Track Trigger for ATLAS
+              </span>,
+              <em>JINST</em> <strong>7</strong>, C10002 (2012).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.1088/1748-0221/7/10/C10002" target="_blank" rel="noopener">doi:10.1088/1748-0221/7/10/C10002</a>
+          </li>
+
+          <li>
+              CMS Collaboration,
+              <span class="underline decoration-[var(--accent)] underline-offset-4">
+                  Line Segment Tracking: Improving the Phase-2 CMS High Level Trigger Tracking with a Novel, Hardware-Agnostic Pattern Recognition Algorithm
+              </span>,
+              <em>arXiv:2407.18231</em> (2024).
+              <a class="text-[var(--brand)]" href="https://doi.org/10.48550/arXiv.2407.18231" target="_blank" rel="noopener">arXiv:2407.18231</a>
+          </li>
+
+
+
+      </ol>
+
+
+    </div>
+  </section>
+
+  <!-- Teaching -->
+  <section id="teaching" class="scroll-mt-28 py-16 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Teaching</h2>
+      <div class="mt-6 grid md:grid-cols-4 gap-6">
+
+        <!-- class -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-sm text-slate-500">Fall 2025</div>
+          <div class="mt-1 font-semibold">PHY2060 — Enriched Physics 1 w/ Calc</div>
+          <p class="mt-2 text-sm text-slate-700">
+          <a class="text-[var(--brand)]" href="https://ufl.instructure.com/courses/542819">Canvas (UF Internal)</a></p>
+        </div>
+
+        <!-- class -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-sm text-slate-500">Spring 2025</div>
+          <div class="mt-1 font-semibold">PHY2048 — Physics 1 w/ Calc</div>
+          <p class="mt-2 text-sm text-slate-700">
+          <a class="text-[var(--brand)]" href="https://ufl.instructure.com/courses/532659">Canvas (UF Internal)</a></p>
+        </div>
+
+        <!-- class -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-sm text-slate-500">Fall 2024</div>
+          <div class="mt-1 font-semibold">PHY2048 — Physics 1 w/ Calc</div>
+          <p class="mt-2 text-sm text-slate-700">
+          <a class="text-[var(--brand)]" href="https://ufl.instructure.com/courses/515736">Canvas (UF Internal)</a></p>
+        </div>
+
+        <!-- class -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-sm text-slate-500">Spring 2024</div>
+          <div class="mt-1 font-semibold">PHY2048 — Physics 1 w/ Calc</div>
+          <p class="mt-2 text-sm text-slate-700">
+          <a class="text-[var(--brand)]" href="https://ufl.instructure.com/courses/498010">Canvas (UF Internal)</a></p>
+        </div>
+
+        <!-- class -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-sm text-slate-500">Fall 2023</div>
+          <div class="mt-1 font-semibold">PHY2048 — Physics 1 w/ Calc</div>
+          <p class="mt-2 text-sm text-slate-700">
+          <a class="text-[var(--brand)]" href="https://ufl.instructure.com/courses/486237">Canvas (UF Internal)</a></p>
+        </div>
+
+        <!-- class -->
+        <div class="card rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-sm text-slate-500">Fall 2022</div>
+          <div class="mt-1 font-semibold">PHY2049 — Physics 2 w/ Calc</div>
+          <!-- <p class="mt-2 text-sm text-slate-600">One‑line description • <a class="text-[var(--brand)]" href="#">Syllabus</a></p> -->
+          <p class="mt-2 text-sm text-slate-700">
+          <!-- Calculus-based Physics II covering electricity & magnetism (fields, circuits, Maxwell’s equations), waves & optics, and an introduction to modern physics • -->
+          <a class="text-[var(--brand)]" href="https://ufl.instructure.com/courses/463702">Canvas (UF Internal)</a></p>
+        </div>
+
+        <!-- <div class="card rounded-2xl border border-slate-200 bg-white p-6"> -->
+        <!--   <div class="text-sm text-slate-500">Spring 2025</div> -->
+        <!--   <div class="mt-1 font-semibold">Course DEF 456 — Title of Course</div> -->
+        <!--   <p class="mt-2 text-sm text-slate-600">One‑line description • <a class="text-[var(--brand)]" href="#">Materials</a></p> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="scroll-mt-28 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-6">
+          <h2 class="text-2xl font-bold">Contact</h2>
+          <p class="mt-4">Email: p dot chang at ufl dot edu</p>
+          <p class="mt-1">Address: New Physics Building 2035, Department of Physics, University of Florida, Gainesville, FL 32603</p>
+          <!-- <p class="mt-1">Twitter/X · Bluesky · GitHub · Google Scholar</p> -->
+          <div class="mt-6">
+            <a href="#top" class="inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-4 py-2 text-sm font-semibold text-white shadow">Back to top</a>
+          </div>
+        </div>
+        <div class="lg:col-span-6">
+          <div class="rounded-2xl border border-slate-200 overflow-hidden h-[300px]">
+            <!-- Drop in a static campus map or iframe -->
+            <iframe class="w-full h-full" title="Map" src="https://www.openstreetmap.org/export/embed.html?bbox=-82.352735%2C29.642488%2C-82.346807%2C29.645377&layer=mapnik" loading="lazy"></iframe>
+<!-- <iframe --> 
+<!--   width="100%" --> 
+<!--   height="400" --> 
+<!--   frameborder="0" --> 
+<!--   scrolling="no" --> 
+<!--   marginheight="0" --> 
+<!--   marginwidth="0" --> 
+<!--   src="https://www.openstreetmap.org/export/embed.html?bbox=-82.3555%2C29.6420%2C-82.3425%2C29.6430&layer=mapnik"> -->
+<!-- </iframe> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>© <span id="year"></span> Chang Lab • Department of Physics • University of Florida</div>
+      <div class="flex items-center gap-3">
+        <a class="hover:underline" href="#">Accessibility</a>
+        <span aria-hidden>•</span>
+        <a class="hover:underline" href="#">Privacy</a>
+        <span aria-hidden>•</span>
+        <a class="hover:underline" href="#">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+      // Mobile menu toggle
+      document.getElementById('menuBtn').addEventListener('click',()=>{
+          const m=document.getElementById('mobileMenu');
+          m.classList.toggle('hidden');
+      });
+      // Current year
+      document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+
+<script>
+  // --- ScrollSpy: highlight nav item for section nearest the viewport center ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = Array.from(document.querySelectorAll('nav .topnav-link[href^="#"]'));
+    const idToLink = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+
+    // Only spy on sections that actually have nav links
+    const sections = Array.from(document.querySelectorAll('section[id]'))
+      .filter(sec => idToLink.has(sec.id));
+
+    // Optional: if you have a fixed header, account for its height here (px)
+    const HEADER_OFFSET = 0; // e.g. 72 for a 72px fixed header
+
+    // Where is our "focus line"? 0.5 = exact middle of viewport
+    const FOCUS_LINE = 0.5;
+
+    // Highlight styles
+    function setActive(id) {
+      idToLink.forEach((link, key) => {
+        const active = key === id;
+        link.classList.toggle('bg-[var(--brand)]/10', active);
+        link.classList.toggle('text-[var(--brand)]', active);
+        link.classList.toggle('underline', active);
+        link.classList.toggle('underline-offset-8', active);
+        link.classList.toggle('decoration-[var(--accent)]', active);
+        link.setAttribute('aria-current', active ? 'page' : 'false');
+      });
+    }
+
+    // Compute which section's midpoint is closest to the focus line
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const vh = window.innerHeight;
+        const focusY = HEADER_OFFSET + vh * FOCUS_LINE;
+        let bestId = null;
+        let bestDist = Infinity;
+
+        for (const sec of sections) {
+          const r = sec.getBoundingClientRect();
+          const mid = r.top + r.height / 2;      // section midpoint (in viewport coords)
+          const dist = Math.abs(mid - focusY);   // distance to our focus line
+          // Only consider sections that have some presence on screen
+          const visible = r.bottom > 0 && r.top < vh;
+          if (visible && dist < bestDist) {
+            bestDist = dist;
+            bestId = sec.id;
+          }
+        }
+        if (bestId) setActive(bestId);
+        ticking = false;
+      });
+    }
+
+    // Init + listeners
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll(); // run once on load
+
+    // Optional: immediate highlight on nav click
+    links.forEach(a => a.addEventListener('click', () => {
+      const id = a.getAttribute('href').slice(1);
+      if (id) setActive(id);
+    }));
+  });
+</script>
+
+
+<script>
+(function(){
+  const hot1 = document.getElementById('hot1');
+  const hot2 = document.getElementById('hot2');
+  const secretBtn = document.getElementById('secretBtn');
+
+  // ---- COPY your three constants exactly as in your page ----
+  const SALT_B64 = window.SALT_B64 || "LqEg+sbP7ZRE/AHQ3N66jw==";
+  const IV_B64   = window.IV_B64   || "ta21os7HIhehOTDS";
+  const CT_B64   = window.CT_B64   || "RdDMcQ2/+aaqYxp09yFuY94pmcVpOO40O9x2Y0Wt0BzdPflK5mkcrm06nFho+kmN1yhXKE+z9j8y5iBq67idLxlTrbxgx6uKL1sYPEzw69cA2DDjR/gp38Ge4hnZaF8auvZDjA==";
+  // -----------------------------------------------------------
+
+  let stage = 0;       // 0: wait for first click, 1: wait for second
+  let timer = null;
+  const ms = parseInt(getComputedStyle(document.documentElement)
+              .getPropertyValue('--reveal-window-ms')) || 6000;
+
+  function reset(){
+    stage = 0;
+    if (timer) { clearTimeout(timer); timer = null; }
+    secretBtn.classList.remove('show');
+  }
+  function armSecondStage(){
+    stage = 1;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(()=>{ stage = 0; timer = null; }, ms);
+  }
+
+  hot1.addEventListener('click', (e)=>{
+    if (stage !== 0) return;
+    armSecondStage();
+  });
+
+  hot2.addEventListener('click', (e)=>{
+    if (stage !== 1) { reset(); return; }
+    stage = 2;
+    clearTimeout(timer); timer = null;
+    secretBtn.classList.add('show');
+    // auto-hide after 12s (optional)
+    setTimeout(()=>{ secretBtn.classList.remove('show'); stage = 0; }, 12000);
+  });
+
+  // Hide/reset if user clicks elsewhere while armed
+  document.addEventListener('click', (e)=>{
+    const t = e.target;
+    const isHot = t === hot1 || t === hot2 || t === secretBtn;
+    if (!isHot && stage === 1) { reset(); }
+  }, true);
+
+  // ======= CRYPTO HELPERS (WebCrypto; nothing is stored) =======
+  function b64ToBytes(b64){
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i=0; i<bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  async function deriveKey(pass, saltBytes){
+    const enc = new TextEncoder();
+    const keyMaterial = await crypto.subtle.importKey("raw", enc.encode(pass), { name: "PBKDF2" }, false, ["deriveKey"]);
+    // Increase iterations if you like (tradeoff: slower unlock)
+    return crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: saltBytes, iterations: 200000, hash: "SHA-256" },
+      keyMaterial, { name: "AES-GCM", length: 256 }, false, ["decrypt"]
+    );
+  }
+  async function decryptUrlWith(pass){
+    // try{
+      const salt = b64ToBytes(SALT_B64);
+      const iv   = b64ToBytes(IV_B64);
+      const ct   = b64ToBytes(CT_B64);
+      const key  = await deriveKey(pass, salt);
+      const pt   = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ct);
+      return new TextDecoder().decode(pt);
+    // }catch(e){
+    //   return null; // wrong passphrase or tampered blob
+    // }
+  }
+  // =============================================================
+
+  // What the hidden button does now:
+  secretBtn.addEventListener('click', async ()=>{
+    // Simple UX: native prompt. Replace with your own modal if you have one.
+    const pass = window.prompt("Enter passphrase");
+    if (!pass) return;
+
+    const url = await decryptUrlWith(pass);
+    if (url && /^https?:\/\//i.test(url)){
+      // Optional: prevent referrer leakage to Google Docs
+      const meta = document.createElement('meta');
+      meta.name = 'referrer'; meta.content = 'no-referrer';
+      document.head.appendChild(meta);
+      location.href = url;   // navigate to the decrypted URL
+    } else {
+      alert("Incorrect passphrase.");
+    }
+  });
+
+  // Optional keyboard fallback: press W then H to reveal
+  const seq = ['KeyW','KeyH'];
+  let idx = 0;
+  window.addEventListener('keydown', (e)=>{
+    if (e.code === seq[idx]){
+      idx++;
+      if (idx === seq.length){ secretBtn.classList.add('show'); idx = 0; }
+    } else { idx = 0; }
+  });
+})();
+</script>
+
+
+</body>
+</html>
