@@ -1217,6 +1217,23 @@ startTimer();
 
   <script>
       (function () {
+          const container = document.getElementById('labnews-container');
+          const prev = document.getElementById('labnews-prev');
+          const next = document.getElementById('labnews-next');
+
+          const CARD_STRIDE = container.clientWidth; // scroll by one full "page" (3 cols on large screens)
+
+          prev.addEventListener('click', () => {
+              container.scrollBy({ left: -CARD_STRIDE, behavior: 'smooth' });
+          });
+          next.addEventListener('click', () => {
+              container.scrollBy({ left:  CARD_STRIDE, behavior: 'smooth' });
+          });
+      })();
+  </script>
+
+  <script>
+      (function () {
           const container = document.getElementById('research-container');
           const prev = document.getElementById('research-prev');
           const next = document.getElementById('research-next');
