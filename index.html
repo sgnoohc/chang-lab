@@ -400,8 +400,144 @@ startTimer();
       </div>
   </section>
 
+<!-- Lab News -->
+<section id="lab-news-highlight" class="scroll-mt-28 py-16 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-bold">Lab News</h2>
+   <!-- <a href="#lab-news" class="mt-3 inline-block text-blue-600 hover:underline"> All News → </a> -->
+      <div class="space-x-2">
+        <button id="labnews-prev"
+                class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">
+          ←
+        </button>
+        <button id="labnews-next"
+                class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">
+          →
+        </button>
+      </div>
+    </div>
+
+    <!-- Scroll container -->
+    <div id="labnews-container"
+         class="grid grid-flow-col auto-cols-[minmax(260px,1fr)] lg:auto-cols-[minmax(320px,1fr)]
+                gap-6 overflow-x-auto scroll-smooth no-scrollbar">
+
+<!-- <article class="card rounded-2xl border border-slate-200 bg-white p-5 -->
+<!--                 flex flex-col h-[420px]"> -->
+
+<!--   <!-1- Date -1-> -->
+<!--   <div class="text-xs text-slate-500 uppercase tracking-wide"> -->
+<!--     December 9, 2025 -->
+<!--   </div> -->
+
+<!--   <!-1- Text (variable height OK) -1-> -->
+<!--   <p class="mt-2 text-sm leading-relaxed"> -->
+<!--     <span class="font-medium">Dr. Kelci Mohrman</span> -->
+<!--     presented an update on VBS VVH analysis at CMS Week Seoul -->
+<!--   </p> -->
+
+<!--   <!-1- Image fills remaining space -1-> -->
+<!--   <div class="mt-4 relative flex-1 overflow-hidden rounded-xl"> -->
+<!--     <img -->
+<!--       src="kelci.jpg" -->
+<!--       alt="" -->
+<!--       class="absolute inset-0 w-full h-full object-cover" -->
+<!--     /> -->
+<!--   </div> -->
+
+<!-- </article> -->
+
+      <!-- Item -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-5 flex flex-col h-[420px]">
+        <div class="text-xs text-slate-500 uppercase tracking-wide">December 9, 2025</div>
+        <p class="mt-2 text-sm leading-relaxed">
+          <span class="font-bold">Dr. Kelci Mohrman</span> presented an update on VBS VVH analysis at CMS Week Seoul
+        </p>
+        <div class="mt-4 relative flex-1 overflow-hidden rounded-xl">
+        <img src="photos/Untitled.png"
+             class="absolute inset-0 w-full h-full object-cover"
+             alt="" />
+        </div>
+      </article>
+
+      <!-- Item -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-5 flex flex-col h-[420px]">
+        <div class="text-xs text-slate-500 uppercase tracking-wide">December 8, 2025</div>
+        <p class="mt-2 text-sm leading-relaxed">
+          <span class="font-bold">Matthew Dittrich</span> presented poster on WWZ measurement at CMS Week Seoul
+        </p>
+        <div class="mt-4 relative flex-1 overflow-hidden rounded-xl">
+        <img src="photos/MD_CMSWeekSeoul_Poster.png"
+             class="absolute inset-0 w-full h-full object-cover"
+             alt="" />
+        </div>
+      </article>
+
+      <!-- Item -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-5 flex flex-col h-[420px]">
+        <div class="text-xs text-slate-500 uppercase tracking-wide">November 10, 2025</div>
+        <p class="mt-2 text-sm leading-relaxed">
+        <span class="font-bold">Dr. Eslam Zenhom</span> successfully defends his Ph.D. thesis on <em>A Semi-Merged All-Hadronic Search for Anomalous C2V Couplings in VVH Production</em>
+        </p>
+        <div class="mt-4 relative flex-1 overflow-hidden rounded-xl">
+        <img src="photos/IMG_2655.HEIC"
+             class="absolute inset-0 w-full h-full object-cover"
+             alt="" />
+        </div>
+      </article>
+
+      <!-- Item -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-5 flex flex-col h-[420px]">
+        <div class="text-xs text-slate-500 uppercase tracking-wide">October 9, 2025</div>
+        <p class="mt-2 text-sm leading-relaxed">
+        <span class="font-bold">Dr. Kelci Mohrman</span> presented at Multi-Boson Interaction Workshop 2025 at Brandeis Univ. on <em>Measurement of WWZ and ZH production at 13 and 13.6 TeV</em>
+        </p>
+        <div class="mt-4 relative flex-1 overflow-hidden rounded-xl">
+        <img src="photos/IMG_7569.heic"
+             class="absolute inset-0 w-full h-full object-cover"
+             alt="" />
+        </div>
+      </article>
+
+      <!-- Item -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-5 flex flex-col h-[420px]">
+        <div class="text-xs text-slate-500 uppercase tracking-wide">October 9, 2025</div>
+        <p class="mt-2 text-sm leading-relaxed">
+        <span class="font-bold">Prof. Philip Chang</span> presented at Multi-Boson Interaction Workshop 2025 at Brandeis Univ. on <em>Triboson Physics</em>
+        </p>
+        <div class="mt-4 relative flex-1 overflow-hidden rounded-xl">
+        <img src="photos/IMG_2574.heic"
+             class="absolute inset-0 w-full h-full object-cover"
+             alt="" />
+        </div>
+      </article>
+
+      <!-- Item -->
+      <article class="card rounded-2xl border border-slate-200 bg-white p-5 flex flex-col h-[420px]">
+        <div class="text-xs text-slate-500 uppercase tracking-wide">October 8, 2025</div>
+        <p class="mt-2 text-sm leading-relaxed">
+        <span class="font-bold">Amilqar Karam</span> presented poster at CPAD 2025 at UPenn on <em>Tracklet Classification with Distilled Graph Neural Network on FPGA</em>
+        </p>
+        <div class="mt-4 relative flex-1 overflow-hidden rounded-xl">
+        <img src="photos/thumbnail_Image.png"
+             class="absolute inset-0 w-full h-full object-cover"
+             alt="" />
+        </div>
+      </article>
+
+      <!-- add more cards indefinitely -->
+    </div>
+  </div>
+</section>
+
+
+
   <!-- Research (3-column carousel) -->
-  <section id="research" class="scroll-mt-28 py-16 bg-slate-50">
+  <!-- <section id="research" class="scroll-mt-28 py-16 bg-slate-50"> -->
+  <section id="research" class="scroll-mt-28 py-16">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between mb-4">
               <h2 class="text-2xl font-bold">Research</h2>
@@ -2284,6 +2420,31 @@ startTimer();
     </script>
 
 
+  <!-- Lab News -->
+  <section id="lab-news" class="scroll-mt-28 py-16 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between">
+        <h2 class="text-2xl font-bold">Lab News</h2>
+        <!-- <a href="#lab-news-all" class="text-sm font-medium text-[var(--brand)]">More ↓</a> -->
+      </div>
+
+      <!-- Highlights (keep this short; 3–6 items) -->
+      <ol class="pubs mt-6 space-y-4 list-decimal list-inside">
+        <li>
+          <span class="font-medium">December 9, 2025</span> — Dr. Mohrman gives an update of our research on VBS VVH at the CMS Week Seoul
+        </li>
+        <li>
+          <span class="font-medium">December 8, 2025</span> — Matthew gives a poster presentation of WWZ measurement at the CMS Week Seoul
+        </li>
+        <li>
+          <span class="font-medium">December 9, 2025</span> — Dr. Mohrman gives an update of our research on VBS VVH at the CMS Week Seoul
+        </li>
+      </ol>
+
+    </div>
+  </section>
+
+
   <!-- Publications -->
   <section id="publications" class="scroll-mt-28 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -2461,7 +2622,7 @@ startTimer();
   </section>
 
   <!-- Teaching -->
-  <section id="teaching" class="scroll-mt-28 py-16 bg-slate-50">
+  <section id="teaching" class="scroll-mt-28 py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold">Teaching</h2>
       <div class="mt-6 grid md:grid-cols-4 gap-6">
