@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    date: string;
+    description?: string;
+    author?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const formattedDate = new Date(frontmatter.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<BaseLayout title={`${frontmatter.title} — Chang Lab Blog`} offIndex={true}>
+  <main class="pt-28 pb-16">
+    <article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <header class="mb-10">
+        <time class="text-sm text-slate-400" datetime={frontmatter.date}>{formattedDate}</time>
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 mt-2">{frontmatter.title}</h1>
+        {frontmatter.author && (
+          <p class="mt-2 text-slate-500">By {frontmatter.author}</p>
+        )}
+      </header>
+      <div class="prose prose-slate prose-lg max-w-none">
+        <slot />
+      </div>
+    </article>
+  </main>
+</BaseLayout>
