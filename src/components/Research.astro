@@ -3,17 +3,17 @@ import { research } from '../data/research';
 ---
 
 <!-- Research (3-column carousel) -->
-<section id="research" class="scroll-mt-28 py-16">
+<section id="research" class="scroll-mt-28 py-16" aria-labelledby="research-heading">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between mb-4">
-            <h2 class="text-2xl font-bold">Research</h2>
+            <h2 id="research-heading" class="text-2xl font-bold">Research</h2>
             <div class="space-x-2">
-                <button id="research-prev" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">←</button>
-                <button id="research-next" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">→</button>
+                <button id="research-prev" aria-label="Previous research topics" aria-controls="research-container" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">←</button>
+                <button id="research-next" aria-label="Next research topics" aria-controls="research-container" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">→</button>
             </div>
         </div>
 
-        <div id="research-container" class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto  scroll-smooth no-scrollbar w-full max-w-full [contain:inline-size]">
+        <div id="research-container" role="region" aria-label="Research topics carousel" class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto  scroll-smooth no-scrollbar w-full max-w-full [contain:inline-size]">
 
             {research.map((item, i) => (
                 <article class={`card rounded-2xl border border-slate-200 bg-white p-6${i === 0 ? ' min-w-0 overflow-x-clip [contain:inline-size]' : ''}`}>
@@ -23,13 +23,13 @@ import { research } from '../data/research';
                          alt={item.primaryImageAlt} />
                     {/* MOBILE: toggle control */}
                     <div class={`mt-3 md:hidden min-w-0${i === 0 ? ' max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]' : ' max-w-full overflow-x-clip [contain:inline-size] [content-visibility:auto]'}`}>
-                        <input id={`research-toggle-${i === 0 ? 8 : i}`} type="checkbox" class="peer sr-only" />
-                        <label for={`research-toggle-${i === 0 ? 8 : i}`}
-                               class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none">
-                            <span class="peer-checked:hidden">Read more ↓</span>
-                            <span class="hidden peer-checked:inline">Show less ↑</span>
-                        </label>
-                        <div class="hidden peer-checked:block mt-2">
+                        <button type="button"
+                                class="research-read-more inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer select-none"
+                                aria-expanded="false"
+                                aria-controls={`research-content-${i}`}>
+                            <span class="read-more-text">Read more ↓</span>
+                        </button>
+                        <div id={`research-content-${i}`} class="hidden mt-2">
                             <p class="text-sm text-slate-600" set:html={item.description} />
                             {item.secondaryImage && (
                                 <img class="mt-4 rounded-xl"
@@ -48,6 +48,7 @@ import { research } from '../data/research';
                                     {item.links.map((link) => (
                                         <a href={link.url}
                                            target={link.external ? "_blank" : undefined}
+                                           rel={link.external ? "noopener noreferrer" : undefined}
                                            class="text-[var(--brand)] font-medium block">
                                             {link.text}
                                         </a>
@@ -123,6 +124,26 @@ import { research } from '../data/research';
       t = setTimeout(syncResearchCards, 150);
     });
   })();
+</script>
+
+<script is:inline>
+  // Research "Read more" toggle buttons
+  document.querySelectorAll('.research-read-more').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const targetId = btn.getAttribute('aria-controls');
+      const content = document.getElementById(targetId);
+      if (expanded) {
+        content.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.querySelector('.read-more-text').textContent = 'Read more ↓';
+      } else {
+        content.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.querySelector('.read-more-text').textContent = 'Show less ↑';
+      }
+    });
+  });
 </script>
 
 <style>

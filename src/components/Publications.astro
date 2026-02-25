@@ -3,11 +3,11 @@ import { publications } from '../data/publications';
 ---
 
 <!-- Publications -->
-<section id="publications" class="scroll-mt-28 py-16">
+<section id="publications" class="scroll-mt-28 py-16" aria-labelledby="publications-heading">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-end justify-between">
-      <h2 class="text-2xl font-bold">Selected Publications</h2>
-      <a href="https://inspirehep.net/authors/1054464" class="text-sm font-medium text-[var(--brand)]">Full list on InspireHEP →</a>
+      <h2 id="publications-heading" class="text-2xl font-bold">Selected Publications</h2>
+      <a href="https://inspirehep.net/authors/1054464" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-[var(--brand)]">Full list on InspireHEP →<span class="sr-only"> (opens in new tab)</span></a>
     </div>
     <ol class="pubs mt-6 space-y-4 list-decimal list-inside">
       {publications.map((pub) => (

@@ -3,19 +3,20 @@ import { media } from '../data/media';
 ---
 
 <!-- In the Media -->
-<section id="media" class="scroll-mt-28 py-16 bg-slate-50">
+<section id="media" class="scroll-mt-28 py-16 bg-slate-50" aria-labelledby="media-heading">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Header with nav buttons -->
     <div class="flex items-center justify-between mb-4">
-      <h2 class="text-2xl font-bold">In the Media</h2>
+      <h2 id="media-heading" class="text-2xl font-bold">In the Media</h2>
       <div class="space-x-2">
-        <button id="media-prev" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">←</button>
-        <button id="media-next" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">→</button>
+        <button id="media-prev" aria-label="Previous media items" aria-controls="media-container" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">←</button>
+        <button id="media-next" aria-label="Next media items" aria-controls="media-container" class="px-3 py-1 rounded-full border border-slate-300 bg-white shadow-sm hover:bg-slate-100">→</button>
       </div>
     </div>
 
     <!-- Carousel container -->
     <div id="media-container"
+         role="region" aria-label="Media coverage carousel"
          class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto scroll-smooth no-scrollbar">
 
       {media.map((item) => (
@@ -36,7 +37,7 @@ import { media } from '../data/media';
           </p>
           <div class="mt-4 space-y-1 text-sm">
             {item.links.map((link) => (
-              <a href={link.url} target="_blank" class="text-[var(--brand)] font-medium block">{link.text}</a>
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="text-[var(--brand)] font-medium block">{link.text}<span class="sr-only"> (opens in new tab)</span></a>
             ))}
           </div>
         </article>

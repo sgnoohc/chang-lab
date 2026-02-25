@@ -18,10 +18,10 @@ import Teaching from '../components/Teaching.astro';
     </div>
 
     <!-- Two invisible hotspots: click #hot1 then #hot2 (in order) -->
-    <button id="hot1" class="hotspot" style="--x: 8%;  --y: 78%;" aria-label="decorative area">
+    <button id="hot1" class="hotspot" style="--x: 8%;  --y: 78%;" aria-hidden="true" tabindex="-1">
         <span class="sr-only">Hidden area one</span>
     </button>
-    <button id="hot2" class="hotspot" style="--x: 88%; --y: 24%;" aria-label="decorative area">
+    <button id="hot2" class="hotspot" style="--x: 88%; --y: 24%;" aria-hidden="true" tabindex="-1">
         <span class="sr-only">Hidden area two</span>
     </button>
 
@@ -30,7 +30,7 @@ import Teaching from '../components/Teaching.astro';
   <section id="top" class="scroll-mt-28 relative pt-28">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--brand)] to-white">
         <img src="https://www.usparticlephysics.org/2023-p5-report/assets/images/hero-full.jpg" alt="P5 background" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-blue-900/60"></div> <!-- blue shade overlay -->
+        <div class="absolute inset-0 bg-blue-900/70"></div> <!-- blue shade overlay -->
     </div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- <div class="grid lg:grid-cols-12 gap-10 items-center py-12"> -->
@@ -42,7 +42,7 @@ import Teaching from '../components/Teaching.astro';
             <a href="#research" class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-[var(--brand)] shadow">Explore Research</a>
             <a href="#publications" class="rounded-xl border border-white/70 px-4 py-2 text-sm font-semibold text-white">See Publications</a>
           </div>
-          <p class="mt-6 text-white/70 text-sm">Affiliation • Department of Physics • University of Florida</p>
+          <p class="mt-6 text-white/90 text-sm">Affiliation • Department of Physics • University of Florida</p>
         </div>
         <div class="lg:col-span-5">
           <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/40">
@@ -50,7 +50,7 @@ import Teaching from '../components/Teaching.astro';
             <!-- <img src="https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg" alt="The CMS detector at the CERN Large Hadron Collider" class="w-full h-[380px] object-cover" /> -->
             <!-- RIGHT SIDE: Hero carousel -->
             <!-- <div id="hero-carousel" class="relative w-full max-w-2xl rounded-3xl overflow-hidden shadow-xl"> -->
-            <div id="hero-carousel" class="relative w-full lg:max-w-2xl rounded-3xl overflow-hidden shadow-xl">
+            <div id="hero-carousel" class="relative w-full lg:max-w-2xl rounded-3xl overflow-hidden shadow-xl" role="region" aria-roledescription="carousel" aria-label="Hero images">
                 <!-- Slide surface keeps layout stable -->
                 <div id="heroSlides" class="relative aspect-[4/3] bg-slate-200"></div>
 
@@ -90,6 +90,11 @@ import Teaching from '../components/Teaching.astro';
 
                 <!-- Dots -->
                 <div id="heroDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+                <!-- Pause/Play -->
+                <button id="heroPause" class="absolute bottom-3 right-3 rounded-full bg-white/80 hover:bg-white p-1.5 shadow ring-1 ring-slate-300" aria-label="Pause carousel" aria-pressed="false">
+                    <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 4a1 1 0 011 1v10a1 1 0 11-2 0V5a1 1 0 011-1zm5 0a1 1 0 011 1v10a1 1 0 11-2 0V5a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+                    <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6.3 4.2a1 1 0 011.4-.1l7 5.5a1 1 0 010 1.6l-7 5.5A1 1 0 016 16V4a1 1 0 01.3-.8z" clip-rule="evenodd"/></svg>
+                </button>
             </div>
 
           </div>
@@ -112,7 +117,18 @@ import Teaching from '../components/Teaching.astro';
           "https://cds.cern.ch/images/CERN-PHOTO-202108-102-1/file?size=medium",
           "https://cds.cern.ch/images/CERN-PHOTO-201901-009-1/file?size=medium",
       ];
-          //"https://home.cern/sites/default/files/2018-06/cms-tracker_1431469_1.jpg",
+      const heroAlts = [
+          "The CMS detector at the CERN Large Hadron Collider",
+          "Interior view of the CMS detector layers",
+          "Technicians working on the CMS detector at CERN",
+          "Aerial view of the CERN laboratory campus",
+          "CMS high-level trigger system visualization",
+          "Particle collision event display at CERN",
+          "CERN computing center with rows of servers",
+          "Scientists collaborating in the CERN control room",
+          "Wide view of the CERN accelerator complex",
+          "Panoramic view of the CERN research facility",
+      ];
 
 // 2) Elements
 const surface = document.getElementById("heroSlides");
@@ -120,9 +136,14 @@ const prevBtn = document.getElementById("heroPrev");
 const nextBtn = document.getElementById("heroNext");
 const dotsWrap = document.getElementById("heroDots");
 const carousel = document.getElementById("hero-carousel");
+const pauseBtn = document.getElementById("heroPause");
+const pauseIcon = document.getElementById("pauseIcon");
+const playIcon = document.getElementById("playIcon");
 
-// 3) Shuffle and start at a random slide
-const shuffled = [...heroImages].sort(() => Math.random() - 0.5);
+// 3) Shuffle and start at a random slide (keep alt text in sync)
+const indices = heroImages.map((_, i) => i).sort(() => Math.random() - 0.5);
+const shuffled = indices.map(i => heroImages[i]);
+const shuffledAlts = indices.map(i => heroAlts[i]);
 let current = Math.floor(Math.random() * shuffled.length);
 let slides = [];
 let dots = [];
@@ -131,7 +152,7 @@ let dots = [];
 shuffled.forEach((src, i) => {
     const img = document.createElement("img");
     img.src = src;
-    img.alt = "Hero image " + (i + 1);
+    img.alt = shuffledAlts[i];
     img.className = "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 opacity-0";
     img.decoding = "async";
     img.loading = i === current ? "eager" : "lazy";
@@ -153,6 +174,11 @@ function render() {
     dots.forEach((d, i) => {
         d.className = "h-2.5 w-2.5 rounded-full ring-1 ring-white/50 " +
             (i === current ? "bg-white" : "bg-white/50 hover:bg-white");
+        if (i === current) {
+            d.setAttribute("aria-current", "true");
+        } else {
+            d.removeAttribute("aria-current");
+        }
     });
 }
 
@@ -166,14 +192,35 @@ prevBtn.addEventListener("click", () => prev());
 
 // 6) Auto-advance (pause on hover/focus)
 let timer = null;
-function startTimer(){ timer = setInterval(() => next(true), 5000); }
+let paused = false;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function startTimer(){ if (!paused && !prefersReducedMotion) { timer = setInterval(() => next(true), 5000); } }
 function stopTimer(){ clearInterval(timer); timer = null; }
 function resetTimer(){ stopTimer(); startTimer(); }
 
 carousel.addEventListener("mouseenter", stopTimer);
-carousel.addEventListener("mouseleave", startTimer);
+carousel.addEventListener("mouseleave", () => { if (!paused) startTimer(); });
 carousel.addEventListener("focusin", stopTimer);
-carousel.addEventListener("focusout", startTimer);
+carousel.addEventListener("focusout", () => { if (!paused) startTimer(); });
+
+// Pause/play toggle
+pauseBtn.addEventListener("click", () => {
+    paused = !paused;
+    if (paused) {
+        stopTimer();
+        pauseBtn.setAttribute("aria-label", "Play carousel");
+        pauseBtn.setAttribute("aria-pressed", "true");
+        pauseIcon.classList.add("hidden");
+        playIcon.classList.remove("hidden");
+    } else {
+        startTimer();
+        pauseBtn.setAttribute("aria-label", "Pause carousel");
+        pauseBtn.setAttribute("aria-pressed", "false");
+        pauseIcon.classList.remove("hidden");
+        playIcon.classList.add("hidden");
+    }
+});
 
 // 7) Init
 render();
@@ -182,24 +229,20 @@ startTimer();
 
 
   <!-- About -->
-  <section id="about" class="scroll-mt-28 py-16">
+  <section id="about" class="scroll-mt-28 py-16" aria-labelledby="about-heading">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="grid lg:grid-cols-12 gap-10 items-start">
 
               <!-- LEFT: Image -->
               <div class="lg:col-span-6 order-1">
                   <figure class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                      <!-- Replace the src with your preferred CMS image -->
-                      <!-- <img src="https://news.fnal.gov/wp-content/uploads/2020/06/cms-detector-0808022_01-A4-at-144-dpi.jpg" alt="The CMS detector at the CERN Large Hadron Collider" class="w-full h-[380px] object-cover" /> -->
                       <img src="EventDisplay5lepLabel.jpg" alt="WZZ event display" class="w-full h-[320px] object-cover"/>
                   </figure>
-                  <!-- Optional caption -->
-                  <!-- <figcaption class="mt-3 text-sm text-slate-500">The CMS detector at the CERN LHC.</figcaption> -->
               </div>
 
               <!-- RIGHT: Text -->
               <div class="lg:col-span-6 order-2">
-                  <h2 class="text-2xl font-bold">About the Lab</h2>
+                  <h2 id="about-heading" class="text-2xl font-bold">About the Lab</h2>
                   <p class="mt-4 leading-relaxed">
                   Our lab explores the frontiers of particle physics and advanced computing at the CMS experiment of CERN's
                   <abbr title="Large Hadron Collider">LHC</abbr>. We analyze rare processes involving the W, Z, and Higgs boson, namely the
@@ -240,11 +283,11 @@ startTimer();
   <Teaching />
 
   <!-- Contact -->
-  <section id="contact" class="scroll-mt-28 py-16">
+  <section id="contact" class="scroll-mt-28 py-16" aria-labelledby="contact-heading">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-10">
         <div class="lg:col-span-6">
-          <h2 class="text-2xl font-bold">Contact</h2>
+          <h2 id="contact-heading" class="text-2xl font-bold">Contact</h2>
           <p class="mt-4">Email: p dot chang at ufl dot edu</p>
           <p class="mt-1">Address: New Physics Building 2035, Department of Physics, University of Florida, Gainesville, FL 32603</p>
           <!-- <p class="mt-1">Twitter/X · Bluesky · GitHub · Google Scholar</p> -->
@@ -286,7 +329,7 @@ startTimer();
         link.classList.toggle('underline', active);
         link.classList.toggle('underline-offset-8', active);
         link.classList.toggle('decoration-[var(--accent)]', active);
-        link.setAttribute('aria-current', active ? 'page' : 'false');
+        if (active) { link.setAttribute('aria-current', 'page'); } else { link.removeAttribute('aria-current'); }
       });
     }
 

@@ -31,6 +31,7 @@ const prefix = offIndex ? `${base}/` : '';
 </head>
 
 <body class="text-slate-800">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Header -->
   <header class="fixed top-0 z-40 w-full glass border-b border-slate-200/70">
@@ -40,7 +41,7 @@ const prefix = offIndex ? `${base}/` : '';
           <img src={`${base}/Logo4.001.png`} alt="Lab logo" class="h-10 w-10 rounded-full object-cover" />
           <span>Chang Lab</span>
         </a>
-        <nav class="hidden lg:flex items-center gap-2">
+        <nav class="hidden lg:flex items-center gap-2" aria-label="Primary navigation">
           <a href={`${prefix}#top`}           class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Home</a>
           <a href={`${prefix}#about`}         class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">About</a>
           <a href={`${prefix}#lab-news`}      class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">News</a>
@@ -53,12 +54,12 @@ const prefix = offIndex ? `${base}/` : '';
           <a href={`${prefix}#contact`}       class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Contact</a>
           <a href={`${base}/blog/`}           class="topnav-link px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100">Blog</a>
         </nav>
-        <button id="menuBtn" class="lg:hidden inline-flex items-center justify-center rounded-xl border border-slate-300 px-3 py-2 text-sm">Menu</button>
+        <button id="menuBtn" class="lg:hidden inline-flex items-center justify-center rounded-xl border border-slate-300 px-3 py-2 text-sm" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
       </div>
     </div>
     <!-- mobile -->
     <div id="mobileMenu" class="lg:hidden hidden border-t border-slate-200 bg-white">
-      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 grid grid-cols-2 gap-2">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 grid grid-cols-2 gap-2" aria-label="Mobile navigation">
         <a class="py-2" href={`${prefix}#top`}>Home</a>
         <a class="py-2" href={`${prefix}#about`}>About</a>
         <a class="py-2" href={`${prefix}#lab-news`}>News</a>
@@ -74,26 +75,39 @@ const prefix = offIndex ? `${base}/` : '';
     </div>
   </header>
 
-  <slot />
+  <main id="main-content">
+    <slot />
+  </main>
 
   <!-- Footer -->
   <footer class="py-10 border-t border-slate-200 bg-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-4">
       <div>&copy; <span id="year"></span> Chang Lab &bull; Department of Physics &bull; University of Florida</div>
       <div class="flex items-center gap-3">
-        <a class="hover:underline" href="#">Accessibility</a>
+        <a class="hover:underline" href="https://www.ufl.edu/accessibility/" rel="noopener noreferrer" target="_blank">Accessibility<span class="sr-only"> (opens in new tab)</span></a>
         <span aria-hidden="true">&bull;</span>
-        <a class="hover:underline" href="#">Privacy</a>
+        <a class="hover:underline" href="https://privacy.ufl.edu/privacy-policies-and-procedures/onlineinternet-privacy-statement/" rel="noopener noreferrer" target="_blank">Privacy<span class="sr-only"> (opens in new tab)</span></a>
         <span aria-hidden="true">&bull;</span>
-        <a class="hover:underline" href="#">GitHub</a>
+        <a class="hover:underline" href="https://github.com/changlab-gfx" rel="noopener noreferrer" target="_blank">GitHub<span class="sr-only"> (opens in new tab)</span></a>
       </div>
     </div>
   </footer>
 
   <script is:inline>
     // Mobile menu toggle
-    document.getElementById('menuBtn').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isHidden));
+    });
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.focus();
+      }
     });
     // Current year
     document.getElementById('year').textContent = new Date().getFullYear();

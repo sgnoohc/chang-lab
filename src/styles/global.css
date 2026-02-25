@@ -4,12 +4,16 @@
 
 /* ===== Brand variables ===== */
 :root {
-  --brand: #0b5fff;
+  --brand: #0052e0;
   --brand-dark: #0a3fb5;
   --accent: #00b3a4;
 }
 
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Global focus-visible ring */
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
 body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
@@ -150,8 +154,32 @@ body.debug .hotspot {
 }
 
 /* ===== Active topnav highlight ===== */
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0;
+  text-decoration: none;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+}
+
 .topnav-link.active {
-  background: rgba(11, 95, 255, 0.1);
+  background: rgba(0, 82, 224, 0.1);
   color: var(--brand);
   text-decoration: underline;
   text-underline-offset: 8px;

@@ -1,5 +1,6 @@
 export interface FeaturedTalk {
   image: string;
+  imageAlt: string;
   title: string;
   eventInfo: string;
   videoUrl?: string;
@@ -8,12 +9,14 @@ export interface FeaturedTalk {
 export const publicTalks: FeaturedTalk[] = [
   {
     image: "aspenimage.jpg",
+    imageAlt: "Prof. Philip Chang speaking at the Aspen Center of Physics",
     title: "An Invitation to Imagine Something from Nothing",
     eventInfo: "Aspen Center of Physics, March 2024",
     videoUrl: "https://www.youtube.com/watch?v=WBUvlviE_oY",
   },
   {
     image: "enzian.jpg",
+    imageAlt: "Enzian Theater marquee for Particle Fever Science on Screen event",
     title: "Then and Now: Developments in the Large Hadron Collider",
     eventInfo: "Particle Fever — Science on Screen, Dec 2022, Enzian Theater, Maitland FL",
   },
