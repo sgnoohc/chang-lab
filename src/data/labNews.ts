@@ -99,17 +99,17 @@ export const labNews: LabNewsItem[] = [
     imageAlt: "Samuel Sebastian with his poster at SESAPS 2024",
   },
   {
-    date: "September 26, 2024",
-    name: "Dr. Kelci Mohrman",
-    text: 'presented at TOP 2023 at Traverse City on <em>EFT-related measurements ATLAS+CMS</em>',
-    image: "photos/kelcitop23.jpg",
-    imageAlt: "Dr. Kelci Mohrman presenting at TOP 2023",
-  },
-  {
     date: "February 20, 2024",
     name: "Dr. Kelci Mohrman",
     text: 'presented at Lake Louise Winter Institute 2024 on <em>Probing EFT couplings in the top quark sector</em>',
     image: "photos/kelcilakelouise.jpg",
     imageAlt: "Dr. Kelci Mohrman presenting at Lake Louise Winter Institute",
+  },
+  {
+    date: "September 26, 2023",
+    name: "Dr. Kelci Mohrman",
+    text: 'presented at TOP 2023 at Traverse City on <em>EFT-related measurements ATLAS+CMS</em>',
+    image: "photos/kelcitop23.jpg",
+    imageAlt: "Dr. Kelci Mohrman presenting at TOP 2023",
   },
 ];
