@@ -6,7 +6,8 @@ author: "Philip Chang"
 draft: false
 ---
 
-Jerry Ling shared me a link to a post on Not Even Wrong.
+Jerry Ling shared me a link to a post on Not Even Wrong:
+[Looks Like it is Happening…](https://www.math.columbia.edu/~woit/wordpress/?p=15500).
 Woit noted that arXiv hep-th submissions seem to have roughly doubled around December 2025.
 December 2024 had 780 submissions, December 2025 had 1192.
 He was speculating about AI-generated papers and I wanted to check.
