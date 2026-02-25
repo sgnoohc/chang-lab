@@ -1,13 +1,12 @@
 ---
-title: "Welcome to the Chang Lab Blog"
+title: "My Scattered Thoughts"
 date: 2026-02-24
-description: "We are excited to launch the Chang Lab blog!"
-author: "Chang Lab"
+description: "Why this blog is called what it's called."
+author: "Philip Chang"
 draft: false
 ---
 
-We are excited to launch the Chang Lab blog! Here we will share updates on our research,
-reflections on life in high-energy physics, tutorials on the computational tools we develop,
-and stories from conferences and collaborations around the world.
+In particle physics, scattering is how we learn about the universe — we smash things together and see what comes out. Most of the time it's background. Occasionally, something interesting.
 
-Stay tuned for more posts.
+This blog is a lot like that. A place for thoughts that scatter in different directions — physics, computing, academia, and whatever else clears the trigger. Not everything here will be signal, but hopefully some of it is worth reading.
+
