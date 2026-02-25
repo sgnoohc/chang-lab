@@ -1,0 +1,32 @@
+---
+import { publications } from '../data/publications';
+---
+
+<!-- Publications -->
+<section id="publications" class="scroll-mt-28 py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-end justify-between">
+      <h2 class="text-2xl font-bold">Selected Publications</h2>
+      <a href="https://inspirehep.net/authors/1054464" class="text-sm font-medium text-[var(--brand)]">Full list on InspireHEP →</a>
+    </div>
+    <ol class="pubs mt-6 space-y-4 list-decimal list-inside">
+      {publications.map((pub) => (
+        <li>
+          <span set:html={pub.authors} />,
+          <span class="underline decoration-[var(--accent)] underline-offset-4" set:html={pub.title} />,
+          <em>{pub.journal}</em>
+          {pub.volume && <>{' '}<strong>{pub.volume}</strong></>}
+          {pub.pages && <>, {pub.pages}</>}
+          {` (${pub.year}).`}
+          <a class="text-[var(--brand)]" href={pub.doiUrl} target="_blank" rel="noopener">{pub.doi}</a>
+          {pub.erratum && (
+            <>
+              , erratum <em>{pub.erratum.journal}</em> <strong>{pub.erratum.volume}</strong>, {pub.erratum.pages} ({pub.erratum.year}).
+              <a class="text-[var(--brand)]" href={pub.erratum.doiUrl} target="_blank" rel="noopener">{pub.erratum.doi}</a>
+            </>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

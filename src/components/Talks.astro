@@ -1,0 +1,109 @@
+---
+import { publicTalks, publicTalksList, talkGroups } from '../data/talks';
+---
+
+<!-- Public Talks -->
+<section id="presentations" class="scroll-mt-28 py-16 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold">Public Talks</h2>
+
+    <!-- Featured talks with images -->
+    <div class="mt-6 grid lg:grid-cols-2 gap-6">
+      {publicTalks.map((talk) => (
+        <article class="card rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+          <img src={talk.image} alt="Talk image" class="h-48 w-full object-cover" />
+          <div class="p-6">
+            <h3 class="font-semibold text-lg">{talk.title}</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              <em>{talk.eventInfo}</em>
+            </p>
+            {talk.videoUrl && (
+              <a href={talk.videoUrl} class="mt-3 inline-block text-[var(--brand)] text-sm font-medium">YouTube →</a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Remaining talks in list -->
+    <ol class="mt-10 space-y-4 list-disc list-inside text-slate-700">
+      {publicTalksList.map((talk) => (
+        <li>
+          <span class="font-medium">{talk.type}:</span>
+          {` "${talk.title}" — `}
+          <em>{talk.event}</em>.
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <div class=" mb-24">
+      <p>
+
+      </p>
+  </div>
+
+<!-- Presentations -->
+<section id="talks" class="scroll-mt-28 py-16 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-1">
+    <h2 class="text-2xl font-bold">Seminar / Colloquium / Conference Talks</h2>
+
+    <div class="mt-6 space-y-4 text-slate-700">
+
+      <!-- Toggle text -->
+      <div class="flex justify-end mb-4">
+        <span id="toggleAll" class="cursor-pointer text-[var(--brand)] text-sm font-medium">
+          Collapse All
+        </span>
+      </div>
+
+      {talkGroups.map((group) => (
+        <details open class="border border-slate-200 rounded-xl p-4">
+          <summary class="cursor-pointer font-semibold" set:html={group.title} />
+          <div class="mt-3 ml-4 space-y-1 text-sm">
+            {group.rows.map((row) => (
+              <div class="talk-row grid lg:grid-cols-[6rem_7rem_10rem_minmax(24rem,1fr)_1.4fr_1fr] gap-4">
+                <div data-label="Date">{row.date}</div>
+                <div data-label="Type">{row.type}</div>
+                <div data-label="Session">{row.session}</div>
+                <div data-label="Event/Inst." set:html={row.event} />
+                <div data-label="City/State">{row.location}</div>
+                <div data-label="Link">
+                  {row.linkUrl && (
+                    <a href={row.linkUrl} class="text-[var(--brand)] text-sm font-medium ml-2">{row.linkText || "Link →"}</a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </details>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+<!-- Collapse/Expand script -->
+<script is:inline>
+  const toggleLink = document.getElementById("toggleAll");
+  const allDetails = document.querySelectorAll("#presentations details");
+  let expanded = true;
+  toggleLink?.addEventListener("click", () => {
+    expanded = !expanded;
+    allDetails.forEach(d => expanded ? d.setAttribute("open", "") : d.removeAttribute("open"));
+    toggleLink.textContent = expanded ? "Collapse All" : "Expand All";
+  });
+</script>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.innerWidth < 1024) {
+            document.querySelectorAll("#presentations details[open]").forEach(d => {
+                d.removeAttribute("open");
+            });
+            const toggleLink = document.getElementById("toggleAll");
+            if (toggleLink) toggleLink.textContent = "Expand All";
+        }
+    });
+</script>
+</section>

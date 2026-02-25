@@ -1,0 +1,21 @@
+---
+import { alumni } from '../data/alumni';
+---
+
+<!-- Alumni -->
+<section id="alumni" class="scroll-mt-28 py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold">Alumni</h2>
+        <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-1 gap-y-3 gap-x-8 text-slate-700">
+            {alumni.map((alum) => (
+              <li class="font-medium">
+                {alum.name} — {alum.linkUrl ? (
+                  <>{alum.info.split('(')[0]}(<a href={alum.linkUrl}>{alum.linkText}</a>)</>
+                ) : (
+                  alum.info
+                )}
+              </li>
+            ))}
+        </ul>
+    </div>
+</section>
