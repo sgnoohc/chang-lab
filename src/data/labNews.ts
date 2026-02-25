@@ -28,13 +28,13 @@ export const labNews: LabNewsItem[] = [
     date: "December 9, 2025",
     name: "Dr. Kelci Mohrman",
     text: "presented an update on VBS VVH analysis at CMS Week Seoul",
-    image: "photos/Untitled.png",
+    image: "photos/Untitled.jpg",
   },
   {
     date: "December 8, 2025",
     name: "Matthew Dittrich",
     text: "presented poster on WWZ measurement at CMS Week Seoul",
-    image: "photos/MD_CMSWeekSeoul_Poster.png",
+    image: "photos/MD_CMSWeekSeoul_Poster.jpg",
   },
   {
     date: "November 12, 2025",
@@ -64,7 +64,7 @@ export const labNews: LabNewsItem[] = [
     date: "October 8, 2025",
     name: "Amilqar Karam",
     text: 'presented poster at CPAD 2025 at UPenn on <em>Tracklet Classification with Distilled Graph Neural Network on FPGA</em>',
-    image: "photos/thumbnail_Image.png",
+    image: "photos/thumbnail_Image.jpg",
   },
   {
     date: "May 21, 2025",

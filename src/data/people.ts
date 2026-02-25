@@ -24,7 +24,7 @@ export const people: Person[] = [
   {
     name: "Dr. Kelci Mohrman",
     role: "Postdoc",
-    image: "kelci.png",
+    image: "kelci.jpg",
     links: [
       { text: "InspireHEP", url: "https://inspirehep.net/authors/1650353" },
       { text: "Email", url: "mailto:k.mohrman@ufl.edu" },
@@ -47,16 +47,16 @@ export const people: Person[] = [
   {
     name: "Alexandra Aponte Utani",
     role: "2nd Year PhD Student",
-    image: "AAU.png",
+    image: "AAU.jpg",
   },
   {
     name: "Hubert Pugzlys",
     role: "BS Student",
-    image: "HP.png",
+    image: "HP.jpg",
   },
   {
     name: "Trevor Sabitsch",
     role: "BS Student",
-    image: "TS.png",
+    image: "TS.jpg",
   },
 ];

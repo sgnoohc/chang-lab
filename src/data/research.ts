@@ -17,18 +17,18 @@ export interface ResearchItem {
 export const research: ResearchItem[] = [
   {
     title: "Muon Collider Studies",
-    primaryImage: "muoncollider.png",
+    primaryImage: "muoncollider.jpg",
     primaryImageAlt: "Concept illustration of a muon collider",
     description: `Muon colliders offer a unique path toward multi-TeV lepton collisions with clean experimental signatures
 and direct sensitivity to new physics. We explore simulation strategies, detector concepts, and physics
 potential — ranging from precision Higgs measurements to searches for Beyond the Standard Model phenomena.`,
-    secondaryImage: "science.png",
+    secondaryImage: "science.jpg",
     secondaryImageAlt: "Dream Machine",
     links: [{ url: "#media", text: "Learn more about the Muon Collider →" }],
   },
   {
     title: "Higgs + Two Vector Boson Production via VBS",
-    primaryImage: "vbsvvh.png",
+    primaryImage: "vbsvvh.jpg",
     primaryImageAlt: "Example Feynman diagrams for VVHH coupling in VBS",
     description: `The quartic couplings between two Higgs bosons and vector
 bosons (HHWW and HHZZ) remain among the least constrained in
@@ -52,7 +52,7 @@ the LHC.`,
   },
   {
     title: "Measurement of WWZ and ZH Production",
-    primaryImage: "wwzeventdisplay.png",
+    primaryImage: "wwzeventdisplay.jpg",
     primaryImageAlt: "WWZ event display",
     description: `We led the study of <em>first simultaneous measurement</em> of nonresonant WWZ
 and ZH (H→WW) production at √s = 13 and 13.6 TeV. This study delivered the
@@ -61,7 +61,7 @@ and provided the <em>first evidence for triboson production at 13.6 TeV</em>.
 These results are a <span class="font-semibold">critical milestone</span> in testing the Standard Model's
 self-consistency and probing the dynamics of <em>multi-boson interactions</em>,
 which are uniquely sensitive to subtle effects from new physics at higher scales.`,
-    secondaryImage: "WWZPlot.png",
+    secondaryImage: "WWZPlot.jpg",
     secondaryImageAlt: "WWZ Yield Plot",
     links: [
       {
@@ -94,7 +94,7 @@ which are uniquely sensitive to subtle effects from new physics at higher scales
   },
   {
     title: "First Observation of Three Massive Gauge Boson Production Process",
-    primaryImage: "WWZ4l.png",
+    primaryImage: "WWZ4l.jpg",
     primaryImageAlt: "CMS triboson event display",
     description: `The simultaneous production of three massive gauge bosons (<em>VVV with V = W, Z</em>) is an
 extremely rare phenomenon predicted by the Standard Model of particle physics.
@@ -118,7 +118,7 @@ at higher energy scales.`,
   },
   {
     title: "Line Segment Tracking (LST)",
-    primaryImage: "LST2.png",
+    primaryImage: "LST2.jpg",
     primaryImageAlt: "LST",
     description: `The High-Luminosity LHC will deliver an unprecedented volume of collision data, demanding new
 approaches to <em>charged-particle tracking</em>. The Line Segment Tracking algorithm is a
@@ -137,7 +137,7 @@ potential of the HL-LHC can be realized.`,
   },
   {
     title: "Search for Three W Gauge Boson Production Process",
-    primaryImage: "axion.png",
+    primaryImage: "axion.jpg",
     primaryImageAlt: "axion limit plot",
     description: `The production of three W bosons (WWW) is one of the rarest processes predicted by the Standard Model,
 providing a sensitive window into the structure of <em>quartic electroweak gauge couplings</em>
@@ -156,7 +156,7 @@ beyond the electroweak sector.`,
   },
   {
     title: "Higgs Boson Physics in the WW Decay Channel",
-    primaryImage: "vbfhww.png",
+    primaryImage: "vbfhww.jpg",
     primaryImageAlt: "ATLAS H→WW event display",
     description: `The Higgs boson, discovered in 2012, plays a central role in explaining how fundamental particles acquire mass.
 One of the most important ways to study its properties is through its decay into a pair of W bosons

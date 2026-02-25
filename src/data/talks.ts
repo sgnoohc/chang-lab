@@ -7,13 +7,13 @@ export interface FeaturedTalk {
 
 export const publicTalks: FeaturedTalk[] = [
   {
-    image: "aspenimage.png",
+    image: "aspenimage.jpg",
     title: "An Invitation to Imagine Something from Nothing",
     eventInfo: "Aspen Center of Physics, March 2024",
     videoUrl: "https://www.youtube.com/watch?v=WBUvlviE_oY",
   },
   {
-    image: "enzian.png",
+    image: "enzian.jpg",
     title: "Then and Now: Developments in the Large Hadron Collider",
     eventInfo: "Particle Fever — Science on Screen, Dec 2022, Enzian Theater, Maitland FL",
   },
