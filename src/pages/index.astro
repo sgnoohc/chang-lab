@@ -160,7 +160,10 @@ shuffled.forEach((src, i) => {
     slides.push(img);
 
     const dot = document.createElement("button");
-    dot.className = "h-2.5 w-2.5 rounded-full bg-white/50 hover:bg-white ring-1 ring-white/50";
+    dot.className = "h-6 w-6 flex items-center justify-center rounded-full group";
+    const dotInner = document.createElement("span");
+    dotInner.className = "h-2.5 w-2.5 rounded-full bg-white/50 group-hover:bg-white ring-1 ring-white/50";
+    dot.appendChild(dotInner);
     dot.setAttribute("aria-label", "Go to slide " + (i + 1));
     dot.addEventListener("click", () => goTo(i, true));
     dotsWrap.appendChild(dot);
@@ -172,8 +175,9 @@ function render() {
         el.style.opacity = i === current ? "1" : "0";
     });
     dots.forEach((d, i) => {
-        d.className = "h-2.5 w-2.5 rounded-full ring-1 ring-white/50 " +
-            (i === current ? "bg-white" : "bg-white/50 hover:bg-white");
+        const inner = d.querySelector('span');
+        inner.className = "h-2.5 w-2.5 rounded-full ring-1 ring-white/50 " +
+            (i === current ? "bg-white" : "bg-white/50 group-hover:bg-white");
         if (i === current) {
             d.setAttribute("aria-current", "true");
         } else {

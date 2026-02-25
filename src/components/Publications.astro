@@ -18,11 +18,11 @@ import { publications } from '../data/publications';
           {pub.volume && <>{' '}<strong>{pub.volume}</strong></>}
           {pub.pages && <>, {pub.pages}</>}
           {` (${pub.year}).`}
-          <a class="text-[var(--brand)]" href={pub.doiUrl} target="_blank" rel="noopener">{pub.doi}</a>
+          <a class="text-[var(--brand)] underline underline-offset-2" href={pub.doiUrl} target="_blank" rel="noopener noreferrer">{pub.doi}</a>
           {pub.erratum && (
             <>
               , erratum <em>{pub.erratum.journal}</em> <strong>{pub.erratum.volume}</strong>, {pub.erratum.pages} ({pub.erratum.year}).
-              <a class="text-[var(--brand)]" href={pub.erratum.doiUrl} target="_blank" rel="noopener">{pub.erratum.doi}</a>
+              <a class="text-[var(--brand)] underline underline-offset-2" href={pub.erratum.doiUrl} target="_blank" rel="noopener noreferrer">{pub.erratum.doi}</a>
             </>
           )}
         </li>
