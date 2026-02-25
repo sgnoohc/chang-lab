@@ -9,8 +9,7 @@
   --accent: #00b3a4;
 }
 
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* Global focus-visible ring */
@@ -29,7 +28,7 @@ body {
 }
 
 /* Prevent horizontal overflow on mobile */
-section { overflow-x: clip; }
+.page-wrap { overflow-x: hidden; width: 100%; }
 
 /* Publication list bullets */
 .pubs li { padding-left: .5rem; }
@@ -141,6 +140,7 @@ details[open] summary::after {
   cursor: pointer;
   z-index: 9998;
 }
+.hotspot-right { left: auto; right: 8%; }
 body.debug .hotspot {
   outline: 2px dashed rgba(34, 211, 238, .7);
   border-radius: 12px;
