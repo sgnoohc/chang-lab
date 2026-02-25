@@ -237,11 +237,25 @@ startTimer();
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="grid lg:grid-cols-12 gap-10 items-start">
 
-              <!-- LEFT: Image -->
+              <!-- LEFT: Image carousel -->
               <div class="lg:col-span-6 order-1">
-                  <figure class="rounded-3xl overflow-hidden border border-slate-200 shadow-sm">
-                      <img src="EventDisplay5lepLabel.jpg" alt="WZZ event display" class="w-full h-[320px] object-cover"/>
-                  </figure>
+                  <div id="about-carousel" class="relative rounded-3xl overflow-hidden border border-slate-200 shadow-sm" role="region" aria-roledescription="carousel" aria-label="Lab photos">
+                      <div id="aboutSlides" class="relative aspect-[4/3] bg-slate-200"></div>
+                      <!-- Prev -->
+                      <button id="aboutPrev" class="group absolute left-2 top-1/2 -translate-y-1/2 p-1" aria-label="Previous photo">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white/60 group-hover:text-white transition-colors drop-shadow" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M12.78 15.22a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 010-1.06l4.5-4.5a.75.75 0 111.06 1.06L8.56 10l4.22 4.22a.75.75 0 010 1.06z" clip-rule="evenodd"/>
+                          </svg>
+                      </button>
+                      <!-- Next -->
+                      <button id="aboutNext" class="group absolute right-2 top-1/2 -translate-y-1/2 p-1" aria-label="Next photo">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white/60 group-hover:text-white transition-colors drop-shadow" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M7.22 4.78a.75.75 0 011.06 0l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06L11.44 10 7.22 5.78a.75.75 0 010-1.06z" clip-rule="evenodd"/>
+                          </svg>
+                      </button>
+                      <!-- Dots -->
+                      <div id="aboutDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1"></div>
+                  </div>
               </div>
 
               <!-- RIGHT: Text -->
@@ -263,6 +277,69 @@ startTimer();
           </div>
       </div>
   </section>
+
+  <script is:inline>
+  (function() {
+    const aboutImages = [
+      { src: "photos/group_pic_sep2025.jpg", alt: "Chang Lab group photo, September 2025" },
+      { src: "photos/group_pic_summer2024.jpg", alt: "Chang Lab group photo, Summer 2024" },
+      { src: "EventDisplay5lepLabel.jpg", alt: "WZZ five-lepton event display" },
+    ];
+    const surface = document.getElementById("aboutSlides");
+    const dotsWrap = document.getElementById("aboutDots");
+    let current = 0, slides = [], dots = [];
+
+    aboutImages.forEach((item, i) => {
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt;
+      img.className = "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 opacity-0";
+      img.decoding = "async";
+      img.loading = i === 0 ? "eager" : "lazy";
+      surface.appendChild(img);
+      slides.push(img);
+
+      const dot = document.createElement("button");
+      dot.className = "h-6 w-6 flex items-center justify-center rounded-full group";
+      dot.setAttribute("aria-label", "Go to photo " + (i + 1));
+      const inner = document.createElement("span");
+      inner.className = "h-2.5 w-2.5 rounded-full bg-white/50 group-hover:bg-white ring-1 ring-white/50";
+      dot.appendChild(inner);
+      dot.addEventListener("click", () => { current = i; render(); resetTimer(); });
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    });
+
+    function render() {
+      slides.forEach((el, i) => { el.style.opacity = i === current ? "1" : "0"; });
+      dots.forEach((d, i) => {
+        const inner = d.querySelector("span");
+        inner.className = "h-2.5 w-2.5 rounded-full ring-1 ring-white/50 " +
+          (i === current ? "bg-white" : "bg-white/50 group-hover:bg-white");
+        if (i === current) d.setAttribute("aria-current", "true");
+        else d.removeAttribute("aria-current");
+      });
+    }
+
+    document.getElementById("aboutNext").addEventListener("click", () => { current = (current + 1) % slides.length; render(); resetTimer(); });
+    document.getElementById("aboutPrev").addEventListener("click", () => { current = (current - 1 + slides.length) % slides.length; render(); resetTimer(); });
+
+    let timer = null;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function startTimer() { if (!reducedMotion) timer = setInterval(() => { current = (current + 1) % slides.length; render(); }, 6000); }
+    function stopTimer() { clearInterval(timer); timer = null; }
+    function resetTimer() { stopTimer(); startTimer(); }
+
+    const carousel = document.getElementById("about-carousel");
+    carousel.addEventListener("mouseenter", stopTimer);
+    carousel.addEventListener("mouseleave", startTimer);
+    carousel.addEventListener("focusin", stopTimer);
+    carousel.addEventListener("focusout", startTimer);
+
+    render();
+    startTimer();
+  })();
+  </script>
 
   <style>
 /* Hide scrollbar but keep scroll functionality */
