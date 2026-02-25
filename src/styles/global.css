@@ -9,7 +9,8 @@
   --accent: #00b3a4;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* Global focus-visible ring */
@@ -26,6 +27,9 @@ body {
   backdrop-filter: saturate(180%) blur(10px);
   background: rgba(255, 255, 255, 0.8);
 }
+
+/* Prevent horizontal overflow on mobile */
+section { overflow-x: clip; }
 
 /* Publication list bullets */
 .pubs li { padding-left: .5rem; }
