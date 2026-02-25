@@ -46,19 +46,19 @@ export const labNews: LabNewsItem[] = [
     date: "November 10, 2025",
     name: "Dr. Eslam Zenhom",
     text: 'successfully defends his Ph.D. thesis on <em>A Semi-Merged All-Hadronic Search for Anomalous C2V Couplings in VVH Production</em>',
-    image: "photos/IMG_2655.HEIC",
+    image: "photos/IMG_2655.jpg",
   },
   {
     date: "October 9, 2025",
     name: "Dr. Kelci Mohrman",
     text: 'presented at Multi-Boson Interaction Workshop 2025 at Brandeis Univ. on <em>Measurement of WWZ and ZH production at 13 and 13.6 TeV</em>',
-    image: "photos/IMG_7569.heic",
+    image: "photos/IMG_7569.jpg",
   },
   {
     date: "October 9, 2025",
     name: "Prof. Philip Chang",
     text: 'presented at Multi-Boson Interaction Workshop 2025 at Brandeis Univ. on <em>Triboson Physics</em>',
-    image: "photos/IMG_2574.HEIC",
+    image: "photos/IMG_2574.jpg",
   },
   {
     date: "October 8, 2025",
