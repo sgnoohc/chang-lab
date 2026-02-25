@@ -2,7 +2,7 @@
 title: "AI analysis on AI impact on hep-th publications."
 date: 2026-02-25
 description: "Using Claude Code to investigate whether arXiv hep-th submissions really doubled in late 2025."
-author: "Chang Lab"
+author: "Philip Chang"
 draft: false
 ---
 
