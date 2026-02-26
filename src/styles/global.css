@@ -30,10 +30,6 @@ body {
 /* Prevent horizontal overflow on mobile */
 .page-wrap { overflow-x: clip; }
 
-/* Constrain horizontal carousel grids for iOS Safari */
-#labnews-container,
-#media-container,
-#research-container { max-width: 100%; }
 
 /* Publication list bullets */
 .pubs li { padding-left: .5rem; }
