@@ -9,8 +9,7 @@
   --accent: #00b3a4;
 }
 
-html { scroll-behavior: smooth; overflow: hidden; height: 100%; }
-body { overflow-x: hidden; overflow-y: auto; height: 100%; -webkit-overflow-scrolling: touch; }
+html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* Global focus-visible ring */
@@ -29,7 +28,12 @@ body {
 }
 
 /* Prevent horizontal overflow on mobile */
-.page-wrap { overflow: clip; max-width: 100vw; }
+.page-wrap { overflow-x: clip; }
+
+/* Constrain horizontal carousel grids for iOS Safari */
+#labnews-container,
+#media-container,
+#research-container { max-width: 100%; }
 
 /* Publication list bullets */
 .pubs li { padding-left: .5rem; }
