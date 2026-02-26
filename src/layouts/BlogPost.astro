@@ -30,6 +30,29 @@ const formattedDate = new Date(frontmatter.date).toLocaleDateString('en-US', {
       <div class="prose prose-slate prose-lg max-w-none">
         <slot />
       </div>
+
+      <!-- Comments -->
+      <section class="mt-16 pt-10 border-t border-slate-200">
+        <h2 class="text-xl font-bold text-slate-900 mb-6">Comments</h2>
+        <div class="giscus"></div>
+        <script is:inline
+          src="https://giscus.app/client.js"
+          data-repo="sgnoohc/chang-lab"
+          data-repo-id="R_kgDOPnEP-A"
+          data-category="General"
+          data-category-id="DIC_kwDOPnEP-M4C3OUx"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </section>
     </article>
   </main>
 </BaseLayout>
