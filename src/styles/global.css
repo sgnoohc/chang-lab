@@ -60,6 +60,10 @@ body {
 }
 .nav-link:hover:after { transform: scaleX(1); }
 
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* Simple card hover */
 .card { transition: transform .2s ease, box-shadow .2s ease; }
 .card:hover {
