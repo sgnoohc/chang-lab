@@ -142,6 +142,10 @@ details[open] summary::after {
   cursor: pointer;
   z-index: 9998;
 }
+@media (max-width: 1023px) {
+  .hotspot { display: none; }
+  .secret-wrap { display: none; }
+}
 .hotspot-right { left: auto; right: 4%; }
 body.debug .hotspot {
   outline: 2px dashed rgba(34, 211, 238, .7);
