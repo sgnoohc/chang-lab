@@ -9,8 +9,8 @@
   --accent: #00b3a4;
 }
 
-html { scroll-behavior: smooth; overflow-x: clip; }
-body { overflow-x: clip; }
+html { scroll-behavior: smooth; overflow: hidden; height: 100%; }
+body { overflow-x: hidden; overflow-y: auto; height: 100%; -webkit-overflow-scrolling: touch; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* Global focus-visible ring */
