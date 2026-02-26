@@ -28,7 +28,7 @@ import Teaching from '../components/Teaching.astro';
 
   <!-- Hero -->
   <section id="top" class="scroll-mt-28 relative pt-28">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--brand)] to-white">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--brand)] to-white overflow-hidden">
         <img src="https://www.usparticlephysics.org/2023-p5-report/assets/images/hero-full.jpg" alt="P5 background" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-blue-900/70"></div> <!-- blue shade overlay -->
     </div>
@@ -52,7 +52,7 @@ import Teaching from '../components/Teaching.astro';
             <!-- <div id="hero-carousel" class="relative w-full max-w-2xl rounded-3xl overflow-hidden shadow-xl"> -->
             <div id="hero-carousel" class="relative w-full lg:max-w-2xl rounded-3xl overflow-hidden shadow-xl" role="region" aria-roledescription="carousel" aria-label="Hero images">
                 <!-- Slide surface keeps layout stable -->
-                <div id="heroSlides" class="relative aspect-[4/3] bg-slate-200"></div>
+                <div id="heroSlides" class="relative aspect-[4/3] bg-slate-200 overflow-hidden"></div>
 
                 <!-- <!-1- Prev / Next -1-> -->
                 <!-- <button id="heroPrev" -->
@@ -240,7 +240,7 @@ startTimer();
               <!-- LEFT: Image carousel -->
               <div class="lg:col-span-6 order-1">
                   <div id="about-carousel" class="relative rounded-3xl overflow-hidden border border-slate-200 shadow-sm" role="region" aria-roledescription="carousel" aria-label="Lab photos">
-                      <div id="aboutSlides" class="relative aspect-[16/9] bg-slate-200"></div>
+                      <div id="aboutSlides" class="relative aspect-[16/9] bg-slate-200 overflow-hidden"></div>
                       <!-- Prev -->
                       <button id="aboutPrev" class="group absolute left-2 top-1/2 -translate-y-1/2 p-1" aria-label="Previous photo">
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white/60 group-hover:text-white transition-colors drop-shadow" viewBox="0 0 20 20" fill="currentColor">
