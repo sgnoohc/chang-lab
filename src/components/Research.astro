@@ -13,10 +13,10 @@ import { research } from '../data/research';
             </div>
         </div>
 
-        <div id="research-container" role="region" aria-label="Research topics carousel" class="grid grid-flow-col auto-cols-[minmax(300px,1fr)] lg:auto-cols-[minmax(360px,1fr)] gap-6 overflow-x-auto  scroll-smooth no-scrollbar w-full max-w-full [contain:inline-size]">
+        <div id="research-container" role="region" aria-label="Research topics carousel" class="flex flex-nowrap gap-6 overflow-x-auto scroll-smooth no-scrollbar">
 
             {research.map((item, i) => (
-                <article class={`card rounded-2xl border border-slate-200 bg-white p-6${i === 0 ? ' min-w-0 overflow-x-clip [contain:inline-size]' : ''}`}>
+                <article class={`card rounded-2xl border border-slate-200 bg-white p-6 min-w-[300px] lg:min-w-[360px] flex-shrink-0${i === 0 ? ' overflow-x-clip [contain:inline-size]' : ''}`}>
                     <h3 class="font-semibold">{item.title}</h3>
                     <img class="mt-4 rounded-xl"
                          src={item.primaryImage}
