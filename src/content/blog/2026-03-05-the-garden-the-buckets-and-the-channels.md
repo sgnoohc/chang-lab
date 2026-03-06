@@ -1,0 +1,185 @@
+---
+title: "The Garden, the Buckets, and the Channels"
+date: 2026-03-05
+description: "A small allegory about the arc of a PhD — from carrying buckets, to building channels, to choosing where your effort matters most."
+author: "Philip Chang"
+draft: false
+---
+
+*A small allegory about learning how to work*
+
+In every long training there are stages that are difficult to see clearly while you are inside them. Graduate school is one such journey. When we look back later, the pattern becomes obvious, but at the time it can feel confusing, frustrating, or unnecessarily restrictive.
+
+Following allegory captures this progression rather well.
+
+---
+
+## Part I — Carry the Water
+
+There was once a novice who joined a monastery.
+
+On the first day, the monk told the novice, "Go to the well, draw water, and water the plants."
+
+The novice walked to the well, but paused.
+
+"Master," the novice asked, "why must the plants be watered this way? Would it not be more efficient to build a channel from the well? And why are the plants arranged here rather than there?"
+
+The monk replied, "First draw the water."
+
+The novice hesitated. "But if we understood the deeper purpose, perhaps we could design a better system."
+
+Again the monk said, "First draw the water."
+
+Reluctantly, the novice carried the buckets to the garden and watered the plants.
+
+When the work was finished, the novice returned and asked, "Now can you explain the deeper meaning?"
+
+The monk said,
+
+"When you arrived, the plants were thirsty.
+While you were searching for deeper meaning, they remained thirsty."
+
+He continued,
+
+"The task was simple: draw water and give it to them.
+Understanding grows from doing.
+But if you wait to understand everything before you begin, nothing will ever be done."
+
+---
+
+## Part II — Build the Channels
+
+Months passed.
+
+Every morning the novice drew water and carried it to the plants. Over time the novice began to notice things: which beds dried faster, which soils held moisture, and which paths made the work easier.
+
+One day the novice approached the monk again.
+
+"Master," the novice said, "may I suggest something?"
+
+The monk nodded.
+
+"I have noticed that the far beds dry faster than the others. If we dug a shallow channel from the well and placed stones along the path, water could flow there more easily. It might save many trips with the buckets."
+
+The monk asked, "If the channel breaks, will the plants still be watered?"
+
+"Yes," said the novice. "I can carry the buckets."
+
+"If the stones shift and the water runs the wrong way, will the plants still be watered?"
+
+"Yes," the novice replied. "I will carry the buckets."
+
+The monk smiled.
+
+"Then try your channel."
+
+The novice spent the afternoon experimenting with small water paths and stones. Some attempts failed and had to be rebuilt, but the plants were watered before sunset.
+
+That evening the monk said,
+
+"Before, you asked questions to avoid the work.
+Now you ask questions after learning the work."
+
+He gestured toward the garden.
+
+"When I know you can always carry the buckets, I do not fear when you wander a little from the path."
+
+He paused, then added softly,
+
+"Because I know the plants will be watered, your wandering brings me only joy."
+
+---
+
+## Part III — The World Is a Very Large Garden
+
+Years passed and the garden flourished.
+
+The novice had built channels that carried water efficiently across the beds. Younger novices now learned from them how to care for the garden.
+
+One evening the monk called the novice to sit beside the well.
+
+"You have learned the garden," the monk said. "You can carry the buckets. You can build the channels. You can repair them when they break."
+
+The novice bowed.
+
+"Tomorrow," the monk said, "you will leave the monastery."
+
+The novice was surprised. "Leave? There is still much here to improve."
+
+The monk shook his head gently.
+
+"A monastery is where you learn how to work.
+The world is where the work must be done."
+
+The next morning they walked together to the gate. They passed the well, the buckets, and the channels spreading water across the garden.
+
+The monk said,
+
+"When you were new, I asked you to carry water. It was the simplest way to help the plants."
+
+"Later, you learned to build channels. Your effort could water many plants at once."
+
+The novice nodded.
+
+"Out in the world," the monk continued, "the garden is very large and the days are short."
+
+"You must always ask yourself: *which effort waters the most plants?*"
+
+He picked up a bucket and handed it to the novice.
+
+"Sometimes the right answer is to carry the bucket quickly and finish the task."
+
+Then he pointed to the channels.
+
+"Sometimes the right answer is to build something that helps many gardens at once."
+
+He paused.
+
+"But never spend all day discussing the perfect channel while the plants are drying."
+
+"And never build a grand channel that waters only a single plant."
+
+The gate of the monastery stood open.
+
+"Choose your work so that each drop of effort reaches as much of the garden as possible."
+
+The novice bowed deeply, and walked out into the world — carrying the bucket, but always looking for the next channel to build.
+
+---
+
+## A Note on Graduate School
+
+In many ways, this is the arc of a PhD.
+
+At the beginning, students often want to ask deep questions about everything: *Why this method? Why this problem? Why this approach?* Those questions are not bad questions—but they are rarely the first step.
+
+First, you have to learn how to carry the buckets.
+
+That means learning how to execute: write code, run analyses, produce plots, debug problems, and finish concrete tasks. The discipline of completing work is the foundation on which everything else rests.
+
+Later, once you've done the work enough times, patterns become visible. Now you can suggest better ways: new methods, better tools, new directions. This is when students begin to build channels.
+
+But the monk only trusts those channels because they know something important: if the channel fails, the student can still carry the bucket.
+
+There is also another truth that is easy to forget.
+
+**Graduate school is one of the last times in your career where you can afford to wander a bit.**
+
+You can spend weeks chasing a strange idea. You can explore something that might not work. You can dig into a question just because it is interesting. You can, occasionally, fool around intellectually and see where curiosity leads.
+
+That freedom is not a bug of graduate school—it is part of the training.
+
+But it is also temporary.
+
+After the PhD, the garden becomes much larger and the days become much shorter. Postdoctoral years, in particular, are not meant for endless wandering. They are the stage where you learn to direct your effort deliberately.
+
+At that stage the key question becomes:
+
+**What produces the most impact per unit effort?**
+
+Sometimes the answer is a quick bucket.
+Sometimes the answer is a well-designed channel.
+
+But the craft of a scientist—or really of any independent thinker—is learning which is which.
+
+And doing it before the plants dry out.
