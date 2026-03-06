@@ -8,6 +8,13 @@ export interface LabNewsItem {
 
 export const labNews: LabNewsItem[] = [
   {
+    date: "February 3, 2026",
+    name: "Dr. Kelci Mohrman",
+    text: 'presented at the Aspen Winter Physics Conference 2026 on <em>Electroweak Physics at the LHC</em>',
+    image: "photos/kelci_aspen2026.jpg",
+    imageAlt: "Dr. Kelci Mohrman presenting at the Aspen Winter Physics Conference 2026",
+  },
+  {
     date: "January 16, 2026",
     name: "Alexandra Aponte Utani",
     text: "presented long-exercise on Bs to mumu at CMSDAS 2026 @ FNAL",
